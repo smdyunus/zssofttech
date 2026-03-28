@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import {
   Phone,
   Mail,
@@ -14,6 +14,28 @@ import {
 } from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
 import { courses, formatCourseFeeLabel } from '@/lib/data/courses';
+import {
+  ENQUIRY_MESSAGE_MAX,
+  ENQUIRY_NAME_MAX,
+  enquiryPhoneDigits,
+  validateEnquiryCourseSlug,
+  validateEnquiryEmail,
+  validateEnquiryMessage,
+  validateEnquiryName,
+  validateEnquiryPhone,
+} from '@/lib/contact-enquiry-validation';
+import { CONTACT_ENQUIRY_RESET_EVENT } from '@/lib/contact-enquiry-reset';
+
+function courseSlugFromContactSearchParams(
+  sp: Pick<URLSearchParams, 'get'>
+): string {
+  const selectedCourse = sp.get('course');
+  if (!selectedCourse) return '';
+  const bySlug = courses.find((c) => c.slug === selectedCourse);
+  if (bySlug) return selectedCourse;
+  const byTitle = courses.find((c) => c.title === selectedCourse);
+  return byTitle?.slug ?? '';
+}
 
 /** FormSubmit blocks many server-side POSTs; browser → /ajax/ works reliably. */
 const FORMSUBMIT_INBOX =
@@ -36,16 +58,14 @@ async function submitEnquiryViaBrowserFormSubmit(payload: {
   const body: Record<string, string | boolean> = {
     name: payload.name,
     phone: payload.phone,
-    email: email || '—',
+    email,
     course: courseTitle,
-    message: payload.message || '—',
+    message: payload.message,
     _subject: `New website enquiry — ${courseTitle}`,
     _captcha: false,
+    _replyto: email,
+    _cc: email,
   };
-  if (email) {
-    body._replyto = email;
-    body._cc = email;
-  }
 
   const url = `https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_INBOX)}`;
   const res = await fetch(url, {
@@ -79,7 +99,9 @@ async function submitEnquiryViaBrowserFormSubmit(payload: {
 }
 
 export default function ContactPageClient() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const prevPathnameRef = useRef<string | null>(null);
   const [formState, setFormState] = useState({
     name: '',
     phone: '',
@@ -115,6 +137,41 @@ export default function ContactPageClient() {
     }
   }, [searchParams]);
 
+  const resetEnquiryFormForFreshVisit = useCallback(() => {
+    setSubmitted(false);
+    setSubmitting(false);
+    setSubmitError(null);
+    setSmtpUnavailable(false);
+    setErrors({});
+    setFormState({
+      name: '',
+      phone: '',
+      email: '',
+      course: courseSlugFromContactSearchParams(searchParams),
+      message: '',
+    });
+  }, [searchParams]);
+
+  /** Leaving and returning to /contact (or soft nav cache) must not keep the thank-you screen. */
+  useEffect(() => {
+    if (pathname === '/contact') {
+      const prev = prevPathnameRef.current;
+      prevPathnameRef.current = pathname;
+      if (prev !== '/contact') {
+        resetEnquiryFormForFreshVisit();
+      }
+    } else {
+      prevPathnameRef.current = pathname;
+    }
+  }, [pathname, resetEnquiryFormForFreshVisit]);
+
+  useEffect(() => {
+    const onReset = () => resetEnquiryFormForFreshVisit();
+    window.addEventListener(CONTACT_ENQUIRY_RESET_EVENT, onReset);
+    return () =>
+      window.removeEventListener(CONTACT_ENQUIRY_RESET_EVENT, onReset);
+  }, [resetEnquiryFormForFreshVisit]);
+
   useEffect(() => {
     if (FORCE_BROWSER_FORMSUBMIT) {
       setMailDelivery('forms');
@@ -130,13 +187,16 @@ export default function ContactPageClient() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    if (!formState.name.trim()) newErrors.name = 'Name is required';
-    if (!formState.phone.trim()) newErrors.phone = 'Phone number is required';
-    else if (!/^[6-9]\d{9}$/.test(formState.phone.replace(/\s/g, '')))
-      newErrors.phone = 'Enter a valid 10-digit mobile number';
-    if (formState.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email))
-      newErrors.email = 'Enter a valid email address';
-    if (!formState.course) newErrors.course = 'Please select a course';
+    const nameErr = validateEnquiryName(formState.name);
+    if (nameErr) newErrors.name = nameErr;
+    const phoneErr = validateEnquiryPhone(formState.phone);
+    if (phoneErr) newErrors.phone = phoneErr;
+    const emailErr = validateEnquiryEmail(formState.email);
+    if (emailErr) newErrors.email = emailErr;
+    const courseErr = validateEnquiryCourseSlug(formState.course);
+    if (courseErr) newErrors.course = courseErr;
+    const messageErr = validateEnquiryMessage(formState.message);
+    if (messageErr) newErrors.message = messageErr;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -151,9 +211,9 @@ export default function ContactPageClient() {
     try {
       const payload = {
         name: formState.name.trim(),
-        phone: formState.phone.trim(),
+        phone: enquiryPhoneDigits(formState.phone),
         email: formState.email.trim(),
-        courseSlug: formState.course,
+        courseSlug: formState.course.trim(),
         message: formState.message.trim(),
       };
 
@@ -210,9 +270,14 @@ export default function ContactPageClient() {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' });
+    const { name, value } = e.target;
+    const nextValue =
+      name === 'phone'
+        ? value.replace(/\D/g, '').slice(0, 10)
+        : value;
+    setFormState({ ...formState, [name]: nextValue });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
     }
   };
 
@@ -345,15 +410,21 @@ export default function ContactPageClient() {
                       id="name"
                       name="name"
                       type="text"
+                      autoComplete="name"
+                      maxLength={ENQUIRY_NAME_MAX}
                       value={formState.name}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
                       className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
                         errors.name ? 'border-red-500' : 'border-border/50'
                       }`}
                       placeholder="Your full name"
                     />
                     {errors.name && (
-                      <p className="text-xs text-red-400 mt-1">{errors.name}</p>
+                      <p id="name-error" className="text-xs text-red-400 mt-1">
+                        {errors.name}
+                      </p>
                     )}
                   </div>
                   <div>
@@ -367,15 +438,21 @@ export default function ContactPageClient() {
                       id="phone"
                       name="phone"
                       type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      autoComplete="tel"
+                      maxLength={10}
                       value={formState.phone}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
                       className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
                         errors.phone ? 'border-red-500' : 'border-border/50'
                       }`}
-                      placeholder="10-digit mobile number"
+                      placeholder="10 digits, starts with 6–9"
                     />
                     {errors.phone && (
-                      <p className="text-xs text-red-400 mt-1">
+                      <p id="phone-error" className="text-xs text-red-400 mt-1">
                         {errors.phone}
                       </p>
                     )}
@@ -387,21 +464,27 @@ export default function ContactPageClient() {
                     htmlFor="email"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Email Address
+                    Email Address *
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
+                    maxLength={254}
                     value={formState.email}
                     onChange={handleChange}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
                     className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
                       errors.email ? 'border-red-500' : 'border-border/50'
                     }`}
-                    placeholder="your@email.com (optional)"
+                    placeholder="your@email.com"
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-400 mt-1">{errors.email}</p>
+                    <p id="email-error" className="text-xs text-red-400 mt-1">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
 
@@ -417,6 +500,8 @@ export default function ContactPageClient() {
                     name="course"
                     value={formState.course}
                     onChange={handleChange}
+                    aria-invalid={Boolean(errors.course)}
+                    aria-describedby={errors.course ? 'course-error' : undefined}
                     className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
                       errors.course ? 'border-red-500' : 'border-border/50'
                     } ${!formState.course ? 'text-gray-500' : ''}`}
@@ -429,7 +514,7 @@ export default function ContactPageClient() {
                     ))}
                   </select>
                   {errors.course && (
-                    <p className="text-xs text-red-400 mt-1">
+                    <p id="course-error" className="text-xs text-red-400 mt-1">
                       {errors.course}
                     </p>
                   )}
@@ -440,17 +525,39 @@ export default function ContactPageClient() {
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Message
+                    Message *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
+                    maxLength={ENQUIRY_MESSAGE_MAX}
                     value={formState.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-border/50 rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                    placeholder="Any specific questions or requirements..."
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={
+                      errors.message
+                        ? 'message-error'
+                        : 'message-char-hint'
+                    }
+                    className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none ${
+                      errors.message ? 'border-red-500' : 'border-border/50'
+                    }`}
+                    placeholder="Your questions or requirements (required)"
+                    required
                   />
+                  <div className="flex flex-wrap items-center justify-between gap-2 mt-1">
+                    {errors.message ? (
+                      <p id="message-error" className="text-xs text-red-400">
+                        {errors.message}
+                      </p>
+                    ) : (
+                      <span id="message-char-hint" className="text-xs text-muted">
+                        {formState.message.length} / {ENQUIRY_MESSAGE_MAX}{' '}
+                        characters
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {submitError && (

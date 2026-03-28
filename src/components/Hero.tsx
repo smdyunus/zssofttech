@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import ContactUsLink from '@/components/ContactUsLink';
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
@@ -119,20 +120,34 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href={currentSlide === 0 ? '/contact' : '/courses'}
-                  className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5"
-                >
-                  {slides[currentSlide].cta}
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-                <Link
-                  href={currentSlide === 0 ? '/courses' : '/contact'}
-                  className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5"
-                >
-                  <Play className="w-3 h-3" />
-                  {slides[currentSlide].ctaSecondary}
-                </Link>
+                {currentSlide === 0 ? (
+                  <ContactUsLink className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5">
+                    {slides[currentSlide].cta}
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  </ContactUsLink>
+                ) : (
+                  <Link
+                    href="/courses"
+                    className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5"
+                  >
+                    {slides[currentSlide].cta}
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                )}
+                {currentSlide === 0 ? (
+                  <Link
+                    href="/courses"
+                    className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5"
+                  >
+                    <Play className="w-3 h-3" />
+                    {slides[currentSlide].ctaSecondary}
+                  </Link>
+                ) : (
+                  <ContactUsLink className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5">
+                    <Play className="w-3 h-3" />
+                    {slides[currentSlide].ctaSecondary}
+                  </ContactUsLink>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>

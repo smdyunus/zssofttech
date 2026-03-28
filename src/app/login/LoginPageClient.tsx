@@ -3,17 +3,69 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Lock, User, Eye, EyeOff, ArrowLeft, ShieldCheck } from 'lucide-react';
+import {
+  Lock,
+  User,
+  Eye,
+  EyeOff,
+  ArrowLeft,
+  ShieldCheck,
+  AlertCircle,
+} from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateLogin(values: { userId: string; password: string }) {
+  const next: Record<string, string> = {};
+  const uid = values.userId.trim();
+
+  if (!uid) {
+    next.userId = 'User ID or email is required';
+  } else if (uid.length > 254) {
+    next.userId = 'Must be 254 characters or fewer';
+  } else if (uid.includes('@')) {
+    if (!EMAIL_RE.test(uid)) {
+      next.userId = 'Enter a valid email address';
+    }
+  } else if (uid.length < 2) {
+    next.userId = 'User ID must be at least 2 characters';
+  } else if (!/^[\w.-]+$/i.test(uid)) {
+    next.userId =
+      'User ID can only include letters, numbers, dots, hyphens, and underscores';
+  }
+
+  const pwd = values.password;
+  if (!pwd) {
+    next.password = 'Password is required';
+  } else if (pwd.length < 6) {
+    next.password = 'Password must be at least 6 characters';
+  } else if (pwd.length > 128) {
+    next.password = 'Password must be 128 characters or fewer';
+  }
+
+  return next;
+}
 
 export default function LoginPageClient() {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ userId: '', password: '' });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const nextErrors = validateLogin(form);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
     setSubmitted(true);
+  };
+
+  const handleFieldChange = (field: 'userId' | 'password', value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: '' }));
+    }
   };
 
   return (
@@ -49,27 +101,58 @@ export default function LoginPageClient() {
 
           <div className="glass rounded-2xl border border-border/50 p-6 sm:p-8 shadow-xl shadow-black/20">
             {submitted ? (
-              <div className="text-center py-4">
-                <p className="text-foreground font-medium mb-2">
-                  Login is not connected yet
-                </p>
-                <p className="text-sm text-muted mb-6">
-                  Student portal authentication will be enabled soon. For access or
-                  credential issues, contact the institute.
-                </p>
-                <a
-                  href={`mailto:${instituteInfo.contact.email}`}
-                  className="inline-flex items-center justify-center w-full py-3 rounded-xl bg-gradient-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-                >
-                  Email {instituteInfo.contact.email}
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-4 text-sm text-primary hover:underline"
-                >
-                  Try again
-                </button>
+              <div
+                role="alert"
+                aria-live="polite"
+                className="rounded-xl border border-red-500/35 bg-red-500/5 p-5 sm:p-6 text-left"
+              >
+                <div className="flex gap-3">
+                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-red-500/15 text-red-400">
+                    <AlertCircle className="h-5 w-5" aria-hidden />
+                  </div>
+                  <div className="min-w-0 flex-1 space-y-3">
+                    <div>
+                      <h2 className="text-base font-semibold text-foreground">
+                        Invalid credentials
+                      </h2>
+                      <p className="mt-1 text-sm text-muted">
+                        We could not sign you in with the User ID and password you
+                        entered.
+                      </p>
+                    </div>
+                    <ul className="list-disc space-y-1.5 pl-4 text-sm text-muted">
+                      <li>
+                        Confirm your User ID or email matches what the institute
+                        issued.
+                      </li>
+                      <li>
+                        Passwords are case-sensitive — check Caps Lock and try again.
+                      </li>
+                      <li>
+                        If you forgot your password or need access, contact the
+                        institute.
+                      </li>
+                    </ul>
+                    <div className="flex flex-col gap-2 pt-1 sm:flex-row sm:items-center sm:gap-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSubmitted(false);
+                          setErrors({});
+                        }}
+                        className="inline-flex items-center justify-center rounded-xl bg-gradient-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:opacity-90 transition-opacity"
+                      >
+                        Try again
+                      </button>
+                      <a
+                        href={`mailto:${instituteInfo.contact.email}`}
+                        className="text-center text-sm font-medium text-primary hover:underline sm:text-left"
+                      >
+                        Contact {instituteInfo.contact.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -89,12 +172,25 @@ export default function LoginPageClient() {
                       autoComplete="username"
                       value={form.userId}
                       onChange={(e) =>
-                        setForm({ ...form, userId: e.target.value })
+                        handleFieldChange('userId', e.target.value)
                       }
-                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-card border border-border/50 text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50"
+                      aria-invalid={Boolean(errors.userId)}
+                      aria-describedby={
+                        errors.userId ? 'userId-error' : undefined
+                      }
+                      className={`w-full pl-11 pr-4 py-3 rounded-xl bg-card border text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 ${
+                        errors.userId
+                          ? 'border-red-500'
+                          : 'border-border/50'
+                      }`}
                       placeholder="Enter your student user ID or email"
                     />
                   </div>
+                  {errors.userId && (
+                    <p id="userId-error" className="text-xs text-red-400 mt-1">
+                      {errors.userId}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -113,9 +209,17 @@ export default function LoginPageClient() {
                       autoComplete="current-password"
                       value={form.password}
                       onChange={(e) =>
-                        setForm({ ...form, password: e.target.value })
+                        handleFieldChange('password', e.target.value)
                       }
-                      className="w-full pl-11 pr-12 py-3 rounded-xl bg-card border border-border/50 text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50"
+                      aria-invalid={Boolean(errors.password)}
+                      aria-describedby={
+                        errors.password ? 'password-error' : undefined
+                      }
+                      className={`w-full pl-11 pr-12 py-3 rounded-xl bg-card border text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 ${
+                        errors.password
+                          ? 'border-red-500'
+                          : 'border-border/50'
+                      }`}
                       placeholder="Enter your password"
                     />
                     <button
@@ -131,6 +235,14 @@ export default function LoginPageClient() {
                       )}
                     </button>
                   </div>
+                  {errors.password && (
+                    <p
+                      id="password-error"
+                      className="text-xs text-red-400 mt-1"
+                    >
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
 
                 <button

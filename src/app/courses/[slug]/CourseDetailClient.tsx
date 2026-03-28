@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ContactUsLink from '@/components/ContactUsLink';
 import {
   Clock,
   Monitor,
@@ -108,10 +109,10 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3 pt-2">
-                <Link href={enquiryUrl} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 shadow-lg shadow-primary/20">
+                <ContactUsLink href={enquiryUrl} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 shadow-lg shadow-primary/20">
                   Enquiry
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </ContactUsLink>
                 <a href={waUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20bd5b] text-white rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-green-500/20">
                   <WhatsAppSvg className="w-5 h-5" />
                   WhatsApp
@@ -139,9 +140,9 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
                 </div>
               )}
 
-              <Link href={enquiryUrl} className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity mb-4">
+              <ContactUsLink href={enquiryUrl} className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity mb-4">
                 Enquiry <ArrowRight className="w-4 h-4" />
-              </Link>
+              </ContactUsLink>
 
               <div className="space-y-3 text-sm">
                 <div className="flex items-center justify-between text-gray-400">
@@ -425,10 +426,10 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
               Send us your enquiry and take the first step towards mastering {course.shortTitle}. Our expert instructors and structured curriculum will get you job-ready.
             </motion.p>
             <motion.div variants={fadeUp} custom={2} className="flex flex-wrap justify-center gap-3">
-              <Link href={enquiryUrl} className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg">
+              <ContactUsLink href={enquiryUrl} className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg">
                 Enquiry
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </ContactUsLink>
               <a href={waUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 bg-[#25D366] text-white rounded-xl font-semibold text-sm hover:bg-[#20bd5b] transition-colors shadow-lg">
                 <WhatsAppSvg className="w-5 h-5" />
                 WhatsApp

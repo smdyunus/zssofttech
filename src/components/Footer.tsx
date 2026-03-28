@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ContactUsLink from '@/components/ContactUsLink';
 import {
   Phone,
   Mail,
@@ -86,13 +87,20 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted hover:text-primary transition-colors flex items-center gap-1 group"
-                  >
-                    {link.name}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
+                  {link.href === '/contact' ? (
+                    <ContactUsLink className="text-sm text-muted hover:text-primary transition-colors flex items-center gap-1 group">
+                      {link.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </ContactUsLink>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted hover:text-primary transition-colors flex items-center gap-1 group"
+                    >
+                      {link.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

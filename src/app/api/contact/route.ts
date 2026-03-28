@@ -1,5 +1,12 @@
 import { NextResponse } from 'next/server';
-import { courses } from '@/lib/data/courses';
+import {
+  enquiryPhoneDigits,
+  validateEnquiryCourseSlug,
+  validateEnquiryEmail,
+  validateEnquiryMessage,
+  validateEnquiryName,
+  validateEnquiryPhone,
+} from '@/lib/contact-enquiry-validation';
 import {
   isSmtpConfigured,
   sendContactEnquiryEmail,
@@ -20,15 +27,6 @@ export async function GET() {
   return NextResponse.json({ smtpConfigured: isSmtpConfigured() });
 }
 
-function validPhone(phone: string): boolean {
-  return /^[6-9]\d{9}$/.test(phone.replace(/\s/g, ''));
-}
-
-function validEmail(email: string): boolean {
-  if (!email.trim()) return true;
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -46,31 +44,36 @@ export async function POST(request: Request) {
   const phone = typeof b.phone === 'string' ? b.phone.trim() : '';
   const email = typeof b.email === 'string' ? b.email.trim() : '';
   const courseSlug = typeof b.course === 'string' ? b.course.trim() : '';
-  const message = typeof b.message === 'string' ? b.message.trim() : '';
+  const message = typeof b.message === 'string' ? b.message : '';
 
-  if (!name) {
-    return NextResponse.json({ error: 'Name is required.' }, { status: 400 });
+  const nameErr = validateEnquiryName(name);
+  if (nameErr) {
+    return NextResponse.json({ error: nameErr }, { status: 400 });
   }
-  if (!phone || !validPhone(phone)) {
-    return NextResponse.json(
-      { error: 'Enter a valid 10-digit mobile number.' },
-      { status: 400 }
-    );
+  const phoneErr = validateEnquiryPhone(phone);
+  if (phoneErr) {
+    return NextResponse.json({ error: phoneErr }, { status: 400 });
   }
-  if (!validEmail(email)) {
-    return NextResponse.json(
-      { error: 'Enter a valid email address.' },
-      { status: 400 }
-    );
+  const emailErr = validateEnquiryEmail(email);
+  if (emailErr) {
+    return NextResponse.json({ error: emailErr }, { status: 400 });
   }
-  if (!courseSlug || !courses.some((c) => c.slug === courseSlug)) {
-    return NextResponse.json(
-      { error: 'Please select a valid course.' },
-      { status: 400 }
-    );
+  const courseErr = validateEnquiryCourseSlug(courseSlug);
+  if (courseErr) {
+    return NextResponse.json({ error: courseErr }, { status: 400 });
+  }
+  const messageErr = validateEnquiryMessage(message);
+  if (messageErr) {
+    return NextResponse.json({ error: messageErr }, { status: 400 });
   }
 
-  const payload = { name, phone, email, courseSlug, message };
+  const payload = {
+    name: name.trim(),
+    phone: enquiryPhoneDigits(phone),
+    email: email.trim(),
+    courseSlug: courseSlug.trim(),
+    message: message.trim(),
+  };
 
   try {
     if (isSmtpConfigured()) {

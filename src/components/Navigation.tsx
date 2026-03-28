@@ -18,6 +18,7 @@ import {
   TestTube,
 } from 'lucide-react';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
+import ContactUsLink from '@/components/ContactUsLink';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Full Stack Development': <Code2 className="w-4 h-4" />,
@@ -184,12 +185,9 @@ export default function Navigation() {
                 About Us
               </Link>
 
-              <Link
-                href="/contact"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
-              >
+              <ContactUsLink className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5">
                 Contact Us
-              </Link>
+              </ContactUsLink>
 
               <Link
                 href="/login"
@@ -278,13 +276,12 @@ export default function Navigation() {
                 >
                   About Us
                 </Link>
-                <Link
-                  href="/contact"
+                <ContactUsLink
                   className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   Contact Us
-                </Link>
+                </ContactUsLink>
 
                 <div className="pt-4 space-y-3">
                   <Link

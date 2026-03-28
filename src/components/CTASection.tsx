@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ContactUsLink from '@/components/ContactUsLink';
 import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
 
@@ -38,13 +39,10 @@ export default function CTASection() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="group px-8 py-4 bg-gradient-primary text-white rounded-xl font-semibold text-base hover:opacity-90 transition-all shadow-xl shadow-primary/25 flex items-center gap-2"
-            >
+            <ContactUsLink className="group px-8 py-4 bg-gradient-primary text-white rounded-xl font-semibold text-base hover:opacity-90 transition-all shadow-xl shadow-primary/25 flex items-center gap-2">
               Get Free Counseling
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </ContactUsLink>
             <a
               href={`https://wa.me/${instituteInfo.contact.whatsapp.replace(/\D/g, '')}?text=Hi%20ZS%20Soft%20Tech!%20I%27m%20interested%20in%20your%20courses.`}
               target="_blank"
