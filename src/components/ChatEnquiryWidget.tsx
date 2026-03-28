@@ -170,8 +170,28 @@ export default function ChatEnquiryWidget() {
     setPanelOpen(true);
   };
 
+  /** Teaser already asked permission; skip duplicate Yes inside the panel. */
   const handleTeaserYes = () => {
-    openPanel();
+    dismissTeaser();
+    setFieldError(null);
+    setSubmitError(null);
+    setStep('name');
+    setDraft('');
+    fieldsRef.current = { name: '', message: '', courseSlug: '' };
+    setMessages([
+      {
+        id: uid(),
+        role: 'bot',
+        text: 'Hello! May I have a moment to chat with you?',
+      },
+      { id: uid(), role: 'user', text: 'Yes' },
+      {
+        id: uid(),
+        role: 'bot',
+        text: 'May I know your full name, please?',
+      },
+    ]);
+    setPanelOpen(true);
   };
 
   const handleTeaserNo = () => {

@@ -32,6 +32,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
+  const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -44,6 +45,7 @@ export default function Navigation() {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      setMobileCoursesOpen(false);
     }
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
@@ -227,30 +229,72 @@ export default function Navigation() {
                   Home
                 </Link>
 
-                {courseCategories.map((cat) => (
-                  <div key={cat.title} className="py-2">
-                    <div className="flex items-center gap-2 px-4 mb-1">
-                      <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                        {categoryIcons[cat.title] || (
-                          <BarChart3 className="w-3 h-3" />
-                        )}
-                      </div>
-                      <span className="text-xs font-semibold text-muted uppercase tracking-wider">
-                        {cat.title}
-                      </span>
-                    </div>
-                    {cat.items.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block py-2 pl-12 pr-4 text-sm text-gray-400 hover:text-primary hover:bg-white/5 rounded-lg transition-all"
-                        onClick={() => setIsOpen(false)}
+                <div className="border-b border-border/40 pb-1">
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between gap-2 py-3 px-4 text-left text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                    aria-expanded={mobileCoursesOpen}
+                    aria-controls="mobile-courses-panel"
+                    id="mobile-courses-trigger"
+                    onClick={() => setMobileCoursesOpen((o) => !o)}
+                  >
+                    <span>Courses</span>
+                    <ChevronDown
+                      className={`w-5 h-5 shrink-0 text-muted transition-transform duration-200 ${
+                        mobileCoursesOpen ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {mobileCoursesOpen && (
+                      <motion.div
+                        id="mobile-courses-panel"
+                        role="region"
+                        aria-labelledby="mobile-courses-trigger"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                        className="overflow-hidden"
                       >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                ))}
+                        <div className="pt-1 pb-2">
+                          <Link
+                            href="/courses"
+                            className="block py-2 px-4 text-sm font-medium text-primary hover:bg-white/5 rounded-lg transition-all"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            View all courses
+                          </Link>
+                          {courseCategories.map((cat) => (
+                            <div key={cat.title} className="py-2">
+                              <div className="flex items-center gap-2 px-4 mb-1">
+                                <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                                  {categoryIcons[cat.title] || (
+                                    <BarChart3 className="w-3 h-3" />
+                                  )}
+                                </div>
+                                <span className="text-xs font-semibold text-muted uppercase tracking-wider">
+                                  {cat.title}
+                                </span>
+                              </div>
+                              {cat.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className="block py-2 pl-12 pr-4 text-sm text-gray-400 hover:text-primary hover:bg-white/5 rounded-lg transition-all"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 {/* Temporarily hidden: Internships mobile nav link
                 <Link
