@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import {
   enquiryPhoneDigits,
   validateEnquiryCourseSlug,
-  validateEnquiryEmail,
+  validateEnquiryEmailOptional,
   validateEnquiryMessage,
   validateEnquiryName,
   validateEnquiryPhone,
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
   if (phoneErr) {
     return NextResponse.json({ error: phoneErr }, { status: 400 });
   }
-  const emailErr = validateEnquiryEmail(email);
+  const emailErr = validateEnquiryEmailOptional(email);
   if (emailErr) {
     return NextResponse.json({ error: emailErr }, { status: 400 });
   }

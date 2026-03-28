@@ -25,6 +25,10 @@ import {
   validateEnquiryPhone,
 } from '@/lib/contact-enquiry-validation';
 import { CONTACT_ENQUIRY_RESET_EVENT } from '@/lib/contact-enquiry-reset';
+import {
+  getContactMailDelivery,
+  submitContactEnquiry,
+} from '@/lib/contact-enquiry-client-submit';
 
 function courseSlugFromContactSearchParams(
   sp: Pick<URLSearchParams, 'get'>
@@ -35,67 +39,6 @@ function courseSlugFromContactSearchParams(
   if (bySlug) return selectedCourse;
   const byTitle = courses.find((c) => c.title === selectedCourse);
   return byTitle?.slug ?? '';
-}
-
-/** FormSubmit blocks many server-side POSTs; browser → /ajax/ works reliably. */
-const FORMSUBMIT_INBOX =
-  process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ?? 'zssofttech@gmail.com';
-
-/** If true, always use browser FormSubmit even when the server has SMTP (rare). */
-const FORCE_BROWSER_FORMSUBMIT =
-  process.env.NEXT_PUBLIC_CONTACT_FORCE_FORMSUBMIT === 'true';
-
-async function submitEnquiryViaBrowserFormSubmit(payload: {
-  name: string;
-  phone: string;
-  email: string;
-  courseSlug: string;
-  message: string;
-}): Promise<void> {
-  const c = courses.find((x) => x.slug === payload.courseSlug);
-  const courseTitle = c?.title ?? payload.courseSlug;
-  const email = payload.email.trim();
-  const body: Record<string, string | boolean> = {
-    name: payload.name,
-    phone: payload.phone,
-    email,
-    course: courseTitle,
-    message: payload.message,
-    _subject: `New website enquiry — ${courseTitle}`,
-    _captcha: false,
-    _replyto: email,
-    _cc: email,
-  };
-
-  const url = `https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_INBOX)}`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-
-  const raw = await res.text();
-  let parsed: { success?: string; message?: string } = {};
-  try {
-    parsed = JSON.parse(raw) as { success?: string; message?: string };
-  } catch {
-    /* ignore */
-  }
-
-  if (!res.ok) {
-    throw new Error(
-      parsed.message || `Could not send (${res.status}). Confirm FormSubmit for ${FORMSUBMIT_INBOX}.`
-    );
-  }
-  if (parsed.success === 'false') {
-    throw new Error(
-      parsed.message ||
-        'FormSubmit rejected the request. Activate this email once at formsubmit.co (check inbox).'
-    );
-  }
 }
 
 export default function ContactPageClient() {
@@ -173,16 +116,7 @@ export default function ContactPageClient() {
   }, [resetEnquiryFormForFreshVisit]);
 
   useEffect(() => {
-    if (FORCE_BROWSER_FORMSUBMIT) {
-      setMailDelivery('forms');
-      return;
-    }
-    fetch('/api/contact')
-      .then((r) => r.json())
-      .then((d: { smtpConfigured?: boolean }) => {
-        setMailDelivery(d.smtpConfigured ? 'smtp' : 'forms');
-      })
-      .catch(() => setMailDelivery('forms'));
+    getContactMailDelivery().then(setMailDelivery);
   }, []);
 
   const validate = () => {
@@ -217,44 +151,25 @@ export default function ContactPageClient() {
         message: formState.message.trim(),
       };
 
-      if (mailDelivery === 'smtp') {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: payload.name,
-            phone: payload.phone,
-            email: payload.email,
-            course: payload.courseSlug,
-            message: payload.message,
-          }),
-        });
-        const data = (await res.json().catch(() => ({}))) as {
-          error?: string;
-          hint?: string;
-          ok?: boolean;
-        };
-        if (!res.ok) {
-          if (res.status === 503 && data.error === 'email_not_configured') {
-            setSmtpUnavailable(true);
-            setSubmitError(
-              'We can’t deliver this form by email yet. Please message us on WhatsApp or call—we’ll respond right away.'
-            );
-            if (process.env.NODE_ENV === 'development' && data.hint) {
-              console.warn('[contact]', data.hint);
-            }
-            return;
+      let delivery: 'smtp' | 'forms' =
+        mailDelivery === 'loading' ? 'forms' : mailDelivery;
+      if (mailDelivery === 'loading') {
+        delivery = await getContactMailDelivery();
+        setMailDelivery(delivery);
+      }
+      const result = await submitContactEnquiry(payload, delivery);
+      if (!result.ok) {
+        if (result.smtpUnavailable) {
+          setSmtpUnavailable(true);
+          setSubmitError(result.error);
+          if (process.env.NODE_ENV === 'development' && result.hint) {
+            console.warn('[contact]', result.hint);
           }
-          setSubmitError(
-            data.error || 'Something went wrong. Please try again.'
-          );
           return;
         }
-        setSubmitted(true);
+        setSubmitError(result.error);
         return;
       }
-
-      await submitEnquiryViaBrowserFormSubmit(payload);
       setSubmitted(true);
     } catch (e) {
       const msg =

@@ -44,6 +44,16 @@ export function validateEnquiryEmail(email: string): string | null {
   return null;
 }
 
+/** For API / chat: empty is OK; if provided, must be a valid address. */
+export function validateEnquiryEmailOptional(email: string): string | null {
+  const t = email.trim();
+  if (!t) return null;
+  if (!EMAIL_RE.test(t)) {
+    return 'Enter a valid email address';
+  }
+  return null;
+}
+
 export function validateEnquiryMessage(message: string): string | null {
   const t = message.trim();
   if (!t) return 'Message is required';

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import ChatEnquiryWidget from "@/components/ChatEnquiryWidget";
 import CursorEffect from "@/components/CursorEffect";
 
 const geistSans = Geist({
@@ -223,7 +223,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
-        <WhatsAppButton />
+        <ChatEnquiryWidget />
       </body>
     </html>
   );
