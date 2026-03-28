@@ -8,6 +8,18 @@ import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
   {
     id: 1,
+    title: 'Python & Data Analysis — 45-Day Fast Track',
+    subtitle:
+      'Summer AI course in Nandyal for Inter, Degree & B.Tech. Starts 6 Apr 2026 — Mon–Fri, expert trainer, limited batches.',
+    cta: 'Enquire Now',
+    ctaSecondary: 'View All Courses',
+    gradient: 'from-blue-600/30 via-purple-600/20 to-cyan-600/30',
+    highlight: '45-Day Fast Track',
+    image: '/images/hero/hero-python-45day-fasttrack.png',
+    overlayClass: 'bg-black/50',
+  },
+  {
+    id: 2,
     title: 'Master the Future of Technology in Nandyal',
     subtitle: 'From Agentic AI & Gen AI to Full Stack Development, DevOps, and System Design — get industry-ready with hands-on training.',
     cta: 'Explore Courses',
@@ -15,9 +27,10 @@ const slides = [
     gradient: 'from-blue-600/30 via-purple-600/20 to-cyan-600/30',
     highlight: 'AI-First',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=70',
+    overlayClass: 'bg-black/50',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Build Engineering Skills that AI Can\'t Replace',
     subtitle: 'Real fundamentals while learning how to leverage AI to code better, faster and smarter. 100% Job-ready training.',
     cta: 'Explore Courses',
@@ -25,9 +38,10 @@ const slides = [
     gradient: 'from-purple-600/30 via-blue-600/20 to-pink-600/30',
     highlight: '90% Placement',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=70',
+    overlayClass: 'bg-black/50',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Real-Time Software Training Institute',
     subtitle: 'Join the Best Software Training Institute & Upgrade Your Skills! Expert trainers, hands-on projects, placement assistance.',
     cta: 'View All Courses',
@@ -35,6 +49,7 @@ const slides = [
     gradient: 'from-cyan-600/30 via-blue-600/20 to-purple-600/30',
     highlight: '150+ Placed',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=70',
+    overlayClass: 'bg-black/50',
   },
 ];
 
@@ -56,7 +71,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-background">
-      {/* Background Images */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -76,8 +90,9 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div
+        className={`absolute inset-0 transition-colors duration-500 ${slides[currentSlide].overlayClass ?? 'bg-black/50'}`}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="min-h-[85vh] flex flex-col justify-center py-20">
@@ -105,14 +120,14 @@ export default function Hero() {
 
               <div className="flex flex-wrap gap-3">
                 <Link
-                  href="/courses"
+                  href={currentSlide === 0 ? '/contact' : '/courses'}
                   className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5"
                 >
                   {slides[currentSlide].cta}
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
                 <Link
-                  href="/contact"
+                  href={currentSlide === 0 ? '/courses' : '/contact'}
                   className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5"
                 >
                   <Play className="w-3 h-3" />
@@ -124,7 +139,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Slider Controls */}
       <div className="absolute bottom-6 left-0 right-0 z-20">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex gap-1.5">

@@ -23,6 +23,7 @@ const quickLinks = [
 ];
 
 const courseLinks = [
+  { name: 'Python & Data Analysis — 45-Day Fast Track', href: '/courses/python-data-analysis-45-day-fast-track' },
   { name: 'MERN Stack Development', href: '/courses/mern-stack' },
   { name: 'Java Spring Boot', href: '/courses/java-spring-boot' },
   { name: 'Agentic AI & Gen AI', href: '/courses/agentic-ai' },

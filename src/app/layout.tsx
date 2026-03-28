@@ -134,6 +134,12 @@ function LocalBusinessJsonLd() {
 function CourseJsonLd() {
   const courses = [
     {
+      name: "Python & Data Analysis — 45-Day Fast Track",
+      description:
+        "Intensive Python and data analysis program with visualization and AI introduction — Nandyal summer batch",
+      provider: "ZS Soft Tech",
+    },
+    {
       name: "MERN Full Stack Development",
       description:
         "Build production-grade web applications with MongoDB, Express.js, React, and Node.js",

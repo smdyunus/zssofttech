@@ -11,7 +11,6 @@ import {
   Briefcase,
   GraduationCap,
   Shield,
-  Users,
   Wifi,
   MapPin,
   MonitorPlay,
@@ -62,7 +61,7 @@ function WhatsAppSvg({ className }: { className?: string }) {
 export default function CourseDetailClient({ course, relatedCourses, instituteInfo }: Props) {
   const [openModule, setOpenModule] = useState<number | null>(0);
   const waUrl = `https://wa.me/${instituteInfo.contact.whatsapp.replace(/\D/g, '')}?text=Hi!%20I'm%20interested%20in%20${encodeURIComponent(course.title)}%20course.%20Please%20share%20more%20details.`;
-  const enquiryUrl = `/contact?course=${encodeURIComponent(course.title)}`;
+  const enquiryUrl = `/contact?course=${encodeURIComponent(course.slug)}`;
   const modeInfo = modeLabel(course.mode);
 
   return (
@@ -105,7 +104,6 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-400">
                 <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" />{course.duration}</span>
                 <span className="flex items-center gap-1.5">{modeInfo.icon}<span>{modeInfo.text}</span></span>
-                {course.reviews && <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-primary" />{course.reviews} enrolled</span>}
               </div>
 
               {/* CTA Buttons */}
@@ -134,6 +132,9 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
 
               {course.price && (
                 <div className="text-center mb-4">
+                  {course.originalPrice && (
+                    <div className="text-sm text-gray-500 line-through mb-1">{course.originalPrice}</div>
+                  )}
                   <span className="text-3xl font-extrabold text-foreground">{course.price}</span>
                 </div>
               )}

@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Nodemailer uses Node net/tls; bundling it can break API routes on Vercel/serverless.
+  serverExternalPackages: ["nodemailer"],
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,

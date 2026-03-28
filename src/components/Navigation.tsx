@@ -66,15 +66,20 @@ export default function Navigation() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-[88px]">
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
-              <Image
-                src="/zs-logo-header-cropped.png"
-                alt="ZS Soft Tech Logo"
-                width={470}
-                height={246}
-                className="h-12 sm:h-14 w-auto object-contain"
-                priority
-              />
+            <Link
+              href="/"
+              className="flex items-center group rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <span className="inline-flex items-center rounded-2xl bg-card/95 p-1.5 sm:p-2 ring-1 ring-border/60 shadow-sm backdrop-blur-sm transition-[box-shadow,background-color] duration-300 group-hover:bg-card group-hover:ring-border/80">
+                <Image
+                  src="/zs-logo-header-cropped.png"
+                  alt="ZS Soft Tech Logo"
+                  width={470}
+                  height={246}
+                  className="h-11 sm:h-[3.25rem] w-auto object-contain rounded-xl"
+                  priority
+                />
+              </span>
             </Link>
 
             {/* Desktop Links */}
@@ -186,14 +191,12 @@ export default function Navigation() {
                 Contact Us
               </Link>
 
-              {/* Temporarily hidden: Login button
               <Link
                 href="/login"
                 className="ml-2 px-5 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
               >
                 Login
               </Link>
-              */}
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -284,7 +287,6 @@ export default function Navigation() {
                 </Link>
 
                 <div className="pt-4 space-y-3">
-                  {/* Temporarily hidden: Login button
                   <Link
                     href="/login"
                     className="block w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg"
@@ -292,7 +294,6 @@ export default function Navigation() {
                   >
                     Login
                   </Link>
-                  */}
                 </div>
 
                 <div className="pt-4 border-t border-border/50 flex flex-col gap-2 text-sm text-muted">

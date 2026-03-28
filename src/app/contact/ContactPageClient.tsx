@@ -13,7 +13,70 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
-import { courses } from '@/lib/data/courses';
+import { courses, formatCourseFeeLabel } from '@/lib/data/courses';
+
+/** FormSubmit blocks many server-side POSTs; browser → /ajax/ works reliably. */
+const FORMSUBMIT_INBOX =
+  process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ?? 'zssofttech@gmail.com';
+
+/** If true, always use browser FormSubmit even when the server has SMTP (rare). */
+const FORCE_BROWSER_FORMSUBMIT =
+  process.env.NEXT_PUBLIC_CONTACT_FORCE_FORMSUBMIT === 'true';
+
+async function submitEnquiryViaBrowserFormSubmit(payload: {
+  name: string;
+  phone: string;
+  email: string;
+  courseSlug: string;
+  message: string;
+}): Promise<void> {
+  const c = courses.find((x) => x.slug === payload.courseSlug);
+  const courseTitle = c?.title ?? payload.courseSlug;
+  const email = payload.email.trim();
+  const body: Record<string, string | boolean> = {
+    name: payload.name,
+    phone: payload.phone,
+    email: email || '—',
+    course: courseTitle,
+    message: payload.message || '—',
+    _subject: `New website enquiry — ${courseTitle}`,
+    _captcha: false,
+  };
+  if (email) {
+    body._replyto = email;
+    body._cc = email;
+  }
+
+  const url = `https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_INBOX)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  const raw = await res.text();
+  let parsed: { success?: string; message?: string } = {};
+  try {
+    parsed = JSON.parse(raw) as { success?: string; message?: string };
+  } catch {
+    /* ignore */
+  }
+
+  if (!res.ok) {
+    throw new Error(
+      parsed.message || `Could not send (${res.status}). Confirm FormSubmit for ${FORMSUBMIT_INBOX}.`
+    );
+  }
+  if (parsed.success === 'false') {
+    throw new Error(
+      parsed.message ||
+        'FormSubmit rejected the request. Activate this email once at formsubmit.co (check inbox).'
+    );
+  }
+}
 
 export default function ContactPageClient() {
   const searchParams = useSearchParams();
@@ -25,14 +88,45 @@ export default function ContactPageClient() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [smtpUnavailable, setSmtpUnavailable] = useState(false);
+  /** loading → until GET /api/contact; smtp → Nodemailer POST; forms → browser FormSubmit */
+  const [mailDelivery, setMailDelivery] = useState<
+    'loading' | 'smtp' | 'forms'
+  >('loading');
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const whatsappHelpHref = `https://wa.me/${instituteInfo.contact.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
+    "Hi ZS Soft Tech! I'd like to enquire about a course."
+  )}`;
 
   useEffect(() => {
     const selectedCourse = searchParams.get('course');
-    if (selectedCourse) {
+    if (!selectedCourse) return;
+    const bySlug = courses.find((c) => c.slug === selectedCourse);
+    if (bySlug) {
       setFormState((prev) => ({ ...prev, course: selectedCourse }));
+      return;
+    }
+    const byTitle = courses.find((c) => c.title === selectedCourse);
+    if (byTitle) {
+      setFormState((prev) => ({ ...prev, course: byTitle.slug }));
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (FORCE_BROWSER_FORMSUBMIT) {
+      setMailDelivery('forms');
+      return;
+    }
+    fetch('/api/contact')
+      .then((r) => r.json())
+      .then((d: { smtpConfigured?: boolean }) => {
+        setMailDelivery(d.smtpConfigured ? 'smtp' : 'forms');
+      })
+      .catch(() => setMailDelivery('forms'));
+  }, []);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -47,10 +141,67 @@ export default function ContactPageClient() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
+    setSubmitError(null);
+    setSmtpUnavailable(false);
+    if (!validate()) return;
+
+    setSubmitting(true);
+    try {
+      const payload = {
+        name: formState.name.trim(),
+        phone: formState.phone.trim(),
+        email: formState.email.trim(),
+        courseSlug: formState.course,
+        message: formState.message.trim(),
+      };
+
+      if (mailDelivery === 'smtp') {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: payload.name,
+            phone: payload.phone,
+            email: payload.email,
+            course: payload.courseSlug,
+            message: payload.message,
+          }),
+        });
+        const data = (await res.json().catch(() => ({}))) as {
+          error?: string;
+          hint?: string;
+          ok?: boolean;
+        };
+        if (!res.ok) {
+          if (res.status === 503 && data.error === 'email_not_configured') {
+            setSmtpUnavailable(true);
+            setSubmitError(
+              'We can’t deliver this form by email yet. Please message us on WhatsApp or call—we’ll respond right away.'
+            );
+            if (process.env.NODE_ENV === 'development' && data.hint) {
+              console.warn('[contact]', data.hint);
+            }
+            return;
+          }
+          setSubmitError(
+            data.error || 'Something went wrong. Please try again.'
+          );
+          return;
+        }
+        setSubmitted(true);
+        return;
+      }
+
+      await submitEnquiryViaBrowserFormSubmit(payload);
       setSubmitted(true);
+    } catch (e) {
+      const msg =
+        e instanceof Error ? e.message : 'Network error. Try again.';
+      setSubmitError(msg);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -92,7 +243,13 @@ export default function ContactPageClient() {
     },
   ];
 
-  const courseOptions = courses.map((course) => course.title);
+  const courseOptions = courses.map((c) => {
+    const fee = formatCourseFeeLabel(c);
+    return {
+      slug: c.slug,
+      label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
+    };
+  });
 
   return (
     <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
@@ -265,9 +422,9 @@ export default function ContactPageClient() {
                     } ${!formState.course ? 'text-gray-500' : ''}`}
                   >
                     <option value="">Select a course</option>
-                    {courseOptions.map((course) => (
-                      <option key={course} value={course} className="bg-card text-foreground">
-                        {course}
+                    {courseOptions.map((opt) => (
+                      <option key={opt.slug} value={opt.slug} className="bg-card text-foreground">
+                        {opt.label}
                       </option>
                     ))}
                   </select>
@@ -296,12 +453,43 @@ export default function ContactPageClient() {
                   />
                 </div>
 
+                {submitError && (
+                  <div className="space-y-3" role="alert">
+                    <p className="text-sm text-amber-400/95 text-center">{submitError}</p>
+                    {smtpUnavailable && (
+                      <div className="flex flex-wrap justify-center gap-2">
+                        <a
+                          href={whatsappHelpHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-600/90 text-white text-sm font-semibold hover:bg-green-600"
+                        >
+                          <MessageCircle className="w-4 h-4" />
+                          WhatsApp
+                        </a>
+                        <a
+                          href={`tel:${instituteInfo.contact.phone.replace(/\D/g, '')}`}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border/60 text-foreground text-sm font-semibold hover:bg-white/5"
+                        >
+                          <Phone className="w-4 h-4" />
+                          Call {instituteInfo.contact.phone}
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-primary text-white rounded-xl font-semibold text-base hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                  disabled={submitting || mailDelivery === 'loading'}
+                  className="w-full py-4 bg-gradient-primary text-white rounded-xl font-semibold text-base hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none"
                 >
                   <Send className="w-4 h-4" />
-                  Submit Enquiry
+                  {mailDelivery === 'loading'
+                    ? 'Preparing…'
+                    : submitting
+                      ? 'Sending…'
+                      : 'Submit Enquiry'}
                 </button>
 
                 <p className="text-xs text-center text-muted">

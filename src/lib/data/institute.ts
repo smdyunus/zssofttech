@@ -20,7 +20,7 @@ export const instituteInfo = {
   },
   stats: {
     studentsPlaced: "150+",
-    coursesOffered: "14+",
+    coursesOffered: "15+",
     placementRate: "100%",
     yearsExperience: "2",
     hiringPartners: "25+",
@@ -58,6 +58,7 @@ export const courseCategories = [
   {
     title: "Data Science & AI",
     items: [
+      { name: "Python & Data Analysis — 45-Day Fast Track", href: "/courses/python-data-analysis-45-day-fast-track" },
       { name: "Data Science (DS)", href: "/courses/data-science" },
       { name: "Data Science + AI", href: "/courses/ds-ai" },
       { name: "Agentic AI & Gen AI", href: "/courses/agentic-ai" },
@@ -70,13 +71,13 @@ export const courseCategories = [
     items: [
       { name: "Manual Testing", href: "/courses/manual-testing" },
       { name: "Automation Testing (Selenium)", href: "/courses/automation-testing" },
-      { name: "End-to-End Automation Testing Playwright with AI TypeScript", href: "/courses/playwright-ai-typescript" },
+      { name: "Automation Testing with Playwright, TypeScript and AI", href: "/courses/playwright-ai-typescript" },
     ],
   },
   {
     title: "Enterprise & ERP",
     items: [
-      { name: "SAP Functional & Technical Training", href: "/courses/sap-training" },
+      { name: "SAP MM (Materials Management)", href: "/courses/sap-training" },
     ],
   },
   {

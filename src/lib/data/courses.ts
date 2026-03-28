@@ -25,7 +25,8 @@ export interface Course {
   heroText?: string;
   instructor?: string;
   rating?: number;
-  reviews?: string;
+  /** Full / list price (shown struck through when `price` is the offer amount) */
+  originalPrice?: string;
   price?: string;
   curriculum: CurriculumModule[];
   prerequisites: string[];
@@ -37,6 +38,97 @@ export interface Course {
 
 export const courses: Course[] = [
   {
+    id: "python-data-analysis-45day",
+    title: "Python & Data Analysis — 45-Day Fast Track",
+    shortTitle: "Python & Data",
+    category: "Data Science & Analytics",
+    categoryLabel: "ANALYTICS",
+    description:
+      "Intensive Python and data analysis fast track with visualization basics and an AI-oriented module — summer batch in Nandyal for Inter, Degree & B.Tech students.",
+    overview:
+      "A focused 45-day (Monday–Friday) program that takes you from Python fundamentals to practical data analysis using Pandas and NumPy, charts with Matplotlib, and a structured introduction to how AI fits into modern data workflows. Includes hands-on exercises and a capstone-style mini project. Designed for limited batch sizes with an expert-led classroom experience in Nandyal.",
+    duration: "45 Days",
+    durationHours: "Mon–Fri",
+    mode: "Offline",
+    level: "Beginner",
+    highlights: [
+      "Python & Jupyter from scratch",
+      "Pandas, NumPy & data cleaning",
+      "Visualization & EDA",
+      "AI overview for analysts",
+      "Capstone mini project",
+    ],
+    technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter", "SQL basics"],
+    icon: "BarChart3",
+    badge: "Hot",
+    slug: "python-data-analysis-45-day-fast-track",
+    image: "/images/hero/hero-python-45day-fasttrack.png",
+    heroText: "45 Days",
+    instructor: "ZS Soft Tech",
+    rating: 4.9,
+    originalPrice: "₹30,000",
+    price: "₹7,999",
+    curriculum: [
+      {
+        week: "Week 1-2",
+        title: "Python & Data Foundations",
+        topics: [
+          "Python syntax, data types, control flow",
+          "Functions, modules, and file handling",
+          "Jupyter notebooks and best practices",
+          "NumPy arrays and vectorized operations",
+        ],
+      },
+      {
+        week: "Week 3-5",
+        title: "Analysis with Pandas",
+        topics: [
+          "DataFrames, indexing, and filtering",
+          "Cleaning, missing data, and dtypes",
+          "GroupBy, merge, join, and reshape",
+          "Working with CSV/Excel and basic SQL touch",
+        ],
+      },
+      {
+        week: "Week 6-7",
+        title: "Visualization & EDA",
+        topics: [
+          "Matplotlib and Seaborn essentials",
+          "Choosing charts for business questions",
+          "Exploratory data analysis workflow",
+          "Summarizing findings for stakeholders",
+        ],
+      },
+      {
+        week: "Week 8-9",
+        title: "AI Intro & Capstone",
+        topics: [
+          "How ML and Gen AI relate to analytics",
+          "Using AI tools responsibly in analysis",
+          "End-to-end mini project: data to insights",
+          "Presentation and career next steps",
+        ],
+      },
+    ],
+    prerequisites: ["Basic computer skills", "No prior Python required", "Suitable for Inter, Degree & B.Tech students"],
+    careerPaths: ["Data Analyst Trainee", "Python Developer (junior)", "BI / Analytics aspirant", "Further study in AI/ML"],
+    whyChoose: [
+      "Fast Track – Complete a structured path in 45 days",
+      "Hands-On – Notebooks, datasets, and a mini project",
+      "Local Batch – Train in Nandyal with limited seats",
+      "Clear Pricing – Transparent fee and limited-time offer",
+      "Foundation First – Ideal before longer data science programs",
+    ],
+    keyFeatures: [
+      "Python fundamentals to analysis-ready skills",
+      "Pandas-focused data wrangling",
+      "Visualization and EDA patterns",
+      "Intro to AI in the analyst workflow",
+      "Project for your portfolio",
+    ],
+    certification: "Python & Data Analysis — 45-Day Fast Track Certificate",
+  },
+  {
     id: "mern",
     title: "Full Stack Development – MERN Stack",
     shortTitle: "MERN Stack",
@@ -45,8 +137,8 @@ export const courses: Course[] = [
     description:
       "Build production-grade web applications using MongoDB, Express.js, React, and Node.js. Includes REST APIs, authentication, deployment, and real-world projects.",
     overview:
-      "Our MERN Full Stack Development program is designed to take you from fundamentals to building production-grade web applications. Over 4 months, you will master frontend development with React 19, backend APIs with Node.js and Express, database management with MongoDB, and deploy real-world projects. The curriculum follows industry best practices including TDD, Git workflows, CI/CD, and Agile methodologies—making you truly job-ready.",
-    duration: "4 Months",
+      "Our MERN Full Stack Development program is designed to take you from fundamentals to building production-grade web applications. Over 5 months, you will master frontend development with React 19, backend APIs with Node.js and Express, database management with MongoDB, and deploy real-world projects. The curriculum follows industry best practices including TDD, Git workflows, CI/CD, and Agile methodologies—making you truly job-ready.",
+    duration: "5 Months",
     durationHours: "80hr+",
     mode: "Hybrid",
     level: "Intermediate",
@@ -65,8 +157,7 @@ export const courses: Course[] = [
     heroText: "MERN +",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "500+",
-    price: "₹14,990",
+    price: "₹39,999",
     curriculum: [
       { week: "Week 1", title: "Software Engineering Fundamentals", topics: ["Introduction to IT Industry & SDLC", "Agile & Scrum methodologies", "Git & GitHub version control", "VS Code setup & productivity tools"] },
       { week: "Week 2-3", title: "Web Design – HTML5 & CSS3", topics: ["HTML5 semantic structure", "CSS3, Flexbox & Grid layouts", "Bootstrap 5 & responsive design", "Building multi-page static websites"] },
@@ -91,8 +182,8 @@ export const courses: Course[] = [
     description:
       "Master enterprise-grade development with Java, Spring Boot, Microservices, Angular/React frontend, and cloud deployment strategies.",
     overview:
-      "This comprehensive 5-month Java Full Stack program equips you with enterprise-grade development skills using Java, Spring Boot, and modern frontend frameworks. You will learn to build scalable microservices, secure applications with Spring Security, work with relational databases via JPA/Hibernate, and deploy to cloud environments. This program is ideal for those targeting roles at product companies and large enterprises.",
-    duration: "5 Months",
+      "This comprehensive 6-month Java Full Stack program equips you with enterprise-grade development skills using Java, Spring Boot, and modern frontend frameworks. You will learn to build scalable microservices, secure applications with Spring Security, work with relational databases via JPA/Hibernate, and deploy to cloud environments. This program is ideal for those targeting roles at product companies and large enterprises.",
+    duration: "6 Months",
     durationHours: "100hr+",
     mode: "Hybrid",
     level: "Intermediate",
@@ -111,8 +202,7 @@ export const courses: Course[] = [
     heroText: "JAVA",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "350+",
-    price: "₹18,990",
+    price: "₹49,999",
     curriculum: [
       { week: "Week 1-3", title: "Core Java & OOP", topics: ["Java syntax, data types, control flow", "Object-Oriented Programming (Encapsulation, Inheritance, Polymorphism, Abstraction)", "Collections Framework (List, Set, Map)", "Exception handling & file I/O", "Multi-threading basics"] },
       { week: "Week 4-5", title: "SQL & Database Design", topics: ["SQL fundamentals & advanced queries", "MySQL / PostgreSQL setup", "Schema design & normalization", "Joins, stored procedures, views", "Database indexing & optimization"] },
@@ -137,8 +227,8 @@ export const courses: Course[] = [
     description:
       "Dive into the cutting edge of AI—build autonomous AI agents, work with LLMs, prompt engineering, RAG pipelines, LangChain, and multi-agent orchestration.",
     overview:
-      "This cutting-edge 3-month program takes you deep into the world of Generative AI and autonomous AI agents. You will learn to work with large language models (GPT, Claude, Gemini), build RAG pipelines, design multi-agent systems with LangChain and CrewAI, and deploy production-ready AI applications. This is the most in-demand skillset in 2026 and beyond.",
-    duration: "3 Months",
+      "This cutting-edge 9-month program takes you deep into the world of Generative AI and autonomous AI agents. You will learn to work with large language models (GPT, Claude, Gemini), build RAG pipelines, design multi-agent systems with LangChain and CrewAI, and deploy production-ready AI applications. This is the most in-demand skillset in 2026 and beyond.",
+    duration: "9 Months",
     durationHours: "50hr+",
     mode: "Online",
     level: "Advanced",
@@ -157,8 +247,7 @@ export const courses: Course[] = [
     heroText: "Gen AI",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "1800+",
-    price: "₹14,990",
+    price: "₹79,999",
     curriculum: [
       { week: "Week 1-2", title: "AI & LLM Foundations", topics: ["Introduction to Generative AI landscape", "How LLMs work (Transformers, attention)", "OpenAI, Anthropic, Google Gemini APIs", "Prompt engineering techniques & best practices", "Token management & cost optimization"] },
       { week: "Week 3-4", title: "LangChain & Application Building", topics: ["LangChain fundamentals (chains, prompts, memory)", "Building conversational AI chatbots", "Tool usage & function calling", "Output parsing & structured responses", "LangSmith for debugging & tracing"] },
@@ -182,8 +271,8 @@ export const courses: Course[] = [
     description:
       "Master the fundamentals of data science—statistics, Python for data analysis, data visualization, and exploratory data analysis.",
     overview:
-      "This 3-month foundational program introduces you to the world of data science. You will learn statistics, probability, Python for data manipulation, and data visualization techniques. By the end, you will be able to perform exploratory data analysis on real-world datasets and present actionable insights. Perfect for beginners looking to start a data career.",
-    duration: "3 Months",
+      "This 6-month foundational program introduces you to the world of data science. You will learn statistics, probability, Python for data manipulation, and data visualization techniques. By the end, you will be able to perform exploratory data analysis on real-world datasets and present actionable insights. Perfect for beginners looking to start a data career.",
+    duration: "6 Months",
     durationHours: "60hr+",
     mode: "Hybrid",
     level: "Beginner",
@@ -202,8 +291,7 @@ export const courses: Course[] = [
     heroText: "DS",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "450+",
-    price: "₹12,990",
+    price: "₹49,999",
     curriculum: [
       { week: "Week 1-2", title: "Python Programming for Data Science", topics: ["Python basics (variables, loops, functions)", "Data structures (lists, dicts, tuples, sets)", "File handling & modules", "Introduction to Jupyter Notebooks"] },
       { week: "Week 3-4", title: "Statistics & Probability", topics: ["Descriptive statistics (mean, median, mode)", "Probability distributions (Normal, Binomial, Poisson)", "Hypothesis testing (t-test, chi-square)", "Correlation & regression basics"] },
@@ -227,8 +315,8 @@ export const courses: Course[] = [
     description:
       "Combined program covering Data Science fundamentals and AI/ML—from data analysis to building intelligent models.",
     overview:
-      "This intensive 5-month combined program covers the complete journey from data science fundamentals to building AI and machine learning models. You will master Python, statistics, data manipulation, machine learning algorithms, deep learning with neural networks, and work on end-to-end AI projects. Ideal for those who want a comprehensive data + AI skillset in one program.",
-    duration: "5 Months",
+      "This intensive 8-month combined program covers the complete journey from data science fundamentals to building AI and machine learning models. You will master Python, statistics, data manipulation, machine learning algorithms, deep learning with neural networks, and work on end-to-end AI projects. Ideal for those who want a comprehensive data + AI skillset in one program.",
+    duration: "8 Months",
     durationHours: "120hr+",
     mode: "Hybrid",
     level: "Intermediate",
@@ -247,8 +335,7 @@ export const courses: Course[] = [
     heroText: "DS + AI",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "600+",
-    price: "₹22,990",
+    price: "₹89,999",
     curriculum: [
       { week: "Month 1", title: "Python & Data Science Foundations", topics: ["Python programming essentials", "NumPy, Pandas, Matplotlib, Seaborn", "Statistics, probability & hypothesis testing", "SQL for data extraction"] },
       { week: "Month 2", title: "Machine Learning Foundations", topics: ["Supervised learning (Linear/Logistic Regression, SVM, Decision Trees)", "Unsupervised learning (K-Means, PCA, DBSCAN)", "Model evaluation (cross-validation, ROC, F1)", "Feature engineering & selection"] },
@@ -271,8 +358,8 @@ export const courses: Course[] = [
     description:
       "Comprehensive machine learning and deep learning program covering supervised/unsupervised learning, neural networks, NLP, computer vision, and MLOps.",
     overview:
-      "This advanced 4-month program is designed for those who want to specialize in machine learning and deep learning. You will master classical ML algorithms, build neural networks, work on NLP and computer vision projects, and learn MLOps for deploying models to production. Hands-on projects with real datasets ensure you are ready for ML engineering roles.",
-    duration: "4 Months",
+      "This advanced 9-month program is designed for those who want to specialize in machine learning and deep learning. You will master classical ML algorithms, build neural networks, work on NLP and computer vision projects, and learn MLOps for deploying models to production. Hands-on projects with real datasets ensure you are ready for ML engineering roles.",
+    duration: "9 Months",
     durationHours: "80hr+",
     mode: "Hybrid",
     level: "Advanced",
@@ -290,8 +377,7 @@ export const courses: Course[] = [
     heroText: "AI / ML",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "800+",
-    price: "₹16,990",
+    price: "₹1,19,999",
     curriculum: [
       { week: "Week 1-3", title: "ML Foundations & Classical Algorithms", topics: ["Supervised learning algorithms", "Unsupervised learning & clustering", "Model evaluation metrics & cross-validation", "Feature engineering & dimensionality reduction"] },
       { week: "Week 4-6", title: "Advanced ML & Ensemble Methods", topics: ["Ensemble methods (Bagging, Boosting, Stacking)", "XGBoost, LightGBM, CatBoost", "Hyperparameter optimization", "Time series analysis & forecasting"] },
@@ -314,8 +400,8 @@ export const courses: Course[] = [
     description:
       "Become a data-driven decision maker. Master Python analytics, SQL, data visualization with Power BI, and statistical analysis for business intelligence.",
     overview:
-      "This 3-month program turns you into a proficient data analyst capable of extracting insights from data and building interactive dashboards. You will learn Python for data manipulation, SQL for querying databases, and Power BI for creating business intelligence dashboards. Real-world case studies from retail, finance, and healthcare ensure practical, applicable skills.",
-    duration: "3 Months",
+      "This 4-month program turns you into a proficient data analyst capable of extracting insights from data and building interactive dashboards. You will learn Python for data manipulation, SQL for querying databases, and Power BI for creating business intelligence dashboards. Real-world case studies from retail, finance, and healthcare ensure practical, applicable skills.",
+    duration: "4 Months",
     durationHours: "50hr+",
     mode: "Hybrid",
     level: "Beginner",
@@ -334,8 +420,7 @@ export const courses: Course[] = [
     heroText: "Power BI",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "400+",
-    price: "₹11,990",
+    price: "₹34,999",
     curriculum: [
       { week: "Week 1-2", title: "Excel & Data Fundamentals", topics: ["Advanced Excel (VLOOKUP, Pivot Tables, Macros)", "Data types, cleaning & formatting", "Statistical functions & analysis", "Introduction to business analytics"] },
       { week: "Week 3-4", title: "SQL for Analytics", topics: ["SQL SELECT, WHERE, GROUP BY", "Joins (INNER, LEFT, RIGHT, FULL)", "Window functions & CTEs", "Database design basics"] },
@@ -345,7 +430,7 @@ export const courses: Course[] = [
     ],
     prerequisites: ["Basic computer skills", "Familiarity with spreadsheets (helpful)", "No programming experience required"],
     careerPaths: ["Data Analyst", "Business Intelligence Analyst", "Power BI Developer", "Reporting Analyst", "Analytics Consultant", "Business Analyst"],
-    whyChoose: ["Most Accessible Data Role – Great entry point into the data field", "Power BI Mastery – The most popular BI tool in enterprises", "SQL + Python Combo – The two essential skills for any data role", "Real Business Cases – Learn with retail, finance & healthcare datasets", "Quick to Job-Ready – 3 months to your first data analyst role", "High Demand – Data analyst openings grew 30% in 2025"],
+    whyChoose: ["Most Accessible Data Role – Great entry point into the data field", "Power BI Mastery – The most popular BI tool in enterprises", "SQL + Python Combo – The two essential skills for any data role", "Real Business Cases – Learn with retail, finance & healthcare datasets", "Quick to Job-Ready – Structured 4-month track to analyst-ready skills", "High Demand – Data analyst openings grew 30% in 2025"],
     keyFeatures: ["Advanced Excel analytics", "SQL database querying", "Python data analysis with Pandas", "Power BI dashboard development", "DAX formula mastery", "Statistical analysis & EDA", "Business case study projects", "Data storytelling skills"],
     certification: "Data Analytics Professional Certificate",
   },
@@ -377,8 +462,7 @@ export const courses: Course[] = [
     heroText: "Manual",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "300+",
-    price: "₹8,990",
+    price: "₹14,999",
     curriculum: [
       { week: "Week 1-2", title: "Testing Fundamentals", topics: ["Software Development Life Cycle (SDLC)", "Software Testing Life Cycle (STLC)", "Types of testing (Functional, Non-functional)", "Test plan creation & strategy", "Agile & Scrum testing practices"] },
       { week: "Week 3-4", title: "Test Case Design & Execution", topics: ["Requirement analysis & traceability", "Test case design techniques (BVA, ECP, Decision Tables)", "Test case writing best practices", "Test execution & result documentation", "Regression & smoke testing"] },
@@ -420,8 +504,7 @@ export const courses: Course[] = [
     heroText: "Selenium",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "500+",
-    price: "₹14,990",
+    price: "₹24,999",
     curriculum: [
       { week: "Week 1-2", title: "Java for Automation", topics: ["Java basics (OOP, collections, exceptions)", "String handling & file operations", "Java project setup with Maven", "IDE setup (IntelliJ / Eclipse)"] },
       { week: "Week 3-5", title: "Selenium WebDriver", topics: ["Selenium architecture & setup", "Locator strategies (ID, CSS, XPath)", "Handling dropdowns, alerts, frames, windows", "Waits (Implicit, Explicit, Fluent)", "Advanced interactions (Actions class, JavaScript Executor)"] },
@@ -463,8 +546,7 @@ export const courses: Course[] = [
     heroText: "AWS",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "350+",
-    price: "₹15,990",
+    price: "₹35,999",
     curriculum: [
       { week: "Week 1-2", title: "Linux & Networking Fundamentals", topics: ["Linux commands & shell scripting", "Networking basics (TCP/IP, DNS, HTTP)", "SSH, firewalls & security groups", "Package management & process control"] },
       { week: "Week 3-5", title: "AWS Core Services", topics: ["EC2 instances, AMIs & auto-scaling", "S3, CloudFront & static hosting", "RDS, DynamoDB & database management", "VPC, subnets & security groups", "IAM roles, policies & best practices", "Lambda & serverless architecture"] },
@@ -487,8 +569,8 @@ export const courses: Course[] = [
     description:
       "Enterprise cloud mastery with Microsoft Azure—virtual machines, networking, identity management, and Azure DevOps pipelines.",
     overview:
-      "This 2.5-month program covers Microsoft Azure cloud services for enterprise environments. You will learn Azure fundamentals (aligned with AZ-900 certification), virtual machines, networking, identity management with Azure AD, and Azure DevOps pipelines. Ideal for professionals working in Microsoft-centric organizations or preparing for Azure certifications.",
-    duration: "2.5 Months",
+      "This 5-month program covers Microsoft Azure cloud services for enterprise environments. You will learn Azure fundamentals (aligned with AZ-900 certification), virtual machines, networking, identity management with Azure AD, and Azure DevOps pipelines. Ideal for professionals working in Microsoft-centric organizations or preparing for Azure certifications.",
+    duration: "5 Months",
     durationHours: "50hr+",
     mode: "Online",
     level: "Intermediate",
@@ -506,8 +588,7 @@ export const courses: Course[] = [
     heroText: "Azure",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "250+",
-    price: "₹12,990",
+    price: "₹29,999",
     curriculum: [
       { week: "Week 1-2", title: "Azure Fundamentals (AZ-900)", topics: ["Cloud computing concepts & models", "Azure global infrastructure", "Core Azure services overview", "Azure pricing & SLA", "Azure Portal & CLI navigation"] },
       { week: "Week 3-4", title: "Compute & Networking", topics: ["Azure Virtual Machines & Scale Sets", "Azure App Service & Web Apps", "Virtual Networks, subnets & NSGs", "Load Balancers & Application Gateway", "Azure DNS & Traffic Manager"] },
@@ -523,51 +604,53 @@ export const courses: Course[] = [
   },
   {
     id: "sap",
-    title: "SAP Functional & Technical Training",
-    shortTitle: "SAP",
+    title: "SAP MM",
+    shortTitle: "SAP MM",
     category: "Enterprise & ERP",
-    categoryLabel: "SAP",
+    categoryLabel: "SAP MM",
     description:
-      "Learn SAP modules with practical business workflows, implementation scenarios, and interview-focused preparation.",
+      "SAP Materials Management (MM)—master procurement, inventory, goods movement, and invoice verification in SAP ERP / S/4HANA. Functional plus configuration-oriented training with real business scenarios.",
     overview:
-      "This SAP program covers core ERP concepts and hands-on functional workflows across business operations. Learners gain practical exposure to implementation cycles, reporting, and project documentation with strong placement-oriented mentoring.",
+      "SAP MM (Materials Management) is the logistics module that handles everything from purchasing and vendor management to goods receipt, inventory, and invoice verification. It sits at the heart of supply chain operations and integrates closely with SAP SD (Sales), PP (Production), and FI (Finance). In this program you will learn the end-to-end procure-to-pay process, organizational data (client, company code, plant, storage location), master data (materials, vendors, info records), purchasing documents (purchase requisitions, RFQ, purchase orders), goods movements (MIGO), inventory management, physical inventory, and basics of invoice verification (MIRO). Training blends functional business process understanding with configuration concepts, case studies, and interview-focused preparation so you can pursue SAP MM consultant and support roles.",
     duration: "3 Months",
     durationHours: "60hr+",
     mode: "Online",
     level: "Beginner",
     highlights: [
-      "SAP module fundamentals",
-      "Business process mapping",
-      "Live case-based training",
-      "Project documentation",
-      "Interview preparation",
+      "Procure-to-pay (P2P) process in SAP MM",
+      "Master data: material, vendor, purchasing info record",
+      "PR, RFQ, quotation, PO, GR, IR workflows",
+      "Inventory management, reservations & physical inventory",
+      "Integration overview: MM–FI, MM–SD, MM–PP",
+      "Implementation, testing & support documentation",
     ],
-    technologies: ["SAP", "ERP", "Business Process", "Reporting", "Excel", "Documentation"],
+    technologies: ["SAP MM", "SAP ERP / S/4HANA", "MIGO", "ME21N", "MIRO", "MD04", "Excel", "IDoc basics"],
     icon: "Briefcase",
     badge: "New",
     slug: "sap-training",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=75",
-    heroText: "SAP",
+    heroText: "MM",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "120+",
-    price: "₹19,990",
+    price: "₹49,999",
     curriculum: [
-      { week: "Week 1-2", title: "ERP & SAP Foundations", topics: ["ERP lifecycle overview", "SAP ecosystem and modules", "Business process fundamentals", "Navigation and transaction basics"] },
-      { week: "Week 3-5", title: "Module Workflows", topics: ["Functional workflow practice", "Master data basics", "Document flow and reports", "Hands-on exercises with sample scenarios"] },
-      { week: "Week 6-8", title: "Implementation & Support", topics: ["Requirement understanding", "Configuration basics", "Testing and UAT support", "Incident handling and documentation"] },
-      { week: "Week 9-12", title: "Capstone & Career Readiness", topics: ["End-to-end case study", "Project documentation", "Mock interview sessions", "Resume and profile preparation"] },
+      { week: "Week 1-2", title: "ERP, SAP & MM Introduction", topics: ["ERP concepts and SAP landscape (ECC vs S/4HANA)", "SAP MM role in logistics and supply chain", "Navigation: SAP GUI / Fiori basics", "Enterprise structure: company code, plant, storage location, purchase org", "Procure-to-pay overview"] },
+      { week: "Week 3-4", title: "Master Data in MM", topics: ["Material master: views, material types, number ranges", "Vendor master and purchasing data", "Purchasing info records and source lists", "Material valuation and price control basics", "Batch management introduction"] },
+      { week: "Week 5-6", title: "External Procurement", topics: ["Purchase requisition (PR) and release strategy concepts", "RFQ, quotation comparison, contracts & scheduling agreements", "Purchase order (PO) creation, changes, and output", "Goods receipt (GR) against PO and movement types", "Stock transfers and consignment basics"] },
+      { week: "Week 7-8", title: "Inventory & Physical Inventory", topics: ["Inventory management and stock types", "Goods issue, transfer posting, reservations", "Physical inventory procedures and adjustments", "Stock reports and MMBE / MB52 overview", "Special procurement types overview"] },
+      { week: "Week 9-10", title: "Invoice Verification & Integration", topics: ["Invoice verification (MIRO): PO-based and GR-based", "Tax, tolerances, and blocked invoices", "MM–FI integration: GR/IR clearing concept", "High-level MM–SD and MM–PP touchpoints", "IDoc / interface awareness for consultants"] },
+      { week: "Week 11-12", title: "Implementation, Support & Interviews", topics: ["Blueprint, realization, testing (UAT), go-live phases", "Common issues: pricing, account assignment, availability", "Functional specs and test case documentation", "End-to-end MM case study", "Mock interviews and resume preparation for SAP MM"] },
     ],
-    prerequisites: ["Basic computer knowledge", "Interest in enterprise software", "No prior SAP experience required"],
-    careerPaths: ["SAP Associate", "SAP Functional Analyst", "ERP Support Executive", "SAP Consultant Trainee"],
-    whyChoose: ["Enterprise Relevance – SAP powers global business operations", "Practical Exposure – Learn with workflow-based assignments", "Career Support – Strong focus on interview readiness", "Beginner Friendly – Structured from fundamentals to implementation"],
-    keyFeatures: ["Real-time SAP workflow exercises", "Business process understanding", "Hands-on reporting practice", "Project and documentation skills", "Placement-oriented mentoring"],
-    certification: "SAP Training Completion Certificate",
+    prerequisites: ["Basic computer literacy", "Interest in supply chain or procurement (helpful)", "No prior SAP experience required"],
+    careerPaths: ["SAP MM Consultant", "SAP MM Functional Analyst", "Materials Management Consultant", "Procurement / P2P Support Analyst", "SAP Logistics Trainee", "ERP Support Executive (MM)"],
+    whyChoose: ["High Demand – MM is one of the most hired SAP logistics modules", "Clear Career Path – Functional consultant roles in IT services and industry", "End-to-End P2P – Skills map directly to real procurement operations", "Integration Ready – Understand how MM connects to FI, SD, and PP", "Practical Cases – Work through document flows and scenarios", "Interview Focus – Structured toward consultant and support interviews"],
+    keyFeatures: ["Procure-to-pay process hands-on", "Material and vendor master data", "PO, GR, and invoice verification flows", "Inventory and physical inventory", "Configuration and organizational concepts", "MM integration overview", "Implementation and support documentation", "Placement-oriented mentoring"],
+    certification: "SAP MM Training Completion Certificate",
   },
   {
     id: "playwright-ai",
-    title: "End-to-End Automation Testing with Playwright, AI & TypeScript",
-    shortTitle: "Playwright + AI",
+    title: "Automation Testing with Playwright, TypeScript and AI",
+    shortTitle: "Playwright, TS & AI",
     category: "Testing",
     categoryLabel: "TESTING",
     description:
@@ -593,8 +676,7 @@ export const courses: Course[] = [
     heroText: "Playwright",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "180+",
-    price: "₹17,990",
+    price: "₹24,999",
     curriculum: [
       { week: "Week 1-2", title: "TypeScript & Automation Setup", topics: ["TypeScript essentials", "Node.js test project setup", "Playwright architecture", "Locators and assertions"] },
       { week: "Week 3-5", title: "E2E Test Design", topics: ["Page Object Model with TypeScript", "Data-driven testing", "API interception and mocking", "Cross-browser execution"] },
@@ -616,8 +698,8 @@ export const courses: Course[] = [
     description:
       "Crack system design interviews and architect scalable systems. Covers high-level design, low-level design, design patterns, and distributed systems.",
     overview:
-      "This advanced 2-month program teaches you to think like a system architect. You will learn high-level design (HLD) patterns for distributed systems, low-level design (LLD) with SOLID principles and design patterns, database design, caching strategies, and message queues. Practice with real interview problems from FAANG companies to ace your system design rounds.",
-    duration: "2 Months",
+      "This advanced 4-month program teaches you to think like a system architect. You will learn high-level design (HLD) patterns for distributed systems, low-level design (LLD) with SOLID principles and design patterns, database design, caching strategies, and message queues. Practice with real interview problems from FAANG companies to ace your system design rounds.",
+    duration: "4 Months",
     durationHours: "40hr+",
     mode: "Online",
     level: "Advanced",
@@ -636,8 +718,7 @@ export const courses: Course[] = [
     heroText: "HLD / LLD",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    reviews: "200+",
-    price: "₹9,990",
+    price: "₹39,999",
     curriculum: [
       { week: "Week 1-2", title: "System Design Fundamentals", topics: ["Scalability, reliability, availability concepts", "Load balancing strategies", "Horizontal vs vertical scaling", "CAP theorem & consistency models", "Back-of-the-envelope estimation"] },
       { week: "Week 3-4", title: "High-Level Design (HLD)", topics: ["URL Shortener (like Bitly) design", "Chat application (like WhatsApp) design", "Social media feed (like Twitter) design", "File storage (like Dropbox) design", "Video streaming (like YouTube) design"] },
@@ -666,4 +747,12 @@ export const courseCategories = [
 
 export function getCourseBySlug(slug: string): Course | undefined {
   return courses.find((c) => c.slug === slug);
+}
+
+/** Single-line fee text for dropdowns and labels */
+export function formatCourseFeeLabel(course: Course): string {
+  if (course.originalPrice && course.price) {
+    return `${course.originalPrice} → ${course.price}`;
+  }
+  return course.price ?? "";
 }

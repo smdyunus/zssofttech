@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Clock, Users, Wifi, MonitorPlay, MapPin, CheckCircle2, ChevronRight } from 'lucide-react';
+import { ArrowRight, Clock, Wifi, MonitorPlay, MapPin, CheckCircle2, ChevronRight } from 'lucide-react';
 import { courses } from '@/lib/data/courses';
 
 interface FeaturedCoursesProps {
@@ -162,17 +162,10 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                   )}
                 </div>
 
-                {/* Stats row */}
-                {(course.reviews) && (
-                  <div className="flex items-center gap-3 text-[11px] text-gray-500 mb-4">
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      {course.reviews} enrolled
-                    </span>
-                    <span className="text-gray-700">·</span>
-                    <span>{course.duration}</span>
-                  </div>
-                )}
+                <div className="flex items-center gap-1.5 text-[11px] text-gray-500 mb-4">
+                  <Clock className="w-3 h-3 shrink-0" />
+                  <span>{course.duration}</span>
+                </div>
 
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-800/60 mt-auto">
@@ -184,9 +177,14 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                     <ChevronRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
                   </Link>
                   {course.price && (
-                    <span className="font-extrabold text-foreground text-base">
-                      {course.price}
-                    </span>
+                    <div className="text-right">
+                      {course.originalPrice && (
+                        <span className="block text-[11px] text-gray-500 line-through font-semibold">
+                          {course.originalPrice}
+                        </span>
+                      )}
+                      <span className="font-extrabold text-foreground text-base">{course.price}</span>
+                    </div>
                   )}
                 </div>
               </div>
