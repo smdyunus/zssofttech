@@ -49,7 +49,7 @@ export const courses: Course[] = [
       "A focused 45-day (Monday–Friday) program that takes you from Python fundamentals to practical data analysis using Pandas and NumPy, charts with Matplotlib, and a structured introduction to how AI fits into modern data workflows. Includes hands-on exercises and a capstone-style mini project. Designed for limited batch sizes with an expert-led classroom experience in Nandyal.",
     duration: "45 Days",
     durationHours: "Mon–Fri",
-    mode: "Offline",
+    mode: "Hybrid",
     level: "Beginner",
     highlights: [
       "Python & Jupyter from scratch",
@@ -230,7 +230,7 @@ export const courses: Course[] = [
       "This cutting-edge 9-month program takes you deep into the world of Generative AI and autonomous AI agents. You will learn to work with large language models (GPT, Claude, Gemini), build RAG pipelines, design multi-agent systems with LangChain and CrewAI, and deploy production-ready AI applications. This is the most in-demand skillset in 2026 and beyond.",
     duration: "9 Months",
     durationHours: "50hr+",
-    mode: "Online",
+    mode: "Hybrid",
     level: "Advanced",
     highlights: [
       "LLM fundamentals & Prompt Engineering",
@@ -530,7 +530,7 @@ export const courses: Course[] = [
       "This 3-month program covers AWS cloud services and DevOps engineering practices. You will learn to provision cloud infrastructure, containerize applications with Docker, orchestrate with Kubernetes, build CI/CD pipelines, manage infrastructure as code with Terraform, and implement monitoring solutions. Hands-on labs on real AWS environments ensure practical, deployable skills.",
     duration: "3 Months",
     durationHours: "60hr+",
-    mode: "Online",
+    mode: "Hybrid",
     level: "Intermediate",
     highlights: [
       "AWS Core Services (EC2, S3, RDS, Lambda)",
@@ -572,7 +572,7 @@ export const courses: Course[] = [
       "This 5-month program covers Microsoft Azure cloud services for enterprise environments. You will learn Azure fundamentals (aligned with AZ-900 certification), virtual machines, networking, identity management with Azure AD, and Azure DevOps pipelines. Ideal for professionals working in Microsoft-centric organizations or preparing for Azure certifications.",
     duration: "5 Months",
     durationHours: "50hr+",
-    mode: "Online",
+    mode: "Hybrid",
     level: "Intermediate",
     highlights: [
       "Azure Fundamentals (AZ-900 prep)",
@@ -614,7 +614,7 @@ export const courses: Course[] = [
       "SAP MM (Materials Management) is the logistics module that handles everything from purchasing and vendor management to goods receipt, inventory, and invoice verification. It sits at the heart of supply chain operations and integrates closely with SAP SD (Sales), PP (Production), and FI (Finance). In this program you will learn the end-to-end procure-to-pay process, organizational data (client, company code, plant, storage location), master data (materials, vendors, info records), purchasing documents (purchase requisitions, RFQ, purchase orders), goods movements (MIGO), inventory management, physical inventory, and basics of invoice verification (MIRO). Training blends functional business process understanding with configuration concepts, case studies, and interview-focused preparation so you can pursue SAP MM consultant and support roles.",
     duration: "3 Months",
     durationHours: "60hr+",
-    mode: "Online",
+    mode: "Hybrid",
     level: "Beginner",
     highlights: [
       "Procure-to-pay (P2P) process in SAP MM",
@@ -659,7 +659,7 @@ export const courses: Course[] = [
       "This intensive testing program trains you on Playwright automation using TypeScript for real web applications. You will build scalable frameworks, integrate CI pipelines, and use AI tools for faster test case creation, debugging, and maintenance.",
     duration: "3 Months",
     durationHours: "70hr+",
-    mode: "Offline",
+    mode: "Hybrid",
     level: "Intermediate",
     highlights: [
       "Playwright with TypeScript",
@@ -701,7 +701,7 @@ export const courses: Course[] = [
       "This advanced 4-month program teaches you to think like a system architect. You will learn high-level design (HLD) patterns for distributed systems, low-level design (LLD) with SOLID principles and design patterns, database design, caching strategies, and message queues. Practice with real interview problems from FAANG companies to ace your system design rounds.",
     duration: "4 Months",
     durationHours: "40hr+",
-    mode: "Online",
+    mode: "Hybrid",
     level: "Advanced",
     highlights: [
       "High-Level Design (HLD) patterns",
