@@ -5,7 +5,7 @@ import CTASection from '@/components/CTASection';
 export const metadata: Metadata = {
   title: 'Courses',
   description:
-    'Explore industry-ready courses in Full Stack Development (MERN, Java), Agentic AI, Gen AI, AWS DevOps, Azure Cloud, Data Analytics, and System Design at ZS Soft Tech, Nandyal.',
+    'Explore industry-ready courses in Full Stack Development (MERN, Java), Agentic AI, Gen AI, AWS DevOps, Azure Cloud, Data Analytics, Medical Coding, and System Design at ZS Soft Tech, Nandyal.',
 };
 
 export default function CoursesPage() {

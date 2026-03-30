@@ -731,6 +731,118 @@ export const courses: Course[] = [
     keyFeatures: ["High-level system architecture", "Low-level object-oriented design", "Database design & optimization", "Caching & message queues", "Distributed systems patterns", "Real interview problem practice", "SOLID principles & design patterns", "Scalability estimation techniques"],
     certification: "System Design Architecture Certificate",
   },
+  {
+    id: "medical-coding",
+    title: "Medical Coding",
+    shortTitle: "Medical Coding",
+    category: "Healthcare",
+    categoryLabel: "HEALTHCARE",
+    description:
+      "Learn ICD-10-CM, CPT, and HCPCS coding, medical terminology, and healthcare compliance so you can pursue certified professional coder (CPC-style) and revenue-cycle roles.",
+    overview:
+      "This program is delivered fully online. Medical coding translates clinical documentation into standardized codes used for billing, claims, and analytics. You will build a strong foundation in medical terminology and anatomy, then practice assigning diagnosis codes (ICD-10-CM), procedure codes (CPT), and HCPCS codes using real-world scenarios. You will also understand HIPAA basics, the revenue cycle, claim edits, and documentation guidelines—preparing you for entry-level coding, billing support, and certification-oriented study paths.",
+    duration: "3 Months",
+    durationHours: "50hr+",
+    mode: "Online",
+    level: "Beginner",
+    highlights: [
+      "Medical terminology & body systems overview",
+      "ICD-10-CM diagnosis coding",
+      "CPT & E/M coding fundamentals",
+      "HCPCS Level II & modifiers",
+      "HIPAA, compliance & claims basics",
+    ],
+    technologies: ["ICD-10-CM", "CPT", "HCPCS", "Medical Terminology", "HIPAA basics", "Revenue cycle overview"],
+    icon: "Stethoscope",
+    badge: "New",
+    slug: "medical-coding",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75",
+    heroText: "Coding",
+    instructor: "ZS Soft Tech",
+    rating: 4.9,
+    originalPrice: "₹30,000",
+    price: "₹20,000",
+    curriculum: [
+      {
+        week: "Week 1-2",
+        title: "Healthcare & Terminology",
+        topics: [
+          "Healthcare delivery & roles (providers, payers, coders)",
+          "Medical terminology: prefixes, suffixes, root words",
+          "Introduction to anatomy & physiology for coders",
+          "Documentation types: SOAP notes, operative reports",
+        ],
+      },
+      {
+        week: "Week 3-5",
+        title: "ICD-10-CM",
+        topics: [
+          "ICD-10-CM structure, conventions & official guidelines",
+          "Chapter-specific coding (common conditions)",
+          "Combination codes, laterality & seventh character",
+          "Querying providers & coding from clinical scenarios",
+        ],
+      },
+      {
+        week: "Week 6-8",
+        title: "CPT & HCPCS",
+        topics: [
+          "CPT sections: E/M, surgery, radiology, pathology, medicine",
+          "Evaluation & management (E/M) coding basics",
+          "Surgical procedures & bundling concepts",
+          "HCPCS Level II & common modifiers",
+        ],
+      },
+      {
+        week: "Week 9-10",
+        title: "Compliance & Revenue Cycle",
+        topics: [
+          "HIPAA privacy & security awareness",
+          "Claim submission flow & common denials",
+          "NCCI edits, LCD/NCD awareness (intro)",
+          "Ethical coding & audit readiness",
+        ],
+      },
+      {
+        week: "Week 11-12",
+        title: "Practice & Career Prep",
+        topics: [
+          "End-to-end coding case studies",
+          "Mock assessments & chart abstraction",
+          "Certification pathways (e.g. CPC, CCA) overview",
+          "Resume tips & interview preparation for coding roles",
+        ],
+      },
+    ],
+    prerequisites: ["10+2 or equivalent", "Basic computer skills", "Comfort reading English clinical text (helpful)"],
+    careerPaths: [
+      "Medical Coder",
+      "Clinical Documentation Specialist (trainee)",
+      "Revenue Cycle / Billing Support Analyst",
+      "Coding Quality Reviewer (junior)",
+      "Healthcare Data & Claims Analyst (entry)",
+    ],
+    whyChoose: [
+      "Fully Online – Learn from anywhere; no in-person classroom requirement",
+      "In-Demand Skill – Coding supports every claim and analytics workflow",
+      "Structured Curriculum – From terminology through ICD, CPT, and HCPCS",
+      "Compliance First – HIPAA and ethical coding built into the syllabus",
+      "Practical Cases – Practice with realistic charts and scenarios",
+      "Clear Pricing – Transparent fee with a limited-time discounted offer",
+      "Career Guidance – Certification and job-prep orientation included",
+    ],
+    keyFeatures: [
+      "ICD-10-CM diagnosis coding",
+      "CPT procedure & E/M coding",
+      "HCPCS & modifier usage",
+      "Medical terminology for coders",
+      "HIPAA & revenue-cycle awareness",
+      "Hands-on coding exercises",
+      "Mock assessments",
+      "Certification pathway overview",
+    ],
+    certification: "Medical Coding Professional Training Certificate",
+  },
 ];
 
 export const courseCategories = [
@@ -742,6 +854,7 @@ export const courseCategories = [
   "Testing",
   "DevOps & Cloud",
   "Enterprise & ERP",
+  "Healthcare",
   "Architecture",
 ];
 

@@ -20,7 +20,7 @@ export const instituteInfo = {
   },
   stats: {
     studentsPlaced: "150+",
-    coursesOffered: "15+",
+    coursesOffered: "16+",
     placementRate: "100%",
     yearsExperience: "2",
     hiringPartners: "25+",
@@ -79,6 +79,10 @@ export const courseCategories = [
     items: [
       { name: "SAP MM (Materials Management)", href: "/courses/sap-training" },
     ],
+  },
+  {
+    title: "Healthcare",
+    items: [{ name: "Medical Coding", href: "/courses/medical-coding" }],
   },
   {
     title: "Architecture",

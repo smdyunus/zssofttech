@@ -16,6 +16,7 @@ import {
   BarChart3,
   Network,
   TestTube,
+  Stethoscope,
 } from 'lucide-react';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
 import ContactUsLink from '@/components/ContactUsLink';
@@ -25,6 +26,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'DevOps & Cloud': <Cloud className="w-4 h-4" />,
   'Data Science & AI': <Brain className="w-4 h-4" />,
   Testing: <TestTube className="w-4 h-4" />,
+  Healthcare: <Stethoscope className="w-4 h-4" />,
   Architecture: <Network className="w-4 h-4" />,
 };
 

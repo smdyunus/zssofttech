@@ -31,6 +31,7 @@ const courseLinks = [
   { name: 'Data Science + AI', href: '/courses/ds-ai' },
   { name: 'AWS DevOps', href: '/courses/aws-devops' },
   { name: 'Automation Testing', href: '/courses/automation-testing' },
+  { name: 'Medical Coding', href: '/courses/medical-coding' },
 ];
 
 const socialLinks = [
