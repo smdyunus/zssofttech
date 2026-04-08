@@ -12,7 +12,7 @@ import {
   Facebook,
   ArrowUpRight,
 } from 'lucide-react';
-import { instituteInfo } from '@/lib/data/institute';
+import { getInstituteMapIframeSrc, instituteInfo } from '@/lib/data/institute';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
@@ -163,21 +163,34 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Google Map Embed */}
+        {/* Google Maps embed (share-style pb URL or Maps Embed API when key is set) */}
         {instituteInfo.mapEmbedUrl && (
           <div className="mt-16 border-t border-border/30 pt-16">
             <div className="container mx-auto px-4">
-              <h3 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wider">Find Us</h3>
-              <div className="rounded-2xl overflow-hidden border border-border/50 h-64 lg:h-80">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">Find Us</h3>
+                {instituteInfo.mapPlaceUrl && (
+                  <a
+                    href={instituteInfo.mapPlaceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/90 transition-colors"
+                  >
+                    Open in Google Maps
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-border/50 h-64 lg:h-80 bg-[#e5e3df]">
                 <iframe
-                  src={instituteInfo.mapEmbedUrl}
+                  src={getInstituteMapIframeSrc()}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="ZS Soft Tech Location"
+                  title="ZS Soft Tech on Google Maps"
                   className="w-full h-full min-h-[256px]"
                 />
               </div>

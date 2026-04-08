@@ -28,8 +28,29 @@ export const instituteInfo = {
   },
   workingHours: "Mon–Fri: 9:00 AM – 6:00 PM",
   internshipsUrl: "https://zssofttech-internships.netlify.app/",
-  mapEmbedUrl: "https://maps.google.com/maps?q=Padmavathi+Nagar,+Nandyal,+Andhra+Pradesh+518501&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  /** Official Google Maps place (open in app / browser). */
+  mapPlaceUrl:
+    "https://www.google.com/maps/place/ZS+Soft+Tech/@15.481528,78.483792,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb5ad8927fff419:0x2c4975e6337d847a!8m2!3d15.481528!4d78.483792!16s%2Fg%2F11x7hsw59g",
+  /**
+   * Google “Embed a map” iframe URL (place id + coords). Renders full Google Maps UI (Open in Maps,
+   * satellite toggle, etc.) — unlike legacy `?q=lat,lng&output=embed`.
+   * Optional: set `NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY` to use Maps Embed API instead (same look, more stable).
+   */
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1527.2345678901!2d78.483792!3d15.481528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5ad8927fff419%3A0x2c4975e6337d847a!2sZS%20Soft%20Tech!5e0!3m2!1sen!2sin!4v1714464000!5m2!1sen!2sin",
+  /** Used only when `NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY` is set (Maps Embed API place mode). */
+  mapEmbedSearchQuery: "ZS Soft Tech, Padmavathi Nagar, Nandyala, Andhra Pradesh, India",
 };
+
+/** Prefer Maps Embed API when a key is configured; otherwise use the share-style `pb` embed above. */
+export function getInstituteMapIframeSrc(): string {
+  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY?.trim();
+  if (key) {
+    const q = instituteInfo.mapEmbedSearchQuery;
+    return `https://www.google.com/maps/embed/v1/place?key=${encodeURIComponent(key)}&q=${encodeURIComponent(q)}&zoom=16`;
+  }
+  return instituteInfo.mapEmbedUrl;
+}
 
 export const navLinks = [
   { name: "Home", href: "/" },
