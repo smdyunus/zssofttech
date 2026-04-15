@@ -11,6 +11,9 @@
   --color-card-hover: #1e293b;
   --color-border: #1e293b;
   --color-muted: #94a3b8;
+  --color-foreground-muted: #94a3b8;
+  --color-background-alt: #0a0f1c;
+  --color-dark-bg: #030712;
 
   --font-sans: var(--font-poppins), var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Code", monospace;

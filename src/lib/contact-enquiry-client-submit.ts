@@ -1,4 +1,4 @@
-import { courses } from '@/lib/data/courses';
+import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
 export const FORMSUBMIT_INBOX =
   process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ?? 'zssofttech@gmail.com';
@@ -17,8 +17,7 @@ export type ContactEnquiryPayload = {
 export async function submitEnquiryViaBrowserFormSubmit(
   payload: ContactEnquiryPayload
 ): Promise<void> {
-  const c = courses.find((x) => x.slug === payload.courseSlug);
-  const courseTitle = c?.title ?? payload.courseSlug;
+  const courseTitle = enquiryCourseTitleFromSlug(payload.courseSlug);
   const email = payload.email.trim();
   const body: Record<string, string | boolean> = {
     name: payload.name,

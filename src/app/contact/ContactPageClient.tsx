@@ -18,6 +18,7 @@ import {
   ENQUIRY_MESSAGE_MAX,
   ENQUIRY_NAME_MAX,
   enquiryPhoneDigits,
+  INTERNSHIP_ENQUIRY_SLUG,
   validateEnquiryCourseSlug,
   validateEnquiryEmail,
   validateEnquiryMessage,
@@ -35,6 +36,9 @@ function courseSlugFromContactSearchParams(
 ): string {
   const selectedCourse = sp.get('course');
   if (!selectedCourse) return '';
+  if (selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG) {
+    return INTERNSHIP_ENQUIRY_SLUG;
+  }
   const bySlug = courses.find((c) => c.slug === selectedCourse);
   if (bySlug) return selectedCourse;
   const byTitle = courses.find((c) => c.title === selectedCourse);
@@ -69,6 +73,10 @@ export default function ContactPageClient() {
   useEffect(() => {
     const selectedCourse = searchParams.get('course');
     if (!selectedCourse) return;
+    if (selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG) {
+      setFormState((prev) => ({ ...prev, course: INTERNSHIP_ENQUIRY_SLUG }));
+      return;
+    }
     const bySlug = courses.find((c) => c.slug === selectedCourse);
     if (bySlug) {
       setFormState((prev) => ({ ...prev, course: selectedCourse }));
@@ -223,13 +231,19 @@ export default function ContactPageClient() {
     },
   ];
 
-  const courseOptions = courses.map((c) => {
-    const fee = formatCourseFeeLabel(c);
-    return {
-      slug: c.slug,
-      label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
-    };
-  });
+  const courseOptions = [
+    ...courses.map((c) => {
+      const fee = formatCourseFeeLabel(c);
+      return {
+        slug: c.slug,
+        label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
+      };
+    }),
+    {
+      slug: INTERNSHIP_ENQUIRY_SLUG,
+      label: 'Internship Program — Classroom to career',
+    },
+  ].sort((a, b) => a.label.localeCompare(b.label));
 
   return (
     <section className="py-20 lg:py-28 bg-background relative overflow-hidden">

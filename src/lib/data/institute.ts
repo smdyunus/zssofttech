@@ -55,7 +55,7 @@ export function getInstituteMapIframeSrc(): string {
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "Courses", href: "/courses" },
-  // Temporarily hidden: { name: "Internships", href: "/internships" },
+  { name: "Internships", href: "/internships" },
   { name: "Blogs", href: "/blog" },
   { name: "About Us", href: "/about" },
   { name: "Contact Us", href: "/contact" },

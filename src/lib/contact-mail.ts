@@ -1,4 +1,4 @@
-import { courses } from '@/lib/data/courses';
+import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
 /** Enquiry notifications (single SMTP send). */
 export const CONTACT_RECIPIENT_EMAILS = ['yunus.sqa@gmail.com'] as const;
@@ -12,8 +12,7 @@ function escapeHtml(s: string): string {
 }
 
 export function courseLabelFromSlug(slug: string): string {
-  const c = courses.find((x) => x.slug === slug);
-  return c?.title ?? slug;
+  return enquiryCourseTitleFromSlug(slug);
 }
 
 export type ContactPayload = {

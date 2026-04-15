@@ -1,5 +1,9 @@
 import { courses } from '@/lib/data/courses';
 
+/** Allowed in enquiry forms alongside real course slugs (not a row in `courses`). */
+export const INTERNSHIP_ENQUIRY_SLUG = 'internships';
+export const INTERNSHIP_ENQUIRY_TITLE = 'Internship Program';
+
 export const ENQUIRY_NAME_MAX = 120;
 export const ENQUIRY_MESSAGE_MAX = 4000;
 
@@ -63,10 +67,22 @@ export function validateEnquiryMessage(message: string): string | null {
   return null;
 }
 
+export function isValidEnquiryCourseSlug(slug: string): boolean {
+  const t = slug.trim();
+  return courses.some((c) => c.slug === t) || t === INTERNSHIP_ENQUIRY_SLUG;
+}
+
+/** Display name for emails / FormSubmit (includes internship). */
+export function enquiryCourseTitleFromSlug(slug: string): string {
+  const t = slug.trim();
+  if (t === INTERNSHIP_ENQUIRY_SLUG) return INTERNSHIP_ENQUIRY_TITLE;
+  return courses.find((c) => c.slug === t)?.title ?? slug;
+}
+
 export function validateEnquiryCourseSlug(slug: string): string | null {
   const t = slug.trim();
   if (!t) return 'Please select a course';
-  if (!courses.some((c) => c.slug === t)) {
+  if (!isValidEnquiryCourseSlug(t)) {
     return 'Please select a valid course';
   }
   return null;

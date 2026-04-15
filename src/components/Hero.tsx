@@ -6,7 +6,37 @@ import Link from 'next/link';
 import ContactUsLink from '@/components/ContactUsLink';
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const slides = [
+type CtaTarget = 'contact' | 'courses' | 'internships';
+
+type HeroSlide = {
+  id: number;
+  title: string;
+  subtitle: string;
+  cta: string;
+  ctaSecondary: string;
+  gradient: string;
+  highlight: string;
+  image: string;
+  overlayClass: string;
+  primaryTo?: CtaTarget;
+  secondaryTo?: CtaTarget;
+};
+
+const slides: HeroSlide[] = [
+  {
+    id: 5,
+    title: 'Break the “No Experience — No Job” Cycle',
+    subtitle:
+      'Class to Career Internship at ZS Soft Tech — real projects, mentorship, and a clear path into tech. Any degree eligible.',
+    cta: 'Explore Internships',
+    ctaSecondary: 'Contact Us',
+    gradient: 'from-violet-600/35 via-blue-600/25 to-cyan-600/30',
+    highlight: 'Internships',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=70',
+    overlayClass: 'bg-black/50',
+    primaryTo: 'internships',
+    secondaryTo: 'contact',
+  },
   {
     id: 1,
     title: 'Python & Data Analysis — 45-Day Fast Track',
@@ -18,6 +48,8 @@ const slides = [
     highlight: '45-Day Fast Track',
     image: '/images/hero/hero-python-45day-fasttrack.png',
     overlayClass: 'bg-black/50',
+    primaryTo: 'contact',
+    secondaryTo: 'courses',
   },
   {
     id: 2,
@@ -29,6 +61,8 @@ const slides = [
     highlight: 'AI-First',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=70',
     overlayClass: 'bg-black/50',
+    primaryTo: 'courses',
+    secondaryTo: 'contact',
   },
   {
     id: 3,
@@ -40,6 +74,8 @@ const slides = [
     highlight: '90% Placement',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=70',
     overlayClass: 'bg-black/50',
+    primaryTo: 'courses',
+    secondaryTo: 'contact',
   },
   {
     id: 4,
@@ -51,8 +87,21 @@ const slides = [
     highlight: '150+ Placed',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=70',
     overlayClass: 'bg-black/50',
+    primaryTo: 'courses',
+    secondaryTo: 'contact',
   },
 ];
+
+const primaryBtnClass =
+  'group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5';
+const secondaryBtnClass =
+  'group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5';
+
+function hrefFor(target: CtaTarget): string {
+  if (target === 'internships') return '/internships';
+  if (target === 'courses') return '/courses';
+  return '/contact';
+}
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -120,34 +169,41 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {currentSlide === 0 ? (
-                  <ContactUsLink className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5">
-                    {slides[currentSlide].cta}
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                  </ContactUsLink>
-                ) : (
-                  <Link
-                    href="/courses"
-                    className="group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5"
-                  >
-                    {slides[currentSlide].cta}
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
-                )}
-                {currentSlide === 0 ? (
-                  <Link
-                    href="/courses"
-                    className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5"
-                  >
-                    <Play className="w-3 h-3" />
-                    {slides[currentSlide].ctaSecondary}
-                  </Link>
-                ) : (
-                  <ContactUsLink className="group px-5 py-2.5 bg-white/20 backdrop-blur text-white rounded-lg font-semibold text-xs hover:bg-white/30 transition-all flex items-center gap-1.5">
-                    <Play className="w-3 h-3" />
-                    {slides[currentSlide].ctaSecondary}
-                  </ContactUsLink>
-                )}
+                {(() => {
+                  const slide = slides[currentSlide];
+                  const primary = slide.primaryTo ?? 'courses';
+                  const secondary = slide.secondaryTo ?? 'contact';
+                  const primaryEl =
+                    primary === 'contact' ? (
+                      <ContactUsLink className={primaryBtnClass}>
+                        {slide.cta}
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </ContactUsLink>
+                    ) : (
+                      <Link href={hrefFor(primary)} className={primaryBtnClass}>
+                        {slide.cta}
+                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </Link>
+                    );
+                  const secondaryEl =
+                    secondary === 'contact' ? (
+                      <ContactUsLink className={secondaryBtnClass}>
+                        <Play className="w-3 h-3" />
+                        {slide.ctaSecondary}
+                      </ContactUsLink>
+                    ) : (
+                      <Link href={hrefFor(secondary)} className={secondaryBtnClass}>
+                        <Play className="w-3 h-3" />
+                        {slide.ctaSecondary}
+                      </Link>
+                    );
+                  return (
+                    <>
+                      {primaryEl}
+                      {secondaryEl}
+                    </>
+                  );
+                })()}
               </div>
             </motion.div>
           </AnimatePresence>

@@ -17,7 +17,7 @@ import { getInstituteMapIframeSrc, instituteInfo } from '@/lib/data/institute';
 const quickLinks = [
   { name: 'Home', href: '/' },
   { name: 'All Courses', href: '/courses' },
-  // Temporarily hidden: { name: 'Internships', href: '/internships' },
+  { name: 'Internships', href: '/internships' },
   { name: 'About Us', href: '/about' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact Us', href: '/contact' },

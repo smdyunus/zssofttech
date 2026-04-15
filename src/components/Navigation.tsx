@@ -96,9 +96,9 @@ export default function Navigation() {
                 Home
               </Link>
 
-              {/* Courses Mega Menu Trigger */}
+              {/* Courses Mega Menu Trigger — z-index when open so panel isn’t covered by sibling nav links */}
               <div
-                className="relative"
+                className={`relative ${showMegaMenu ? 'z-[100]' : ''}`}
                 onMouseEnter={() => setShowMegaMenu(true)}
                 onMouseLeave={() => setShowMegaMenu(false)}
               >
@@ -121,59 +121,60 @@ export default function Navigation() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.98 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[720px] max-h-[80vh] overflow-y-auto bg-[#0f172a] border border-border rounded-2xl shadow-2xl shadow-black/40 p-6"
+                      className="absolute left-1/2 top-full z-[100] w-[720px] max-h-[80vh] -translate-x-1/2 pt-2"
                     >
-                      <div className="grid grid-cols-2 gap-6">
-                        {courseCategories.map((cat) => (
-                          <div key={cat.title}>
-                            <div className="flex items-center gap-2 mb-3">
-                              <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                                {categoryIcons[cat.title] || (
-                                  <BarChart3 className="w-4 h-4" />
-                                )}
+                      {/* pt-2 bridges trigger → panel so pointer stays inside hover target (no dead gap from mt-2) */}
+                      <div className="max-h-[calc(80vh-0.5rem)] overflow-y-auto rounded-2xl border border-border bg-[#0f172a] p-6 shadow-2xl shadow-black/40">
+                        <div className="grid grid-cols-2 gap-6">
+                          {courseCategories.map((cat) => (
+                            <div key={cat.title}>
+                              <div className="mb-3 flex items-center gap-2">
+                                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                  {categoryIcons[cat.title] || (
+                                    <BarChart3 className="h-4 w-4" />
+                                  )}
+                                </div>
+                                <h3 className="text-sm font-semibold text-foreground">
+                                  {cat.title}
+                                </h3>
                               </div>
-                              <h3 className="font-semibold text-sm text-foreground">
-                                {cat.title}
-                              </h3>
+                              <div className="space-y-1">
+                                {cat.items.map((item) => (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className="block rounded-lg px-3 py-2 text-sm text-gray-400 transition-all hover:bg-primary/5 hover:text-primary"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
-                            <div className="space-y-1">
-                              {cat.items.map((item) => (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className="block px-3 py-2 text-sm text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-5 pt-4 border-t border-border/50 flex items-center justify-between">
-                        <p className="text-xs text-muted">
-                          {instituteInfo.stats.coursesOffered} courses
-                        </p>
-                        <Link
-                          href="/courses"
-                          className="text-xs text-primary hover:text-primary-dark font-medium transition-colors"
-                        >
-                          View All Courses →
-                        </Link>
+                          ))}
+                        </div>
+                        <div className="mt-5 flex items-center justify-between border-t border-border/50 pt-4">
+                          <p className="text-xs text-muted">
+                            {instituteInfo.stats.coursesOffered} courses
+                          </p>
+                          <Link
+                            href="/courses"
+                            className="text-xs font-medium text-primary transition-colors hover:text-primary-dark"
+                          >
+                            View All Courses →
+                          </Link>
+                        </div>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              {/* Temporarily hidden: Internships nav link
               <Link
                 href="/internships"
                 className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
               >
                 Internships
               </Link>
-              */}
 
               <Link
                 href="/blog"
@@ -260,10 +261,10 @@ export default function Navigation() {
                         transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-1 pb-2">
+                        <div className="relative z-10 pt-1 pb-2">
                           <Link
                             href="/courses"
-                            className="block py-2 px-4 text-sm font-medium text-primary hover:bg-white/5 rounded-lg transition-all"
+                            className="relative z-10 block rounded-lg px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-white/5"
                             onClick={() => setIsOpen(false)}
                           >
                             View all courses
@@ -298,7 +299,6 @@ export default function Navigation() {
                   </AnimatePresence>
                 </div>
 
-                {/* Temporarily hidden: Internships mobile nav link
                 <Link
                   href="/internships"
                   className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
@@ -306,7 +306,6 @@ export default function Navigation() {
                 >
                   Internships
                 </Link>
-                */}
 
                 <Link
                   href="/blog"

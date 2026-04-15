@@ -7,7 +7,10 @@ import { X, RotateCcw, Send, Loader2, Check } from 'lucide-react';
 import { courses } from '@/lib/data/courses';
 import {
   ENQUIRY_NAME_MAX,
+  enquiryCourseTitleFromSlug,
   enquiryPhoneDigits,
+  INTERNSHIP_ENQUIRY_SLUG,
+  INTERNSHIP_ENQUIRY_TITLE,
   validateEnquiryName,
   validateEnquiryPhone,
 } from '@/lib/contact-enquiry-validation';
@@ -101,10 +104,13 @@ export default function ChatEnquiryWidget() {
   });
 
   const endRef = useRef<HTMLDivElement>(null);
-  const courseOptions = useMemo(
-    () => [...courses].sort((a, b) => a.title.localeCompare(b.title)),
-    []
-  );
+  const courseOptions = useMemo(() => {
+    const rows = [
+      { slug: INTERNSHIP_ENQUIRY_SLUG, title: INTERNSHIP_ENQUIRY_TITLE },
+      ...courses.map((c) => ({ slug: c.slug, title: c.title })),
+    ];
+    return rows.sort((a, b) => a.title.localeCompare(b.title));
+  }, []);
 
   useEffect(() => {
     try {
@@ -239,8 +245,7 @@ export default function ChatEnquiryWidget() {
   };
 
   const handlePickCourse = (slug: string) => {
-    const c = courses.find((x) => x.slug === slug);
-    const label = c?.title ?? slug;
+    const label = enquiryCourseTitleFromSlug(slug);
     fieldsRef.current.courseSlug = slug;
     fieldsRef.current.message = CHAT_ENQUIRY_DEFAULT_MESSAGE;
     appendMessages(
