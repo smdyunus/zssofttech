@@ -28,7 +28,7 @@ FILES
 EMAIL
 -----
   Set window.ZS_FORMSUBMIT_EMAIL in each page (or one shared config script).
-  Default: zssofttech@gmail.com
+  Default: info.zssoft@gmail.com
 
   Activate the address once at FormSubmit (they send a confirmation link).
 

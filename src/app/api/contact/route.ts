@@ -80,7 +80,7 @@ export async function POST(request: Request) {
       await sendContactEnquiryEmail(payload);
     } else {
       console.warn(
-        '[api/contact] SMTP not set; using FormSubmit fallback (CONTACT_FORMSUBMIT_EMAIL or zssofttech@gmail.com)'
+        '[api/contact] SMTP not set; using FormSubmit fallback (CONTACT_FORMSUBMIT_EMAIL / NEXT_PUBLIC_FORMSUBMIT_EMAIL or info.zssoft@gmail.com)'
       );
       await sendContactViaFormSubmit(payload);
     }

@@ -1,7 +1,11 @@
+import {
+  CONTACT_ENQUIRY_SUBJECT_PREFIX,
+  DEFAULT_FORMSUBMIT_INBOX,
+} from '@/lib/contact-defaults';
 import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
 export const FORMSUBMIT_INBOX =
-  process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ?? 'zssofttech@gmail.com';
+  process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL ?? DEFAULT_FORMSUBMIT_INBOX;
 
 export const FORCE_BROWSER_FORMSUBMIT =
   process.env.NEXT_PUBLIC_CONTACT_FORCE_FORMSUBMIT === 'true';
@@ -25,7 +29,7 @@ export async function submitEnquiryViaBrowserFormSubmit(
     email: email || '—',
     course: courseTitle,
     message: payload.message,
-    _subject: `New website enquiry — ${courseTitle}`,
+    _subject: `${CONTACT_ENQUIRY_SUBJECT_PREFIX} — ${courseTitle}`,
     _captcha: false,
   };
   if (email) {

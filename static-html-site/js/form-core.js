@@ -4,7 +4,7 @@
  */
 (function () {
   var FORMSUBMIT_EMAIL =
-    window.ZS_FORMSUBMIT_EMAIL || "zssofttech@gmail.com";
+    window.ZS_FORMSUBMIT_EMAIL || "info.zssoft@gmail.com";
 
   function ajaxEndpoint() {
     return (
@@ -64,15 +64,14 @@
     validateForm: function (form, rules) {
       this.clearFieldErrors(form);
       var ok = true;
-      var self = this;
-      rules.forEach(function (rule) {
+      rules.forEach((rule) => {
         var input = form.elements[rule.name];
         if (!input) return;
         var val =
           input.type === "checkbox" ? input.checked : input.value;
         var err = rule.validate(val, input);
         if (err) {
-          self.setFieldError(form, rule.name, err);
+          this.setFieldError(form, rule.name, err);
           ok = false;
         }
       });
@@ -102,7 +101,6 @@
 
     submitAjax: function (form, options) {
       options = options || {};
-      var self = this;
       var submitBtn = form.querySelector('[type="submit"]');
       var statusEl = form.querySelector(".form-status");
 
