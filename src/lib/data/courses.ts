@@ -504,7 +504,7 @@ export const courses: Course[] = [
     heroText: "Selenium",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    price: "₹24,999",
+    price: "₹34,999",
     curriculum: [
       { week: "Week 1-2", title: "Java for Automation", topics: ["Java basics (OOP, collections, exceptions)", "String handling & file operations", "Java project setup with Maven", "IDE setup (IntelliJ / Eclipse)"] },
       { week: "Week 3-5", title: "Selenium WebDriver", topics: ["Selenium architecture & setup", "Locator strategies (ID, CSS, XPath)", "Handling dropdowns, alerts, frames, windows", "Waits (Implicit, Explicit, Fluent)", "Advanced interactions (Actions class, JavaScript Executor)"] },
@@ -676,7 +676,7 @@ export const courses: Course[] = [
     heroText: "Playwright",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    price: "₹24,999",
+    price: "₹34,999",
     curriculum: [
       { week: "Week 1-2", title: "TypeScript & Automation Setup", topics: ["TypeScript essentials", "Node.js test project setup", "Playwright architecture", "Locators and assertions"] },
       { week: "Week 3-5", title: "E2E Test Design", topics: ["Page Object Model with TypeScript", "Data-driven testing", "API interception and mocking", "Cross-browser execution"] },
