@@ -1,7 +1,18 @@
 import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
-/** Enquiry notifications (single SMTP send). */
-export const CONTACT_RECIPIENT_EMAILS = ['yunus.sqa@gmail.com'] as const;
+/**
+ * Who receives enquiry emails (SMTP `to:`).
+ * Set `CONTACT_RECIPIENT_EMAIL` in Vercel (comma-separated for multiple). If unset, defaults to
+ * `CONTACT_SMTP_USER` so the inbox matches the sending account.
+ */
+function getContactRecipientEmails(fallbackSmtpUser: string): string[] {
+  const raw = process.env.CONTACT_RECIPIENT_EMAIL?.trim();
+  if (raw) {
+    const list = raw.split(',').map((s) => s.trim()).filter(Boolean);
+    if (list.length > 0) return list;
+  }
+  return [fallbackSmtpUser];
+}
 
 function escapeHtml(s: string): string {
   return s
@@ -23,15 +34,21 @@ export type ContactPayload = {
   message: string;
 };
 
+/** Gmail app passwords are 16 chars; Google often shows them with spaces — SMTP expects no spaces. */
+function normalizeSmtpPassword(raw: string | undefined): string {
+  if (!raw) return '';
+  return raw.trim().replace(/\s+/g, '');
+}
+
 export function isSmtpConfigured(): boolean {
   return Boolean(
-    process.env.CONTACT_SMTP_USER?.trim() && process.env.CONTACT_SMTP_PASS?.trim()
+    process.env.CONTACT_SMTP_USER?.trim() && normalizeSmtpPassword(process.env.CONTACT_SMTP_PASS)
   );
 }
 
 export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<void> {
   const user = process.env.CONTACT_SMTP_USER?.trim();
-  const pass = process.env.CONTACT_SMTP_PASS?.trim();
+  const pass = normalizeSmtpPassword(process.env.CONTACT_SMTP_PASS);
   if (!user || !pass) {
     throw new Error('Email is not configured (missing CONTACT_SMTP_USER / CONTACT_SMTP_PASS).');
   }
@@ -92,7 +109,7 @@ export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<
 
   await transporter.sendMail({
     from,
-    to: [...CONTACT_RECIPIENT_EMAILS].join(', '),
+    to: getContactRecipientEmails(user).join(', '),
     replyTo: payload.email.trim() || undefined,
     subject,
     text,

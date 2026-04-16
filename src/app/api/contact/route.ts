@@ -86,10 +86,15 @@ export async function POST(request: Request) {
     }
   } catch (err) {
     console.error('[contact]', err);
+    const details =
+      process.env.NODE_ENV === 'development' && err instanceof Error
+        ? err.message
+        : undefined;
     return NextResponse.json(
       {
         error:
           'Could not send your enquiry. If this persists, use WhatsApp or phone on the contact page.',
+        ...(details ? { details } : {}),
       },
       { status: 502 }
     );

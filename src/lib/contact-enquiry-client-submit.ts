@@ -104,6 +104,7 @@ export async function submitContactEnquiry(
     const data = (await res.json().catch(() => ({}))) as {
       error?: string;
       hint?: string;
+      details?: string;
       ok?: boolean;
     };
     if (!res.ok) {
@@ -116,9 +117,14 @@ export async function submitContactEnquiry(
           hint: data.hint,
         };
       }
+      const base = data.error || 'Something went wrong. Please try again.';
+      const withDetails =
+        process.env.NODE_ENV === 'development' && data.details
+          ? `${base} (${data.details})`
+          : base;
       return {
         ok: false,
-        error: data.error || 'Something went wrong. Please try again.',
+        error: withDetails,
       };
     }
     return { ok: true };

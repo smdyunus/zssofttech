@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import ContactUsLink from '@/components/ContactUsLink';
 import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
