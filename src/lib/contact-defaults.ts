@@ -4,5 +4,21 @@
  */
 export const DEFAULT_FORMSUBMIT_INBOX = 'info.zssoft@gmail.com';
 
-/** Subject line + email body heading (SMTP + FormSubmit). */
+/** Default subject prefix when no env override (SMTP + FormSubmit, contact + chat). */
 export const CONTACT_ENQUIRY_SUBJECT_PREFIX = 'ZS Soft Tech enquiry';
+
+/**
+ * Subject / heading prefix for enquiry emails.
+ * - Server (SMTP, POST /api/contact FormSubmit): set `CONTACT_ENQUIRY_SUBJECT_PREFIX` in Vercel (runtime).
+ * - Browser FormSubmit: set `NEXT_PUBLIC_CONTACT_ENQUIRY_SUBJECT_PREFIX` (requires rebuild after change).
+ */
+export function getContactEnquirySubjectPrefix(): string {
+  if (typeof process === 'undefined' || !process.env) {
+    return CONTACT_ENQUIRY_SUBJECT_PREFIX;
+  }
+  return (
+    process.env.CONTACT_ENQUIRY_SUBJECT_PREFIX?.trim() ||
+    process.env.NEXT_PUBLIC_CONTACT_ENQUIRY_SUBJECT_PREFIX?.trim() ||
+    CONTACT_ENQUIRY_SUBJECT_PREFIX
+  );
+}

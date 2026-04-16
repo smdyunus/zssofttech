@@ -1,6 +1,6 @@
 import {
-  CONTACT_ENQUIRY_SUBJECT_PREFIX,
   DEFAULT_FORMSUBMIT_INBOX,
+  getContactEnquirySubjectPrefix,
 } from '@/lib/contact-defaults';
 import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
@@ -23,13 +23,14 @@ export async function submitEnquiryViaBrowserFormSubmit(
 ): Promise<void> {
   const courseTitle = enquiryCourseTitleFromSlug(payload.courseSlug);
   const email = payload.email.trim();
+  const subjectPrefix = getContactEnquirySubjectPrefix();
   const body: Record<string, string | boolean> = {
     name: payload.name,
     phone: payload.phone,
     email: email || '—',
     course: courseTitle,
     message: payload.message,
-    _subject: `${CONTACT_ENQUIRY_SUBJECT_PREFIX} — ${courseTitle}`,
+    _subject: `${subjectPrefix} — ${courseTitle}`,
     _captcha: false,
   };
   if (email) {

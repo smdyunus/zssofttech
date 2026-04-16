@@ -1,6 +1,6 @@
 import {
-  CONTACT_ENQUIRY_SUBJECT_PREFIX,
   DEFAULT_FORMSUBMIT_INBOX,
+  getContactEnquirySubjectPrefix,
 } from '@/lib/contact-defaults';
 import { enquiryCourseTitleFromSlug } from '@/lib/contact-enquiry-validation';
 
@@ -106,7 +106,8 @@ export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<
     `ZS Soft Tech Website <${user}>`;
 
   const courseTitle = courseLabelFromSlug(payload.courseSlug);
-  const subject = `${CONTACT_ENQUIRY_SUBJECT_PREFIX} — ${courseTitle}`;
+  const subjectPrefix = getContactEnquirySubjectPrefix();
+  const subject = `${subjectPrefix} — ${courseTitle}`;
 
   const safeName = escapeHtml(payload.name);
   const safePhone = escapeHtml(payload.phone);
@@ -115,7 +116,7 @@ export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<
   const safeMessage = escapeHtml(payload.message || '—').replace(/\n/g, '<br/>');
 
   const text = [
-    CONTACT_ENQUIRY_SUBJECT_PREFIX,
+    subjectPrefix,
     '',
     `Name: ${payload.name}`,
     `Phone: ${payload.phone}`,
@@ -128,7 +129,7 @@ export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<
 
   const html = `
 <!DOCTYPE html><html><body style="font-family:system-ui,sans-serif;line-height:1.5;color:#111">
-  <h2 style="margin:0 0 12px">${escapeHtml(CONTACT_ENQUIRY_SUBJECT_PREFIX)}</h2>
+  <h2 style="margin:0 0 12px">${escapeHtml(subjectPrefix)}</h2>
   <table style="border-collapse:collapse;font-size:14px">
     <tr><td style="padding:4px 12px 4px 0;color:#666">Name</td><td><strong>${safeName}</strong></td></tr>
     <tr><td style="padding:4px 12px 4px 0;color:#666">Phone</td><td><strong>${safePhone}</strong></td></tr>
@@ -176,6 +177,7 @@ export async function sendContactViaFormSubmit(
 ): Promise<void> {
   const inbox = getFormSubmitInbox();
   const courseTitle = courseLabelFromSlug(payload.courseSlug);
+  const subjectPrefix = getContactEnquirySubjectPrefix();
   const url = `https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`;
 
   const body: Record<string, string> = {
@@ -184,7 +186,7 @@ export async function sendContactViaFormSubmit(
     email: payload.email || '—',
     course: courseTitle,
     message: payload.message || '—',
-    _subject: `${CONTACT_ENQUIRY_SUBJECT_PREFIX} — ${courseTitle}`,
+    _subject: `${subjectPrefix} — ${courseTitle}`,
     _captcha: 'false',
   };
   const em = payload.email.trim();
