@@ -19,11 +19,10 @@ export const instituteInfo = {
     facebook: "#",
   },
   stats: {
-    studentsPlaced: "150+",
+    studentsPlaced: "100+",
     coursesOffered: "16+",
     placementRate: "100%",
     yearsExperience: "2",
-    hiringPartners: "25+",
     batchesCompleted: "30+",
   },
   workingHours: "Mon–Fri: 9:00 AM – 6:00 PM",

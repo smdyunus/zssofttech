@@ -72,21 +72,3 @@ export const testimonials: Testimonial[] = [
     course: "Java Full Stack Development",
   }
 ];
-
-export const hiringPartners = [
-  "TCS",
-  "Infosys",
-  "Wipro",
-  "HCL Technologies",
-  "Tech Mahindra",
-  "Accenture",
-  "Cognizant",
-  "Capgemini",
-  "Mindtree",
-  "Mphasis",
-  "L&T Infotech",
-  "Virtusa",
-  "NTT Data",
-  "DXC Technology",
-  "Hexaware",
-];
