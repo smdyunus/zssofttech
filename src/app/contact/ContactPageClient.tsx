@@ -12,6 +12,7 @@ import {
   MessageCircle,
   CheckCircle,
 } from 'lucide-react';
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { instituteInfo } from '@/lib/data/institute';
 import { courses, formatCourseFeeLabel } from '@/lib/data/courses';
 import {
@@ -36,7 +37,10 @@ function courseSlugFromContactSearchParams(
 ): string {
   const selectedCourse = sp.get('course');
   if (!selectedCourse) return '';
-  if (selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG) {
+  if (
+    FEATURE_INTERNSHIPS &&
+    selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG
+  ) {
     return INTERNSHIP_ENQUIRY_SLUG;
   }
   const bySlug = courses.find((c) => c.slug === selectedCourse);
@@ -73,7 +77,10 @@ export default function ContactPageClient() {
   useEffect(() => {
     const selectedCourse = searchParams.get('course');
     if (!selectedCourse) return;
-    if (selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG) {
+    if (
+      FEATURE_INTERNSHIPS &&
+      selectedCourse.trim() === INTERNSHIP_ENQUIRY_SLUG
+    ) {
       setFormState((prev) => ({ ...prev, course: INTERNSHIP_ENQUIRY_SLUG }));
       return;
     }
@@ -239,10 +246,14 @@ export default function ContactPageClient() {
         label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
       };
     }),
-    {
-      slug: INTERNSHIP_ENQUIRY_SLUG,
-      label: 'Internship Program — Classroom to career',
-    },
+    ...(FEATURE_INTERNSHIPS
+      ? [
+          {
+            slug: INTERNSHIP_ENQUIRY_SLUG,
+            label: 'Internship Program — Classroom to career',
+          },
+        ]
+      : []),
   ].sort((a, b) => a.label.localeCompare(b.label));
 
   return (

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import ContactUsLink from '@/components/ContactUsLink';
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
 type CtaTarget = 'contact' | 'courses' | 'internships';
@@ -22,7 +23,7 @@ type HeroSlide = {
   secondaryTo?: CtaTarget;
 };
 
-const slides: HeroSlide[] = [
+const allSlides: HeroSlide[] = [
   {
     id: 5,
     title: 'Break the “No Experience — No Job” Cycle',
@@ -91,6 +92,10 @@ const slides: HeroSlide[] = [
     secondaryTo: 'contact',
   },
 ];
+
+const slides: HeroSlide[] = FEATURE_INTERNSHIPS
+  ? allSlides
+  : allSlides.filter((s) => s.primaryTo !== 'internships');
 
 const primaryBtnClass =
   'group px-5 py-2.5 bg-gradient-primary text-white rounded-lg font-semibold text-xs hover:opacity-90 transition-all shadow-xl flex items-center gap-1.5';

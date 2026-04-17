@@ -137,7 +137,7 @@ const programs = [
 
 export function Programs() {
   return (
-    <section id="programs" className="py-24 bg-background-alt scroll-mt-20">
+    <section id="premium-programs" className="py-24 bg-background-alt scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,15 +146,16 @@ export function Programs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
-            Internship Programs
+          <span className="text-sm font-medium text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            Model 2 · Premium training program
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
-            Choose Your Career Path
+            Paid tracks — deeper mentoring & placement support
           </h2>
           <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
-            Industry-aligned programs designed to take you from classroom to
-            career. Any degree eligible.
+            Optional intensive programs for learners who want structured training, extended mentorship, and interview
+            readiness. <strong className="text-foreground">Separate from the free AICTE-format internship model</strong>{" "}
+            above — fees apply only if you choose one of these tracks.
           </p>
         </motion.div>
 
@@ -212,24 +213,24 @@ export function Programs() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-3 rounded-lg bg-background-alt text-center">
                     <div className="text-xs text-foreground-muted mb-1">
-                      Internship Fee
+                      Program fee (indicative)
                     </div>
                     <div className="text-sm font-semibold text-foreground">
                       {program.fee}
                     </div>
                     <div className="text-[10px] text-foreground-muted mt-0.5">
-                      EMI: {program.feeInstallment}
+                      Instalment option: {program.feeInstallment}
                     </div>
                   </div>
                   <div className="p-3 rounded-lg bg-primary/5 text-center">
                     <div className="text-xs text-foreground-muted mb-1">
-                      Expected CTC
+                      Career prep focus
                     </div>
                     <div className="text-sm font-semibold text-primary">
                       {program.expectedLPA}
                     </div>
                     <div className="text-[10px] text-foreground-muted mt-0.5">
-                      Effective Cost: {program.effectiveCost}
+                      Not a salary guarantee · support bundle: {program.effectiveCost}
                     </div>
                   </div>
                 </div>
@@ -280,7 +281,7 @@ export function Programs() {
                     program.popular && "bg-primary hover:bg-primary-dark"
                   )}
                 >
-                  Apply for {program.code}
+                  Enquire — premium {program.code}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               </div>
@@ -296,13 +297,15 @@ export function Programs() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center space-y-2"
         >
-          <p className="text-sm text-foreground-muted font-medium">
-            Eligibility: Any Degree | No Hidden Charges | Limited Seats
-            Available
+          <p className="text-sm text-foreground-muted font-medium max-w-3xl mx-auto">
+            Eligibility and stipend (where mentioned) are track-specific and confirmed in writing before enrolment.
+            GST and statutory components as applicable.{" "}
+            <strong className="text-foreground">Placement outcomes depend on market conditions and your readiness</strong>
+            — we provide training and assistance, not a guaranteed job or package.
           </p>
-          <p className="text-xs text-foreground-muted/60">
-            * Terms and conditions apply. Stipend applicable from respective
-            program start month.
+          <p className="text-xs text-foreground-muted/60 max-w-2xl mx-auto">
+            * This section describes only the <strong className="text-foreground/80">premium training model</strong>. The
+            free AICTE-format internship is described above and carries no compulsory program fee.
           </p>
         </motion.div>
       </div>

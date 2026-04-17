@@ -18,6 +18,7 @@ import {
   TestTube,
   Stethoscope,
 } from 'lucide-react';
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
 import ContactUsLink from '@/components/ContactUsLink';
 
@@ -169,12 +170,14 @@ export default function Navigation() {
                 </AnimatePresence>
               </div>
 
-              <Link
-                href="/internships"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
-              >
-                Internships
-              </Link>
+              {FEATURE_INTERNSHIPS && (
+                <Link
+                  href="/internships"
+                  className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                >
+                  Internships
+                </Link>
+              )}
 
               <Link
                 href="/blog"
@@ -299,13 +302,15 @@ export default function Navigation() {
                   </AnimatePresence>
                 </div>
 
-                <Link
-                  href="/internships"
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Internships
-                </Link>
+                {FEATURE_INTERNSHIPS && (
+                  <Link
+                    href="/internships"
+                    className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Internships
+                  </Link>
+                )}
 
                 <Link
                   href="/blog"

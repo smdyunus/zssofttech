@@ -1,31 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Code2, Rocket, Briefcase } from "lucide-react";
+import { BookOpen, Code2, Rocket, UserRoundSearch } from "lucide-react";
 
 const stages = [
   {
     icon: BookOpen,
     title: "Learn",
-    description: "Structured learning with curated curriculum and hands-on exercises.",
+    description: "Clear objectives, curated modules, and mentor checkpoints — especially in the AICTE-format track.",
     color: "bg-blue-500",
   },
   {
     icon: Code2,
     title: "Build",
-    description: "Work on live client projects under the guidance of senior mentors.",
+    description: "Hands-on tasks and mini-projects you can explain in interviews and attach to internship reports.",
     color: "bg-primary",
   },
   {
     icon: Rocket,
-    title: "Launch",
-    description: "Deploy real products, build your portfolio, and earn your certificate.",
+    title: "Demonstrate",
+    description: "Present your work, gather feedback, and refine quality — the same loop employers value.",
     color: "bg-amber-500",
   },
   {
-    icon: Briefcase,
-    title: "Hired",
-    description: "Get placed at ZS Soft Tech or our partner companies with a strong portfolio.",
+    icon: UserRoundSearch,
+    title: "Interview-ready",
+    description:
+      "Premium learners get extended mock interviews and placement assistance; outcomes depend on roles you target and market conditions.",
     color: "bg-emerald-500",
   },
 ];
@@ -42,19 +43,18 @@ export function CareerPath() {
           className="text-center mb-16"
         >
           <span className="text-sm font-medium text-primary uppercase tracking-wider">
-            Your Journey
+            Your journey
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
-            From Student to Professional
+            From learning to credible proof
           </h2>
           <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
-            A clear, structured path from learning to landing your dream tech
-            job.
+            A simple path: learn with structure, build evidence, demonstrate competence, then pursue roles with honest
+            support — no false guarantees.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-          {/* Connector (desktop) */}
           <div className="hidden md:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-border" />
 
           {stages.map((stage, i) => (
@@ -67,21 +67,15 @@ export function CareerPath() {
               className="relative text-center"
             >
               <div className="relative z-10 mx-auto mb-6">
-                <div
-                  className={`inline-flex p-4 rounded-2xl ${stage.color} text-white shadow-lg`}
-                >
+                <div className={`inline-flex p-4 rounded-2xl ${stage.color} text-white shadow-lg`}>
                   <stage.icon className="h-7 w-7" />
                 </div>
               </div>
               <div className="text-xs font-medium text-foreground-muted/50 mb-2 uppercase tracking-wider">
-                Stage {i + 1}
+                Step {i + 1}
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {stage.title}
-              </h3>
-              <p className="text-foreground-muted leading-relaxed max-w-xs mx-auto">
-                {stage.description}
-              </p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{stage.title}</h3>
+              <p className="text-foreground-muted leading-relaxed max-w-xs mx-auto">{stage.description}</p>
             </motion.div>
           ))}
         </div>

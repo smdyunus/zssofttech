@@ -1,3 +1,4 @@
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { courses } from '@/lib/data/courses';
 
 /** Allowed in enquiry forms alongside real course slugs (not a row in `courses`). */
@@ -69,7 +70,10 @@ export function validateEnquiryMessage(message: string): string | null {
 
 export function isValidEnquiryCourseSlug(slug: string): boolean {
   const t = slug.trim();
-  return courses.some((c) => c.slug === t) || t === INTERNSHIP_ENQUIRY_SLUG;
+  return (
+    courses.some((c) => c.slug === t) ||
+    (FEATURE_INTERNSHIPS && t === INTERNSHIP_ENQUIRY_SLUG)
+  );
 }
 
 /** Display name for emails / FormSubmit (includes internship). */

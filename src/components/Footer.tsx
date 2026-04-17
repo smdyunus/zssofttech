@@ -12,9 +12,10 @@ import {
   Facebook,
   ArrowUpRight,
 } from 'lucide-react';
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { getInstituteMapIframeSrc, instituteInfo } from '@/lib/data/institute';
 
-const quickLinks = [
+const allQuickLinks = [
   { name: 'Home', href: '/' },
   { name: 'All Courses', href: '/courses' },
   { name: 'Internships', href: '/internships' },
@@ -22,6 +23,10 @@ const quickLinks = [
   { name: 'Blog', href: '/blog' },
   { name: 'Contact Us', href: '/contact' },
 ];
+
+const quickLinks = FEATURE_INTERNSHIPS
+  ? allQuickLinks
+  : allQuickLinks.filter((l) => l.href !== '/internships');
 
 const courseLinks = [
   { name: 'Python & Data Analysis — 45-Day Fast Track', href: '/courses/python-data-analysis-45-day-fast-track' },

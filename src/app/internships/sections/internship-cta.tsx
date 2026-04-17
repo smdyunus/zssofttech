@@ -1,13 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { buttonClassName } from "@/components/ui/button";
 import { instituteInfo } from "@/lib/data/institute";
 
 const waDigits = instituteInfo.contact.whatsapp.replace(/\D/g, "");
-const waHref = `https://wa.me/${waDigits}?text=${encodeURIComponent("Hi ZS Soft Tech! I'm interested in the internship program.")}`;
+const waHref = `https://wa.me/${waDigits}?text=${encodeURIComponent(
+  "Hi ZS Soft Tech — I'd like to know more about (1) the free AICTE-format internship or (2) the premium training program."
+)}`;
 
 export function InternshipCTA() {
   return (
@@ -25,20 +27,21 @@ export function InternshipCTA() {
           transition={{ duration: 0.5 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
-            <Zap className="h-4 w-4" />
-            Limited Seats Available
+            <MessageCircle className="h-4 w-4" />
+            Counselling · Nandyal
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-semibold text-white">
-            Ready to Launch Your Tech Career?
+            Not sure which track fits you?
           </h2>
           <p className="mt-4 text-lg text-white/60 max-w-xl mx-auto">
-            Don&apos;t wait for the &ldquo;perfect opportunity&rdquo; — create
-            it. Apply now and start building your future.
+            Message us with your course, semester, and goal. We&apos;ll help you pick the{" "}
+            <strong className="text-white/90">free internship model</strong> or the{" "}
+            <strong className="text-white/90">premium program</strong> — only what you need.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className={buttonClassName({ size: "xl", className: "group" })}>
-              Apply Now
+              Contact / apply
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
             <a
@@ -47,7 +50,7 @@ export function InternshipCTA() {
               rel="noopener noreferrer"
               className={buttonClassName({ variant: "outline", size: "xl" })}
             >
-              Chat on WhatsApp
+              WhatsApp
             </a>
           </div>
         </motion.div>

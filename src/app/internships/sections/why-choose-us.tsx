@@ -2,50 +2,50 @@
 
 import { motion } from "framer-motion";
 import {
-  Rocket,
+  Shield,
   Users,
   Code2,
-  Trophy,
+  BadgeCheck,
   BookOpen,
-  Target,
+  LineChart,
 } from "lucide-react";
 
 const reasons = [
   {
-    icon: Code2,
-    title: "Live Projects",
+    icon: Shield,
+    title: "Transparent two-track model",
     description:
-      "Work on real client projects — not toy exercises. Build production-grade applications that go into actual deployments.",
+      "Free AICTE-norms–aligned internship learning on one side; optional premium training with clear fees on the other. You always know what you are signing up for.",
+  },
+  {
+    icon: Code2,
+    title: "Hands-on engineering practice",
+    description:
+      "Guided tasks, code reviews, and small deliverables suitable for portfolios and college internship files — not theory-only sessions.",
   },
   {
     icon: Users,
-    title: "1-on-1 Mentorship",
+    title: "Mentor-led reviews",
     description:
-      "Learn directly from senior engineers and architects with 10+ years of industry experience.",
+      "Regular checkpoints with mentors for feedback, professionalism, and quality — aligned with how good internship programs are run.",
   },
   {
     icon: BookOpen,
-    title: "Structured Curriculum",
+    title: "Structured documentation",
     description:
-      "A carefully designed learning path covering modern tech stacks, best practices, and AI integration.",
+      "Weekly activity logs, objectives, and assessment artefacts that institutions commonly expect for internship records.",
   },
   {
-    icon: Trophy,
-    title: "Certificate & Portfolio",
+    icon: BadgeCheck,
+    title: "Completion evidence",
     description:
-      "Earn an industry-recognized certificate and build a professional portfolio you can showcase to employers.",
+      "Completion / experience certificate from ZS Soft Tech for engagements completed satisfactorily (wording as per track).",
   },
   {
-    icon: Target,
-    title: "Career Guidance",
+    icon: LineChart,
+    title: "Career support (premium)",
     description:
-      "Resume reviews, mock interviews, and direct referrals to partner companies and open positions.",
-  },
-  {
-    icon: Rocket,
-    title: "Fast-Track to Employment",
-    description:
-      "Top-performing interns get direct job offers at ZS Soft Tech or partner organizations.",
+      "For premium learners: extended interview prep, resume clinics, and placement assistance — without over-promising fixed salaries.",
   },
 ];
 
@@ -61,14 +61,15 @@ export function WhyChooseUs() {
           className="text-center mb-16"
         >
           <span className="text-sm font-medium text-primary uppercase tracking-wider">
-            Why Choose Us
+            Why students choose ZS Soft Tech
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
-            More Than Just an Internship
+            Clarity, structure, and honest guidance
           </h2>
           <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
-            We don&apos;t just teach you code — we prepare you for a career in
-            technology with hands-on experience and real outcomes.
+            Whether you need a <strong className="text-foreground">college-ready internship file</strong> or a{" "}
+            <strong className="text-foreground">deeper paid program</strong>, we focus on skills you can demonstrate in
+            interviews — not hype.
           </p>
         </motion.div>
 
@@ -85,12 +86,8 @@ export function WhyChooseUs() {
               <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <reason.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-foreground">
-                {reason.title}
-              </h3>
-              <p className="mt-3 text-foreground-muted leading-relaxed">
-                {reason.description}
-              </p>
+              <h3 className="mt-5 text-xl font-semibold text-foreground">{reason.title}</h3>
+              <p className="mt-3 text-foreground-muted leading-relaxed">{reason.description}</p>
             </motion.div>
           ))}
         </div>

@@ -1,3 +1,5 @@
+import { FEATURE_INTERNSHIPS } from "@/lib/feature-flags";
+
 export const instituteInfo = {
   name: "ZS Soft Tech",
   tagline: "Premium IT Training & Software Development Hub",
@@ -51,7 +53,9 @@ export function getInstituteMapIframeSrc(): string {
   return instituteInfo.mapEmbedUrl;
 }
 
-export const navLinks = [
+type NavLinkItem = { name: string; href: string };
+
+const allNavLinks: NavLinkItem[] = [
   { name: "Home", href: "/" },
   { name: "Courses", href: "/courses" },
   { name: "Internships", href: "/internships" },
@@ -59,6 +63,10 @@ export const navLinks = [
   { name: "About Us", href: "/about" },
   { name: "Contact Us", href: "/contact" },
 ];
+
+export const navLinks: NavLinkItem[] = FEATURE_INTERNSHIPS
+  ? allNavLinks
+  : allNavLinks.filter((l) => l.href !== "/internships");
 
 export const courseCategories = [
   {

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { X, RotateCcw, Send, Loader2, Check } from 'lucide-react';
 import { courses } from '@/lib/data/courses';
+import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import {
   ENQUIRY_NAME_MAX,
   enquiryCourseTitleFromSlug,
@@ -106,7 +107,9 @@ export default function ChatEnquiryWidget() {
   const endRef = useRef<HTMLDivElement>(null);
   const courseOptions = useMemo(() => {
     const rows = [
-      { slug: INTERNSHIP_ENQUIRY_SLUG, title: INTERNSHIP_ENQUIRY_TITLE },
+      ...(FEATURE_INTERNSHIPS
+        ? [{ slug: INTERNSHIP_ENQUIRY_SLUG, title: INTERNSHIP_ENQUIRY_TITLE }]
+        : []),
       ...courses.map((c) => ({ slug: c.slug, title: c.title })),
     ];
     return rows.sort((a, b) => a.title.localeCompare(b.title));
