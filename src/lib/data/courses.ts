@@ -377,7 +377,7 @@ export const courses: Course[] = [
     heroText: "AI / ML",
     instructor: "ZS Soft Tech",
     rating: 4.9,
-    price: "₹1,19,999",
+    price: "₹99,999",
     curriculum: [
       { week: "Week 1-3", title: "ML Foundations & Classical Algorithms", topics: ["Supervised learning algorithms", "Unsupervised learning & clustering", "Model evaluation metrics & cross-validation", "Feature engineering & dimensionality reduction"] },
       { week: "Week 4-6", title: "Advanced ML & Ensemble Methods", topics: ["Ensemble methods (Bagging, Boosting, Stacking)", "XGBoost, LightGBM, CatBoost", "Hyperparameter optimization", "Time series analysis & forecasting"] },
