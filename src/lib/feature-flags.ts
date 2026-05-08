@@ -3,3 +3,6 @@
  * Routes under `/internships` and `/internship` remain buildable; only navigation and forms hide it.
  */
 export const FEATURE_INTERNSHIPS = true;
+
+/** When false, regular course fees are hidden (cards, detail sidebar, contact course labels). */
+export const FEATURE_SHOW_COURSE_FEES = false;

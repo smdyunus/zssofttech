@@ -23,6 +23,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import type { Course } from '@/lib/data/courses';
+import { FEATURE_SHOW_COURSE_FEES } from '@/lib/feature-flags';
 
 interface Props {
   course: Course;
@@ -131,7 +132,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
                 </div>
               </div>
 
-              {course.price && (
+              {FEATURE_SHOW_COURSE_FEES && course.price && (
                 <div className="text-center mb-4">
                   {course.originalPrice && (
                     <div className="text-sm text-gray-500 line-through mb-1">{course.originalPrice}</div>

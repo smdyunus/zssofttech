@@ -12,7 +12,7 @@ export default function CoursesPage() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative h-52 sm:h-64 overflow-hidden">
+      <section className="relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=70"
@@ -20,7 +20,7 @@ export default function CoursesPage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
-        <div className="relative z-10 h-full flex flex-col items-start justify-center container mx-auto px-6">
+        <div className="relative z-10 container mx-auto px-6 py-8 sm:py-10 flex flex-col items-start">
           <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
             ZS Soft Tech · Nandyal
           </p>

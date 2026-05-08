@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Clock, Wifi, MonitorPlay, MapPin, CheckCircle2, ChevronRight } from 'lucide-react';
+import { FEATURE_SHOW_COURSE_FEES } from '@/lib/feature-flags';
 import { courses } from '@/lib/data/courses';
 
 interface FeaturedCoursesProps {
@@ -176,7 +177,7 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                     Course Details
                     <ChevronRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
                   </Link>
-                  {course.price && (
+                  {FEATURE_SHOW_COURSE_FEES && course.price && (
                     <div className="text-right">
                       {course.originalPrice && (
                         <span className="block text-[11px] text-gray-500 line-through font-semibold">

@@ -12,7 +12,7 @@ import {
   MessageCircle,
   CheckCircle,
 } from 'lucide-react';
-import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
+import { FEATURE_INTERNSHIPS, FEATURE_SHOW_COURSE_FEES } from '@/lib/feature-flags';
 import { instituteInfo } from '@/lib/data/institute';
 import { courses, formatCourseFeeLabel } from '@/lib/data/courses';
 import {
@@ -240,7 +240,7 @@ export default function ContactPageClient() {
 
   const courseOptions = [
     ...courses.map((c) => {
-      const fee = formatCourseFeeLabel(c);
+      const fee = FEATURE_SHOW_COURSE_FEES ? formatCourseFeeLabel(c) : '';
       return {
         slug: c.slug,
         label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
