@@ -18,6 +18,7 @@ import { getInstituteMapIframeSrc, instituteInfo } from '@/lib/data/institute';
 const allQuickLinks = [
   { name: 'Home', href: '/' },
   { name: 'All Courses', href: '/courses' },
+  { name: 'Services', href: '/services' },
   { name: 'Internships', href: '/internships' },
   { name: 'About Us', href: '/about' },
   { name: 'Blog', href: '/blog' },
@@ -209,7 +210,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
           <p>&copy; {new Date().getFullYear()} ZS Soft Tech. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-primary transition-colors">
+            <Link href="/apps/sunshine-developers/privacy-policy" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
             <Link href="/terms" className="hover:text-primary transition-colors">
