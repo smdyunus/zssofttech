@@ -30,6 +30,7 @@ const quickLinks = FEATURE_INTERNSHIPS
   : allQuickLinks.filter((l) => l.href !== '/internships');
 
 const courseLinks = [
+  { name: 'Agentic AI Using UiPath + Automation', href: '/courses/automation-agentic-ai-uipath' },
   { name: 'Python & Data Analysis — 45-Day Fast Track', href: '/courses/python-data-analysis-45-day-fast-track' },
   { name: 'MERN Stack Development', href: '/courses/mern-stack' },
   { name: 'Java Spring Boot', href: '/courses/java-spring-boot' },

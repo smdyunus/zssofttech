@@ -22,7 +22,7 @@ export const instituteInfo = {
   },
   stats: {
     studentsPlaced: "100+",
-    coursesOffered: "16+",
+    coursesOffered: "18+",
     placementRate: "100%",
     yearsExperience: "2",
     batchesCompleted: "30+",
@@ -58,6 +58,7 @@ type NavLinkItem = { name: string; href: string };
 const allNavLinks: NavLinkItem[] = [
   { name: "Home", href: "/" },
   { name: "Courses", href: "/courses" },
+  { name: "Services", href: "/services" },
   { name: "Internships", href: "/internships" },
   { name: "Blogs", href: "/blog" },
   { name: "About Us", href: "/about" },
@@ -69,6 +70,15 @@ export const navLinks: NavLinkItem[] = FEATURE_INTERNSHIPS
   : allNavLinks.filter((l) => l.href !== "/internships");
 
 export const courseCategories = [
+  {
+    title: "Automation & Agentic AI",
+    items: [
+      {
+        name: "Agentic AI Using UiPath + Automation",
+        href: "/courses/automation-agentic-ai-uipath",
+      },
+    ],
+  },
   {
     title: "Full Stack Development",
     items: [

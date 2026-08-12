@@ -38,6 +38,125 @@ export interface Course {
 
 export const courses: Course[] = [
   {
+    id: "uipath-agentic-ai",
+    title: "Agentic AI Using UiPath + Automation",
+    shortTitle: "UiPath Agentic AI",
+    category: "Automation & Agentic AI",
+    categoryLabel: "UIPATH",
+    description:
+      "Master RPA with UiPath and layer Agentic AI on top — build attended/unattended bots, document understanding, Orchestrator deployments, and AI-assisted automation workflows.",
+    overview:
+      "This program combines enterprise robotic process automation with modern Agentic AI. You will learn UiPath Studio, Orchestrator, queues, REFramework, Document Understanding, and Integration Service, then extend automations with AI agents, prompts, and decisioning so bots can handle exceptions and unstructured work. Ideal for students and professionals targeting RPA Developer, Automation Engineer, and AI-augmented process roles.",
+    duration: "3 Months",
+    durationHours: "70hr+",
+    mode: "Hybrid",
+    level: "Intermediate",
+    highlights: [
+      "UiPath Studio & Orchestrator end-to-end",
+      "REFramework, queues & unattended bots",
+      "Document Understanding & OCR workflows",
+      "Agentic AI for intelligent exception handling",
+      "Real-world automation capstone projects",
+    ],
+    technologies: [
+      "UiPath Studio",
+      "UiPath Orchestrator",
+      "REFramework",
+      "Document Understanding",
+      "Agentic AI",
+      "Excel / Outlook / Web automation",
+      "APIs & Integration Service",
+    ],
+    icon: "Bot",
+    badge: "Hot",
+    slug: "automation-agentic-ai-uipath",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=75",
+    heroText: "UiPath",
+    instructor: "ZS Soft Tech",
+    rating: 4.9,
+    price: "₹54,999",
+    curriculum: [
+      {
+        week: "Week 1-2",
+        title: "RPA & UiPath Foundations",
+        topics: [
+          "RPA concepts, ROI, and process assessment",
+          "UiPath Studio layout, activities, and debugging",
+          "Variables, arguments, selectors, and UI automation",
+          "Excel, PDF, email, and browser automation basics",
+        ],
+      },
+      {
+        week: "Week 3-4",
+        title: "Workflow Design & Best Practices",
+        topics: [
+          "Sequences, flowcharts, and state machines",
+          "Error handling, retries, and logging",
+          "Data tables, dictionaries, and reusable components",
+          "Version control and project organization",
+        ],
+      },
+      {
+        week: "Week 5-6",
+        title: "REFramework, Queues & Orchestrator",
+        topics: [
+          "REFramework architecture and transaction processing",
+          "Queues, assets, and schedules in Orchestrator",
+          "Attended vs unattended robots",
+          "Publishing, packaging, and environment promotion",
+        ],
+      },
+      {
+        week: "Week 7-8",
+        title: "Document Understanding & Integrations",
+        topics: [
+          "Document Understanding pipelines and classifiers",
+          "OCR, extraction, and validation stations",
+          "APIs, Integration Service, and third-party apps",
+          "Security, credentials, and governance basics",
+        ],
+      },
+      {
+        week: "Week 9-12",
+        title: "Agentic AI + Capstone",
+        topics: [
+          "Where Agentic AI fits in RPA (exceptions, triage, decisions)",
+          "Prompting and AI activities for automation workflows",
+          "Human-in-the-loop and guarded autonomous steps",
+          "End-to-end capstone: process + bot + Orchestrator + AI assist",
+        ],
+      },
+    ],
+    prerequisites: [
+      "Basic computer literacy",
+      "Interest in process automation (helpful)",
+      "No prior UiPath experience required",
+    ],
+    careerPaths: [
+      "UiPath RPA Developer",
+      "Automation Engineer",
+      "RPA Analyst",
+      "Intelligent Automation Specialist",
+      "Process Automation Consultant",
+    ],
+    whyChoose: [
+      "Industry-Standard Tool – UiPath is a leading RPA platform in enterprises",
+      "AI-Ready Path – Combine classic RPA with Agentic AI patterns",
+      "Hands-On Delivery – Studio, Orchestrator, and real process scenarios",
+      "Job-Oriented – Built for RPA developer and automation roles",
+      "Capstone Portfolio – Ship a production-style automation project",
+    ],
+    keyFeatures: [
+      "UiPath Studio automation from scratch",
+      "REFramework and queue-based bots",
+      "Orchestrator publish and schedule workflows",
+      "Document Understanding for unstructured docs",
+      "Agentic AI for smarter exception handling",
+      "Enterprise process automation mindset",
+    ],
+    certification: "Agentic AI Using UiPath + Automation Certificate",
+  },
+  {
     id: "python-data-analysis-45day",
     title: "Python & Data Analysis — 45-Day Fast Track",
     shortTitle: "Python & Data",
@@ -947,6 +1066,7 @@ export const courses: Course[] = [
 ];
 
 export const courseCategories = [
+  "Automation & Agentic AI",
   "Accounting & Finance",
   "Full Stack Development",
   "Advanced AI",

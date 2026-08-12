@@ -17,12 +17,14 @@ import {
   Network,
   TestTube,
   Stethoscope,
+  Bot,
 } from 'lucide-react';
 import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
 import ContactUsLink from '@/components/ContactUsLink';
 
 const categoryIcons: Record<string, React.ReactNode> = {
+  'Automation & Agentic AI': <Bot className="w-4 h-4" />,
   'Full Stack Development': <Code2 className="w-4 h-4" />,
   'DevOps & Cloud': <Cloud className="w-4 h-4" />,
   'Data Science & AI': <Brain className="w-4 h-4" />,
@@ -187,6 +189,13 @@ export default function Navigation() {
               </Link>
 
               <Link
+                href="/services"
+                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+              >
+                Services
+              </Link>
+
+              <Link
                 href="/about"
                 className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
               >
@@ -318,6 +327,13 @@ export default function Navigation() {
                   onClick={() => setIsOpen(false)}
                 >
                   Blogs
+                </Link>
+                <Link
+                  href="/services"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Services
                 </Link>
                 <Link
                   href="/about"
