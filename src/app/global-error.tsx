@@ -19,7 +19,7 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#030712] text-slate-100 antialiased flex flex-col items-center justify-center px-4">
+      <body className="min-h-screen bg-white text-foreground antialiased flex flex-col items-center justify-center px-4">
         <h1 className="text-xl font-bold mb-2">Site error</h1>
         <p className="text-sm text-slate-400 max-w-lg text-center mb-2">
           {process.env.NODE_ENV === 'development'

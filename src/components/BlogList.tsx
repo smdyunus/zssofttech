@@ -42,14 +42,14 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
                   selectedCategory === cat
                     ? 'bg-gradient-primary text-white'
-                    : 'bg-card border border-border text-gray-400 hover:text-primary hover:border-primary'
+                    : 'bg-card border border-border text-muted hover:text-primary hover:border-primary'
                 }`}
               >
                 {cat}
               </button>
             ))}
           </div>
-          <div className="text-center mt-4 text-gray-400 text-sm">
+          <div className="text-center mt-4 text-muted text-sm">
             Showing {paginatedPosts.length} of {filteredPosts.length} articles
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                   </div>
                 </div>
                 <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className="flex items-center gap-4 text-sm text-muted">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {new Date(post.date).toLocaleDateString('en-US', {
@@ -99,7 +99,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                   <h2 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </h2>
-                  <p className="text-gray-400 text-sm line-clamp-3">{post.excerpt}</p>
+                  <p className="text-muted text-sm line-clamp-3">{post.excerpt}</p>
                   <Link
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all"
@@ -116,7 +116,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="p-3 rounded-lg bg-card border border-border text-gray-400 hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="p-3 rounded-lg bg-card border border-border text-muted hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -127,7 +127,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                   className={`w-10 h-10 rounded-lg font-semibold transition-all ${
                     currentPage === page
                       ? 'bg-gradient-primary text-white'
-                      : 'bg-card border border-border text-gray-400 hover:text-primary hover:border-primary'
+                      : 'bg-card border border-border text-muted hover:text-primary hover:border-primary'
                   }`}
                 >
                   {page}
@@ -136,7 +136,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
               <button
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="p-3 rounded-lg bg-card border border-border text-gray-400 hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="p-3 rounded-lg bg-card border border-border text-muted hover:text-primary hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>

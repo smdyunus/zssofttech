@@ -16,7 +16,7 @@ export function InternshipTwoModels() {
           transition={{ duration: 0.5 }}
           className="max-w-4xl mx-auto text-center mb-14"
         >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
+          <span className="section-label">
             Two clear paths
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">

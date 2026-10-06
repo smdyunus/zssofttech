@@ -42,7 +42,7 @@ export function CareerPath() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
+          <span className="section-label">
             Your journey
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">

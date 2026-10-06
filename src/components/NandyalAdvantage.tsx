@@ -67,7 +67,7 @@ export default function NandyalAdvantage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-accent mb-4 uppercase tracking-wider">
+            <span className="section-label mb-4">
               Why Nandyal?
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
@@ -97,7 +97,7 @@ export default function NandyalAdvantage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group p-5 rounded-xl border border-border/30 bg-background/50 hover:border-primary/30 hover:bg-card transition-all duration-300"
+                className="group p-5 rounded-xl border border-border bg-white premium-shadow hover:border-secondary/25 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                   <adv.icon className="w-5 h-5 text-primary" />

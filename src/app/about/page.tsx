@@ -26,7 +26,7 @@ export default function AboutPage() {
               <h1 className="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
                 About ZS Soft Tech
               </h1>
-              <p className="text-gray-200 text-sm mt-1">Nandyal&apos;s Premier IT Training Hub</p>
+              <p className="text-white/85 text-sm mt-1">Nandyal&apos;s Premier IT Training Hub</p>
             </div>
           </div>
 

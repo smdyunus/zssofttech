@@ -23,13 +23,13 @@ export default function BlogPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
         <div className="relative z-10 h-full flex flex-col items-start justify-center container mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
+          <p className="text-orange-300 text-xs uppercase tracking-widest font-semibold mb-2">
             Knowledge Hub
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-white max-w-xl">
-            Our <span className="text-primary">Blog</span>
+            Our <span className="text-orange-400">Blog</span>
           </h1>
-          <p className="text-gray-300 text-sm mt-2">
+          <p className="text-white/80 text-sm mt-2">
             Insights, tutorials &amp; career guidance for IT professionals
           </p>
         </div>

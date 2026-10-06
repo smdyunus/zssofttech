@@ -21,12 +21,12 @@ export default function CoursesPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
         <div className="relative z-10 container mx-auto px-6 py-8 sm:py-10 flex flex-col items-start">
-          <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
+          <p className="text-xs uppercase tracking-widest text-orange-300 font-semibold mb-2">
             ZS Soft Tech · Nandyal
           </p>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white max-w-xl leading-snug">
             Master Software Development with our structured courses designed to make you{' '}
-            <span className="text-primary">job-ready.</span>
+            <span className="text-orange-400">job-ready.</span>
           </h1>
         </div>
       </section>

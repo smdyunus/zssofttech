@@ -34,7 +34,7 @@ const programs = [
     interviews: "3",
     skills: ["Python", "Data Analysis"],
     documents: "Internship Certificate",
-    gradient: "from-blue-600 to-cyan-500",
+    gradient: "from-primary to-secondary",
     icon: Database,
     popular: false,
   },
@@ -56,7 +56,7 @@ const programs = [
     ],
     documents:
       "Offer Letter, ID Card, Company Email, Pay Slips, Bank Statement, Experience Letter",
-    gradient: "from-purple-600 to-pink-500",
+    gradient: "from-secondary to-accent",
     icon: Globe,
     popular: false,
   },
@@ -80,7 +80,7 @@ const programs = [
     ],
     documents:
       "Offer Letter, ID Card, Company Email, Pay Slips, Bank Statement, Experience Letter",
-    gradient: "from-amber-500 to-orange-500",
+    gradient: "from-primary to-primary-dark",
     icon: Smartphone,
     popular: true,
   },
@@ -104,7 +104,7 @@ const programs = [
     ],
     documents:
       "Offer Letter, ID Card, Company Email, Pay Slips, Bank Statement, Experience Letter",
-    gradient: "from-primary to-emerald-500",
+    gradient: "from-secondary to-primary",
     icon: Brain,
     popular: false,
   },
@@ -129,7 +129,7 @@ const programs = [
     ],
     documents:
       "Offer Letter, ID Card, Company Email, Pay Slips, Bank Statement, Experience Letter, PF",
-    gradient: "from-rose-500 to-red-500",
+    gradient: "from-accent to-secondary",
     icon: Bot,
     popular: true,
   },

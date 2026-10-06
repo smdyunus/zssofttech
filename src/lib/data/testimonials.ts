@@ -1,74 +1,249 @@
 export interface Testimonial {
   id: number;
   name: string;
-  role: string;
-  company: string;
-  joinedCompany: string;
-  image: string;
+  /** Optional photo; when missing, UI shows initials */
+  image?: string;
   content: string;
   rating: number;
-  course: string;
+  timeAgo: string;
 }
 
-export const testimonials: Testimonial[] = [
-  {
+/** Real Google reviews from ZS Soft Tech Maps place (all public reviews). */
+export const testimonials: Testimonial[] = [  {
     id: 1,
-    name: "Shaik Ayub",
-    role: "QA Engineer",
-    company: "Obopay Mobile Technology Pvt Ltd",
-    joinedCompany: "Obopay Mobile Technology Pvt Ltd",
-    image: "/images/testimonials/Ayub.jpg",
-    content:
-      "ZS Soft Tech transformed my career. The Automation Testing course was incredibly hands-on, and the faculty ensured we built real projects. Within 3 months of completing the course, I landed a role at Obopay Mobile Technology Pvt Ltd. The best training institute in Nandyal!",
+    name: "Chinnamma Chinnamma",
+    content: "I am join in ZS softech classes\nIn Near by Nandyal and Padmavathi Nagar\nI have taken Course is PYTHON\nIt is so uses in future\nAnd , I am choose this course and that's I mean I choosean in ZS softech classes\nIt is so good and neatly so provided in classes . And  one thing is daily classes in 3 hours .\nAnd one thing is Sir  teaching is so good and anyi one  say to step by step process that is so good process.\nAmount is worth. It is no problem\nAnd this course is completed and you gone in certificate also provide in ZS softech company.\nThis is so good and Software and hardware classes and this certificate is useful in Jobs opportunities.",
     rating: 5,
-    course: "Course: Automation Testing",
+    timeAgo: "3 months ago",
   },
   {
     id: 2,
-    name: "Amir Hamza",
-    role: "Java Full Stack Developer",
-    company: "Accenture",
-    joinedCompany: "Accenture",
-    image: "/images/testimonials/Hamza.jpg",
-    content:
-      "The Java Full Stack Development course gave me exactly the skills the industry demands. The practical approach with real projects and business case studies made learning intuitive. Highly recommend for anyone in Nandyal looking to break into Java Full Stack Development.",
+    name: "Shaik Zuber Zuber",
+    content: "I joined ZS Softtech as a student and had an excellent learning experience. The trainers explain concepts in a simple and practical way, making it easy to understand Python and other technical topics. As a trainer as well, I appreciate the institute's focus on quality teaching, hands-on practice, and real-world skills. The learning environment is supportive, professional, and career-oriented. ZS Softtech is a great place for both students and aspiring trainers to enhance their knowledge and grow in the IT field. Highly recommended!",
     rating: 5,
-    course: "Course: Java Full Stack Development",
+    timeAgo: "3 months ago",
   },
   {
     id: 3,
-    name: "Shaik Mohammad Sharif",
-    role: "QA Engineer",
-    company: "Capgemini",
-    joinedCompany: "Capgemini",
-    image: "/images/testimonials/Sharif.jpg",
-    content:
-      "The Automation Testing course was incredibly hands-on, and the faculty ensured we built real projects. Within 3 months of completing the course, I landed a role at Capgemini. The best training institute in Nandyal!",
+    name: "Afreen Shaik",
+    content: "Joining in this technical and practical ZS soft tech company is very useful to the students who are at training period for their future studies and I also felt useful after joining at this company.",
     rating: 5,
-    course: "Course: Automation Testing",
+    timeAgo: "a month ago",
   },
   {
     id: 4,
-    name: "Syed Javeed Hussain",
-    role: "QA Engineer",
-    company: "Eximietas.design",
-    joinedCompany: "Eximietas.design",
-    image: "/images/testimonials/Javeed.jpg",
-    content:
-      "The Automation Testing course was incredibly hands-on, and the faculty ensured we built real projects. Within 3 months of completing the course, I landed a role at Eximietas.design. The best training institute in Nandyal!",
+    name: "Shaik Mahammad Rajak",
+    content: "It is good institute for beginners where not only learning skills you can get placed here. Very advanced and expert trainers are leading the students. As a student here am very satisfied.",
     rating: 5,
-    course: "Course: Automation Testing",
+    timeAgo: "4 months ago",
   },
   {
     id: 5,
-    name: "Shaik Fayaz",
-    role: "Java Full Stack Developer",
-    company: "Concentrix",  
-    joinedCompany: "Concentrix",
-    image: "/images/testimonials/Fayaz.jpg",
-    content:
-      "The Java Full Stack Development course was incredibly hands-on, and the faculty ensured we built real projects. Within 5 months of completing the course, I landed a role at Concentrix. The best training institute in Nandyal!",
+    name: "Srinu Mandla",
+    content: "Excellent coaching with experienced faculty. Best place to build IT skills and career. Highly recommend",
     rating: 5,
-    course: "Java Full Stack Development",
-  }
+    timeAgo: "2 months ago",
+  },
+  {
+    id: 6,
+    name: "Shafi Shaik",
+    content: "I'm currently attending the Manual and automation course at ZS Soft Tech and the experience has been amazing so far. The trainer explains everything clearly and the support is excellent. Very professional and student-friendly institute.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 7,
+    name: "Ishrath Shaik",
+    content: "ZS Soft Tech is a best for learning skill and the trainers are full experience and they explain clearly",
+    rating: 5,
+    timeAgo: "5 months ago",
+  },
+  {
+    id: 8,
+    name: "Shaik Ayub",
+    image: "/images/testimonials/Ayub.jpg",
+    content: "ZS SoftTech is a great place for software training! The trainers explain concepts clearly with real-world examples, and the hands-on practice really helps. The courses are well-structured, and the placement support is excellent. Highly recommend for anyone looking to build a career in IT!",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 9,
+    name: "Samiya Sarosh",
+    content: "I would like to express my appreciation for the comprehensive Java Full Stack course provided by the institute. The trainer is knowledgeable, supportive, and explained complex concepts in a simple and practical manner. Hands-on projects and real-world assignments helped reinforce the concepts and improved my coding confidence",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 10,
+    name: "ajay2ANAS",
+    content: "Its like a family training institute and a spoon feeding training centre. The trainers worked in software companies and even they were working till now in software companies — more than 10yrs experienced employees giving training for us. In coaching centres they give only basic knowledge and they cannot teach real time work what the software companies needs. But in this ZS Soft Tech training centre they explain what the work would be in a software company, how to execute the project, how to stay updated, and many more techniques practically. Even in cities also such type of training centres I haven't seen till now. So try once to join in this ZS Soft Tech training centre so that you can save money and time also and you can surely get a job.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 11,
+    name: "A Google User",
+    content: "The teaching is very practical and the trainers are experienced. I really like the way they help us understand concepts with real world examples in ZS Soft Tech institute.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 12,
+    name: "Avula Harshith",
+    content: "Good faculty and teachers. Best coaching centre for coding",
+    rating: 5,
+    timeAgo: "3 months ago",
+  },
+  {
+    id: 13,
+    name: "Syed Ayan",
+    content: "I joined ZS Soft Tech a few weeks ago for Python training. The environment is good, the classes are interactive, and I'm learning a lot.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 14,
+    name: "Shaik Nasreen",
+    content: "I'm currently attending the Java course at ZS Soft Tech and the experience has been amazing so far. The trainer explains everything clearly and the support is excellent.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 15,
+    name: "Talari Anitha",
+    content: "Learning Python is good",
+    rating: 5,
+    timeAgo: "2 months ago",
+  },
+  {
+    id: 16,
+    name: "Masthan Vali",
+    content: "Masha Allah felt much better by joining your training centre.",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 17,
+    name: "Ramanji Kabaddi 26",
+    content: "So good",
+    rating: 5,
+    timeAgo: "5 months ago",
+  },
+  {
+    id: 18,
+    name: "Shahid Shaik",
+    content: "Best place for learning skills",
+    rating: 5,
+    timeAgo: "5 months ago",
+  },
+  {
+    id: 19,
+    name: "Farook Shaik",
+    content: "One of the best institute in our Nandyal",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 20,
+    name: "Ismail Shaik",
+    content: "All the best",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
+  {
+    id: 21,
+    name: "Hallu",
+    content: "Best Place to get software training and Placement. In Nandyal this is the one and only institute, they have real time trainers with hands-on projects. Also it is an IT company — they have projects and I got the training on the live projects and I worked on it.",
+    rating: 5,
+    timeAgo: "a week ago",
+  },
+  {
+    id: 22,
+    name: "Shaik Kareem",
+    content: "I joined for Python course. Good institute and excellent training.",
+    rating: 5,
+    timeAgo: "3 weeks ago",
+  },
+  {
+    id: 23,
+    name: "Chenna Keshava",
+    content: "Excellent teaching technical skills",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 24,
+    name: "DwarakeshwarAchari Kammari",
+    content: "Excellent teaching technical skills. I am also getting course of industrial training of diploma",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 25,
+    name: "Mythree Mythree",
+    content: "After joining in this ZS Soft Tech company I learnt a lot about Python courses.",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 26,
+    name: "Luthiya Shaik",
+    content: "I am from SVR college currently pursuing Python course in ZS Soft Tech. I have a great experience and I learnt the Python course in detail. The lectures are very good",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 27,
+    name: "Lakshmi Prasanna Papisetty",
+    content: "I had a very good experience with this company during my industrial training. The environment was friendly and supportive, and I got an opportunity to learn new technical skills through practical work. The guidance from the trainers and staff was helpful, and the experience improved my confidence and knowledge. Overall, it was a valuable learning experience for me.",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 28,
+    name: "Shaik Fouzia",
+    content: "I had a great experience in ZS Soft Tech",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 29,
+    name: "Jammu Jammu",
+    content: "To be honest ZS Soft Tech institute is really very good. There are very good trainers and any topics explain very clearly and teaching skills also awesome. I really enjoyed courses. Anyone looking for taking training and coaching once visit here — if you are comfortable join in ZS Soft Tech institute.",
+    rating: 5,
+    timeAgo: "2 months ago",
+  },
+  {
+    id: 30,
+    name: "N.charan N.charan",
+    content: "Good training institute",
+    rating: 5,
+    timeAgo: "2 months ago",
+  },
+  {
+    id: 31,
+    name: "Kak Rahman",
+    content: "Good institute and experienced trainers, my brother got the training in software testing and got the placement in Bangalore",
+    rating: 5,
+    timeAgo: "3 months ago",
+  },
+  {
+    id: 32,
+    name: "Shaik Mohammad Suheb",
+    content: "ZS Softech lo training experience chaala bagundi. Trainers concepts ni easy ga understand ayye way lo explain chestunnaru, practical sessions kuda useful ga unnayi. Doubts adigithe patiently clarify chestunnaru. Overall ga technical skills improve cheskovadaniki and real-time knowledge gain cheyadaniki manchi platform. Students ki ZS Softech training ni definitely recommend chestunu.",
+    rating: 5,
+    timeAgo: "a month ago",
+  },
+  {
+    id: 33,
+    name: "Shaik Riyaz",
+    content: "Thanks for your valuable feedback",
+    rating: 5,
+    timeAgo: "a year ago",
+  },
 ];
+
+export const googleReviewStats = {
+  rating: 5.0,
+  count: 41,
+} as const;

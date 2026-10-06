@@ -74,7 +74,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 lg:py-24 bg-white">
+    <section className="py-20 lg:py-24 bg-background-alt">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -82,11 +82,11 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3">
+          <span className="section-label mb-3">
             What We Do
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-slate-900">Core Capabilities</h2>
-          <p className="text-base text-slate-500 mt-4 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">Core Capabilities</h2>
+          <p className="text-base text-muted mt-4 max-w-3xl mx-auto">
             End-to-end technology solutions for startups, institutions, and growing teams.
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05, duration: 0.35 }}
-              className="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-all"
+              className="premium-card rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(42,20,80,0.12)] hover:border-secondary/30 transition-all"
             >
               <div className="relative h-44 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,16 +109,16 @@ export default function ServicesSection() {
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/90 border border-slate-200 flex items-center justify-center">
-                  <service.icon className="w-4 h-4 text-slate-700" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/95 border border-border flex items-center justify-center shadow-sm">
+                  <service.icon className="w-4 h-4 text-secondary" />
                 </div>
               </div>
               <div className="p-5">
-                <p className="font-semibold text-slate-900 text-base mb-2">{service.title}</p>
-                <p className="text-sm text-slate-500 leading-relaxed mb-4">{service.description}</p>
+                <p className="font-semibold text-foreground text-base mb-2">{service.title}</p>
+                <p className="text-sm text-muted leading-relaxed mb-4">{service.description}</p>
                 <Link
                   href={`/contact?service=${encodeURIComponent(service.title)}`}
-                  className="text-sm font-medium text-primary hover:text-primary/90"
+                  className="text-sm font-semibold text-primary hover:text-primary-dark"
                 >
                   Learn more
                 </Link>

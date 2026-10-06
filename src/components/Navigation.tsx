@@ -65,36 +65,35 @@ export default function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 transition-all duration-300 border-b border-border/70 ${
           isScrolled
-            ? 'bg-background/95 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-border/50'
-            : 'bg-card/80 backdrop-blur-sm'
+            ? 'bg-white/95 backdrop-blur-xl shadow-md shadow-secondary/5'
+            : 'bg-white'
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-[88px]">
+          <div className="flex items-center justify-between h-[100px]">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center group rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="flex items-center shrink-0 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
-              <span className="inline-flex items-center rounded-2xl bg-card/95 p-1.5 sm:p-2 ring-1 ring-border/60 shadow-sm backdrop-blur-sm transition-[box-shadow,background-color] duration-300 group-hover:bg-card group-hover:ring-border/80">
-                <Image
-                  src="/zs-logo-header-cropped.png"
-                  alt="ZS Soft Tech Logo"
-                  width={470}
-                  height={246}
-                  className="h-11 sm:h-[3.25rem] w-auto object-contain rounded-xl"
-                  priority
-                />
-              </span>
+              <Image
+                src="/zs-logo-header-transparent.png"
+                alt="ZS Soft Tech"
+                width={470}
+                height={246}
+                className="h-16 sm:h-20 w-auto object-contain"
+                priority
+                unoptimized
+              />
             </Link>
 
             {/* Desktop Links */}
             <div className="hidden lg:flex items-center gap-1">
               <Link
                 href="/"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5"
               >
                 Home
               </Link>
@@ -107,7 +106,7 @@ export default function Navigation() {
               >
                 <Link
                   href="/courses"
-                  className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5 flex items-center gap-1"
+                  className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5 flex items-center gap-1"
                 >
                   Courses
                   <ChevronDown
@@ -127,12 +126,12 @@ export default function Navigation() {
                       className="absolute left-1/2 top-full z-[100] w-[720px] max-h-[80vh] -translate-x-1/2 pt-2"
                     >
                       {/* pt-2 bridges trigger → panel so pointer stays inside hover target (no dead gap from mt-2) */}
-                      <div className="max-h-[calc(80vh-0.5rem)] overflow-y-auto rounded-2xl border border-border bg-[#0f172a] p-6 shadow-2xl shadow-black/40">
+                      <div className="max-h-[calc(80vh-0.5rem)] overflow-y-auto rounded-2xl border border-border bg-white p-6 shadow-2xl shadow-secondary/10">
                         <div className="grid grid-cols-2 gap-6">
                           {courseCategories.map((cat) => (
                             <div key={cat.title}>
                               <div className="mb-3 flex items-center gap-2">
-                                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
                                   {categoryIcons[cat.title] || (
                                     <BarChart3 className="h-4 w-4" />
                                   )}
@@ -146,7 +145,7 @@ export default function Navigation() {
                                   <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="block rounded-lg px-3 py-2 text-sm text-gray-400 transition-all hover:bg-primary/5 hover:text-primary"
+                                    className="block rounded-lg px-3 py-2 text-sm text-muted transition-all hover:bg-secondary/5 hover:text-secondary"
                                   >
                                     {item.name}
                                   </Link>
@@ -155,13 +154,13 @@ export default function Navigation() {
                             </div>
                           ))}
                         </div>
-                        <div className="mt-5 flex items-center justify-between border-t border-border/50 pt-4">
+                        <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                           <p className="text-xs text-muted">
                             {instituteInfo.stats.coursesOffered} courses
                           </p>
                           <Link
                             href="/courses"
-                            className="text-xs font-medium text-primary transition-colors hover:text-primary-dark"
+                            className="text-xs font-medium text-secondary transition-colors hover:text-secondary/80"
                           >
                             View All Courses →
                           </Link>
@@ -175,7 +174,7 @@ export default function Navigation() {
               {FEATURE_INTERNSHIPS && (
                 <Link
                   href="/internships"
-                  className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                  className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5"
                 >
                   Internships
                 </Link>
@@ -183,32 +182,32 @@ export default function Navigation() {
 
               <Link
                 href="/blog"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5"
               >
                 Blogs
               </Link>
 
               <Link
                 href="/services"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5"
               >
                 Services
               </Link>
 
               <Link
                 href="/about"
-                className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5"
+                className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5"
               >
                 About Us
               </Link>
 
-              <ContactUsLink className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-white/5">
+              <ContactUsLink className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors font-medium text-sm rounded-lg hover:bg-secondary/5">
                 Contact Us
               </ContactUsLink>
 
               <Link
                 href="/login"
-                className="ml-2 px-5 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+                className="ml-2 px-5 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-primary/25 tracking-wide"
               >
                 Login
               </Link>
@@ -233,21 +232,21 @@ export default function Navigation() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-card border-t border-border overflow-hidden"
+              className="lg:hidden bg-white border-t border-border overflow-hidden"
             >
               <div className="container mx-auto px-4 py-6 space-y-1 max-h-[80vh] overflow-y-auto">
                 <Link
                   href="/"
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   Home
                 </Link>
 
-                <div className="border-b border-border/40 pb-1">
+                <div className="border-b border-border pb-1">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-2 py-3 px-4 text-left text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                    className="flex w-full items-center justify-between gap-2 py-3 px-4 text-left text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                     aria-expanded={mobileCoursesOpen}
                     aria-controls="mobile-courses-panel"
                     id="mobile-courses-trigger"
@@ -276,7 +275,7 @@ export default function Navigation() {
                         <div className="relative z-10 pt-1 pb-2">
                           <Link
                             href="/courses"
-                            className="relative z-10 block rounded-lg px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-white/5"
+                            className="relative z-10 block rounded-lg px-4 py-2 text-sm font-medium text-secondary transition-all hover:bg-secondary/5"
                             onClick={() => setIsOpen(false)}
                           >
                             View all courses
@@ -284,7 +283,7 @@ export default function Navigation() {
                           {courseCategories.map((cat) => (
                             <div key={cat.title} className="py-2">
                               <div className="flex items-center gap-2 px-4 mb-1">
-                                <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+                                <div className="w-6 h-6 rounded-md bg-secondary/10 flex items-center justify-center text-secondary">
                                   {categoryIcons[cat.title] || (
                                     <BarChart3 className="w-3 h-3" />
                                   )}
@@ -297,7 +296,7 @@ export default function Navigation() {
                                 <Link
                                   key={item.href}
                                   href={item.href}
-                                  className="block py-2 pl-12 pr-4 text-sm text-gray-400 hover:text-primary hover:bg-white/5 rounded-lg transition-all"
+                                  className="block py-2 pl-12 pr-4 text-sm text-muted hover:text-primary hover:bg-secondary/5 rounded-lg transition-all"
                                   onClick={() => setIsOpen(false)}
                                 >
                                   {item.name}
@@ -314,7 +313,7 @@ export default function Navigation() {
                 {FEATURE_INTERNSHIPS && (
                   <Link
                     href="/internships"
-                    className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                    className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     Internships
@@ -323,27 +322,27 @@ export default function Navigation() {
 
                 <Link
                   href="/blog"
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   Blogs
                 </Link>
                 <Link
                   href="/services"
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   Services
                 </Link>
                 <Link
                   href="/about"
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   About Us
                 </Link>
                 <ContactUsLink
-                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-all font-medium"
+                  className="block py-3 px-4 text-foreground hover:text-primary hover:bg-secondary/5 rounded-lg transition-all font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   Contact Us
@@ -352,18 +351,18 @@ export default function Navigation() {
                 <div className="pt-4 space-y-3">
                   <Link
                     href="/login"
-                    className="block w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg"
+                    className="block w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg shadow-primary/25"
                     onClick={() => setIsOpen(false)}
                   >
                     Login
                   </Link>
                 </div>
 
-                <div className="pt-4 border-t border-border/50 flex flex-col gap-2 text-sm text-muted">
-                  <a href={`tel:${instituteInfo.contact.phone.replace(/\D/g, '')}`} className="flex items-center gap-2">
+                <div className="pt-4 border-t border-border flex flex-col gap-2 text-sm text-muted">
+                  <a href={`tel:${instituteInfo.contact.phone.replace(/\D/g, '')}`} className="flex items-center gap-2 hover:text-primary">
                     <Phone className="w-4 h-4" /> {instituteInfo.contact.phone}
                   </a>
-                  <a href={`mailto:${instituteInfo.contact.email}`} className="flex items-center gap-2">
+                  <a href={`mailto:${instituteInfo.contact.email}`} className="flex items-center gap-2 hover:text-primary">
                     <Mail className="w-4 h-4" /> {instituteInfo.contact.email}
                   </a>
                 </div>

@@ -69,8 +69,9 @@ export default function LoginPageClient() {
   };
 
   return (
-    <section className="min-h-[calc(100vh-88px)] py-16 lg:py-24 bg-background relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="min-h-[calc(100vh-100px)] py-16 lg:py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-mesh opacity-50 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -88,10 +89,11 @@ export default function LoginPageClient() {
           </Link>
 
           <div className="text-center mb-8">
+            <span className="section-label mb-4">Student portal</span>
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-primary mb-4 shadow-lg shadow-primary/25">
               <ShieldCheck className="w-7 h-7 text-white" />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 tracking-tight">
               Student User Login
             </h1>
             <p className="text-muted text-sm">
@@ -99,7 +101,8 @@ export default function LoginPageClient() {
             </p>
           </div>
 
-          <div className="glass rounded-2xl border border-border/50 p-6 sm:p-8 shadow-xl shadow-black/20">
+          <div className="premium-panel p-6 sm:p-8 relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
             {submitted ? (
               <div
                 role="alert"
@@ -140,7 +143,7 @@ export default function LoginPageClient() {
                           setSubmitted(false);
                           setErrors({});
                         }}
-                        className="inline-flex items-center justify-center rounded-xl bg-gradient-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:opacity-90 transition-opacity"
+                        className="btn-premium px-4 py-2.5 text-sm"
                       >
                         Try again
                       </button>
@@ -178,10 +181,10 @@ export default function LoginPageClient() {
                       aria-describedby={
                         errors.userId ? 'userId-error' : undefined
                       }
-                      className={`w-full pl-11 pr-4 py-3 rounded-xl bg-card border text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 ${
+                      className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white border text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
                         errors.userId
                           ? 'border-red-500'
-                          : 'border-border/50'
+                          : 'border-border'
                       }`}
                       placeholder="Enter your student user ID or email"
                     />
@@ -215,10 +218,10 @@ export default function LoginPageClient() {
                       aria-describedby={
                         errors.password ? 'password-error' : undefined
                       }
-                      className={`w-full pl-11 pr-12 py-3 rounded-xl bg-card border text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 ${
+                      className={`w-full pl-11 pr-12 py-3.5 rounded-xl bg-white border text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
                         errors.password
                           ? 'border-red-500'
-                          : 'border-border/50'
+                          : 'border-border'
                       }`}
                       placeholder="Enter your password"
                     />
@@ -247,7 +250,7 @@ export default function LoginPageClient() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl bg-gradient-primary text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/25"
+                  className="btn-premium w-full"
                 >
                   Sign in
                 </button>
@@ -255,7 +258,7 @@ export default function LoginPageClient() {
             )}
           </div>
 
-          <div className="mt-6 p-4 rounded-xl bg-card/50 border border-border/30">
+          <div className="mt-6 premium-card p-4">
             <p className="text-xs text-muted leading-relaxed">
               <span className="font-semibold text-foreground">Credentials: </span>
               Your User ID and password are issued by ZS Soft Tech when you enroll.

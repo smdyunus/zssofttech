@@ -60,7 +60,7 @@ export function WhyChooseUs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
+          <span className="section-label">
             Why students choose ZS Soft Tech
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">

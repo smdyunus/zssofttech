@@ -4,7 +4,6 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatEnquiryWidget from "@/components/ChatEnquiryWidget";
-import CursorEffect from "@/components/CursorEffect";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -220,7 +219,6 @@ export default function RootLayout({
       >
         <LocalBusinessJsonLd />
         <CourseJsonLd />
-        <CursorEffect />
         <Navigation />
         <main>{children}</main>
         <Footer />

@@ -21,7 +21,7 @@ export default function GallerySection() {
     <section className="py-16 lg:py-24 bg-card/40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-primary mb-4 uppercase tracking-wider">
+          <span className="section-label mb-4">
             Galleries
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-3">Campus & Classroom Gallery</h2>

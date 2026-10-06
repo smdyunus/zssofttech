@@ -258,7 +258,7 @@ export default function ContactPageClient() {
 
   return (
     <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+      <div className="absolute inset-0 bg-gradient-mesh opacity-60" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -266,36 +266,37 @@ export default function ContactPageClient() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+          <span className="section-label mb-4">Contact</span>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
             Get In <span className="gradient-text">Touch</span>
           </h1>
-          <p className="text-muted text-lg max-w-xl mx-auto">
+          <p className="text-muted text-lg max-w-xl mx-auto leading-relaxed">
             Have questions? We&apos;d love to hear from you. Send us a message
             and we&apos;ll respond as soon as possible.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-4"
           >
             {contactInfo.map((info) => (
               <a
                 key={info.label}
                 href={info.href}
-                className="flex items-start gap-4 p-4 rounded-xl border border-border/30 bg-card/30 hover:border-primary/30 transition-colors group"
+                className="premium-card flex items-start gap-4 p-5 hover:border-secondary/30 transition-all group"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:from-primary/15 group-hover:to-secondary/15 transition-colors">
                   <info.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted uppercase tracking-wider mb-1">
+                  <div className="text-[11px] text-secondary uppercase tracking-[0.14em] font-semibold mb-1">
                     {info.label}
                   </div>
-                  <div className="text-sm text-foreground">{info.value}</div>
+                  <div className="text-sm text-foreground font-medium leading-snug">{info.value}</div>
                 </div>
               </a>
             ))}
@@ -304,11 +305,11 @@ export default function ContactPageClient() {
               href={`https://wa.me/${instituteInfo.contact.whatsapp.replace(/\D/g, '')}?text=Hi%20ZS%20Soft%20Tech!%20I%27m%20interested%20in%20your%20courses.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/20 hover:bg-green-500/20 transition-colors"
+              className="flex items-center gap-3 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/80 transition-colors"
             >
-              <MessageCircle className="w-5 h-5 text-green-400" />
+              <MessageCircle className="w-5 h-5 text-emerald-600" />
               <div>
-                <div className="text-sm font-semibold text-green-400">
+                <div className="text-sm font-semibold text-emerald-700">
                   Chat on WhatsApp
                 </div>
                 <div className="text-xs text-muted">Quick response guaranteed</div>
@@ -323,9 +324,9 @@ export default function ContactPageClient() {
             className="lg:col-span-3"
           >
             {submitted ? (
-              <div className="glass rounded-2xl p-12 text-center">
-                <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+              <div className="premium-panel p-12 text-center">
+                <CheckCircle className="w-16 h-16 text-emerald-600 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
                   Thank You!
                 </h3>
                 <p className="text-muted">
@@ -336,13 +337,14 @@ export default function ContactPageClient() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="glass rounded-2xl p-8 space-y-5"
+                className="premium-panel p-8 sm:p-10 space-y-5 relative overflow-hidden"
               >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      className="block text-sm font-semibold text-foreground mb-2"
                     >
                       Full Name *
                     </label>
@@ -356,13 +358,13 @@ export default function ContactPageClient() {
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.name)}
                       aria-describedby={errors.name ? 'name-error' : undefined}
-                      className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                        errors.name ? 'border-red-500' : 'border-border/50'
+                      className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
+                        errors.name ? 'border-red-500' : 'border-border'
                       }`}
                       placeholder="Your full name"
                     />
                     {errors.name && (
-                      <p id="name-error" className="text-xs text-red-400 mt-1">
+                      <p id="name-error" className="text-xs text-red-500 mt-1">
                         {errors.name}
                       </p>
                     )}
@@ -370,7 +372,7 @@ export default function ContactPageClient() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      className="block text-sm font-semibold text-foreground mb-2"
                     >
                       Phone Number *
                     </label>
@@ -386,13 +388,13 @@ export default function ContactPageClient() {
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.phone)}
                       aria-describedby={errors.phone ? 'phone-error' : undefined}
-                      className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                        errors.phone ? 'border-red-500' : 'border-border/50'
+                      className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
+                        errors.phone ? 'border-red-500' : 'border-border'
                       }`}
                       placeholder="10 digits, starts with 6–9"
                     />
                     {errors.phone && (
-                      <p id="phone-error" className="text-xs text-red-400 mt-1">
+                      <p id="phone-error" className="text-xs text-red-500 mt-1">
                         {errors.phone}
                       </p>
                     )}
@@ -402,7 +404,7 @@ export default function ContactPageClient() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-sm font-semibold text-foreground mb-2"
                   >
                     Email Address *
                   </label>
@@ -416,13 +418,13 @@ export default function ContactPageClient() {
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? 'email-error' : undefined}
-                    className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                      errors.email ? 'border-red-500' : 'border-border/50'
+                    className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
+                      errors.email ? 'border-red-500' : 'border-border'
                     }`}
                     placeholder="your@email.com"
                   />
                   {errors.email && (
-                    <p id="email-error" className="text-xs text-red-400 mt-1">
+                    <p id="email-error" className="text-xs text-red-500 mt-1">
                       {errors.email}
                     </p>
                   )}
@@ -431,7 +433,7 @@ export default function ContactPageClient() {
                 <div>
                   <label
                     htmlFor="course"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-sm font-semibold text-foreground mb-2"
                   >
                     Interested Course *
                   </label>
@@ -442,9 +444,9 @@ export default function ContactPageClient() {
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.course)}
                     aria-describedby={errors.course ? 'course-error' : undefined}
-                    className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                      errors.course ? 'border-red-500' : 'border-border/50'
-                    } ${!formState.course ? 'text-gray-500' : ''}`}
+                    className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
+                      errors.course ? 'border-red-500' : 'border-border'
+                    } ${!formState.course ? 'text-muted' : ''}`}
                   >
                     <option value="">Select a course</option>
                     {courseOptions.map((opt) => (
@@ -454,7 +456,7 @@ export default function ContactPageClient() {
                     ))}
                   </select>
                   {errors.course && (
-                    <p id="course-error" className="text-xs text-red-400 mt-1">
+                    <p id="course-error" className="text-xs text-red-500 mt-1">
                       {errors.course}
                     </p>
                   )}
@@ -463,7 +465,7 @@ export default function ContactPageClient() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-sm font-semibold text-foreground mb-2"
                   >
                     Message *
                   </label>
@@ -480,15 +482,15 @@ export default function ContactPageClient() {
                         ? 'message-error'
                         : 'message-char-hint'
                     }
-                    className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-foreground text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none ${
-                      errors.message ? 'border-red-500' : 'border-border/50'
+                    className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all resize-none ${
+                      errors.message ? 'border-red-500' : 'border-border'
                     }`}
                     placeholder="Your questions or requirements (required)"
                     required
                   />
                   <div className="flex flex-wrap items-center justify-between gap-2 mt-1">
                     {errors.message ? (
-                      <p id="message-error" className="text-xs text-red-400">
+                      <p id="message-error" className="text-xs text-red-500">
                         {errors.message}
                       </p>
                     ) : (
@@ -516,7 +518,7 @@ export default function ContactPageClient() {
                         </a>
                         <a
                           href={`tel:${instituteInfo.contact.phone.replace(/\D/g, '')}`}
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border/60 text-foreground text-sm font-semibold hover:bg-white/5"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border/60 text-foreground text-sm font-semibold hover:bg-background-alt"
                         >
                           <Phone className="w-4 h-4" />
                           Call {instituteInfo.contact.phone}
@@ -529,7 +531,7 @@ export default function ContactPageClient() {
                 <button
                   type="submit"
                   disabled={submitting || mailDelivery === 'loading'}
-                  className="w-full py-4 bg-gradient-primary text-white rounded-xl font-semibold text-base hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none"
+                  className="btn-premium w-full disabled:opacity-60 disabled:pointer-events-none disabled:transform-none"
                 >
                   <Send className="w-4 h-4" />
                   {mailDelivery === 'loading'

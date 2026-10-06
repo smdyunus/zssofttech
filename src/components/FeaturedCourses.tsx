@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Clock, Wifi, MonitorPlay, MapPin, CheckCircle2, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { FEATURE_SHOW_COURSE_FEES } from '@/lib/feature-flags';
 import { courses } from '@/lib/data/courses';
 
@@ -11,36 +11,14 @@ interface FeaturedCoursesProps {
   limit?: number;
 }
 
-const badgeStyles: Record<string, string> = {
-  'Best in Market': 'bg-amber-500 text-white',
-  Bestseller: 'bg-amber-500 text-white',
-  'Career Ready': 'bg-emerald-600 text-white',
-  Hot: 'bg-red-600 text-white',
-  Popular: 'bg-blue-600 text-white',
-  New: 'bg-purple-600 text-white',
-};
-
-const levelColors: Record<string, string> = {
-  Beginner: 'text-emerald-400 bg-emerald-400/10',
-  Intermediate: 'text-blue-400 bg-blue-400/10',
-  Advanced: 'text-purple-400 bg-purple-400/10',
-};
-
-const modeIcon = (mode: string) => {
-  if (mode === 'Online') return <Wifi className="w-3 h-3" />;
-  if (mode === 'Offline') return <MapPin className="w-3 h-3" />;
-  return <MonitorPlay className="w-3 h-3" />;
-};
-
 export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCoursesProps) {
   const displayCourses = limit ? courses.slice(0, limit) : courses;
 
   return (
-    <section className="py-16 lg:py-24 bg-[#0A0A0A] relative overflow-hidden">
-      {/* Background glows */}
+    <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -translate-x-1/2" />
-        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-3xl translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[420px] h-[420px] rounded-full bg-secondary/5 blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -51,146 +29,120 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <span className="inline-block text-xs font-semibold text-primary uppercase tracking-widest mb-3 px-3 py-1 bg-primary/10 rounded-full">
-              Our Programs
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="section-label mb-3">Our Programs</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
               Master Software Development
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted text-lg max-w-2xl mx-auto">
               Structured courses designed to make you{' '}
               <span className="text-primary font-semibold">job-ready</span>.
             </p>
           </motion.div>
         )}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayCourses.map((course, index) => (
-            <motion.div
-              key={course.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: index * 0.06, duration: 0.5, ease: 'easeOut' }}
-              whileHover={{ y: -8, transition: { duration: 0.25 } }}
-              className="group relative rounded-2xl border border-gray-800/60 bg-[#141414] hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 overflow-hidden flex flex-col"
-            >
-              {/* Course Image */}
-              <div className="relative h-44 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover opacity-55 group-hover:opacity-75 group-hover:scale-105 transition-all duration-600"
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          {displayCourses.map((course, index) => {
+            const features = [
+              `${course.mode} Classes`,
+              `Duration: ${course.duration}`,
+              `Level: ${course.level}`,
+              ...course.highlights.slice(0, 2),
+            ].slice(0, 5);
 
-                {/* Badge */}
-                {course.badge && (
-                  <span className={`absolute top-3 left-3 px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wide ${badgeStyles[course.badge] || 'bg-gray-700 text-white'}`}>
-                    {course.badge}
-                  </span>
-                )}
-
-                {/* Hero Text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-5xl font-black text-white/20 tracking-tighter pointer-events-none select-none">
-                    {course.heroText || course.shortTitle}
-                  </span>
-                </div>
-
-                {/* Mode + Level */}
-                <div className="absolute bottom-3 right-3 flex gap-1.5">
-                  <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold ${levelColors[course.level] || 'text-gray-400 bg-gray-700/60'}`}>
-                    {course.level}
-                  </span>
-                  <span className="flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold text-gray-300 bg-black/50">
-                    {modeIcon(course.mode)}
-                    {course.mode}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 flex flex-col flex-grow">
-                {/* Category + Duration */}
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[10px] text-primary/80 uppercase tracking-widest font-semibold">
+            return (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: index * 0.05, duration: 0.45, ease: 'easeOut' }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="group flex flex-col rounded-2xl overflow-hidden border border-border/80 bg-white shadow-[0_8px_30px_rgba(42,20,80,0.06)] hover:shadow-[0_20px_50px_rgba(42,20,80,0.12)] hover:border-secondary/25 transition-all duration-300"
+              >
+                {/* Gradient header */}
+                <div className="relative bg-gradient-to-br from-primary via-[#c2410c] to-[#2a1450] px-5 pt-7 pb-9 min-h-[158px] flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_45%)]" />
+                  <p className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80 mb-1.5">
                     {course.categoryLabel}
-                  </span>
-                  <span className="flex items-center gap-1 text-[11px] text-gray-500">
-                    <Clock className="w-3 h-3" />
-                    {course.durationHours || course.duration}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="font-bold text-foreground text-base mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
-                  {course.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs text-gray-500 line-clamp-2 mb-3">
-                  {course.description}
-                </p>
-
-                {/* Key Highlights */}
-                <ul className="space-y-1.5 mb-4">
-                  {course.highlights.slice(0, 2).map((h, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-gray-400">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary/70 mt-0.5 flex-shrink-0" />
-                      <span className="line-clamp-1">{h}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {course.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 bg-gray-800/80 border border-gray-700/60 text-gray-400 text-[10px] rounded font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {course.technologies.length > 4 && (
-                    <span className="px-2 py-0.5 bg-gray-800/80 border border-gray-700/60 text-gray-500 text-[10px] rounded font-medium">
-                      +{course.technologies.length - 4}
+                  </p>
+                  <h3 className="relative text-xl font-extrabold text-white leading-tight line-clamp-2 tracking-tight">
+                    {course.shortTitle}
+                  </h3>
+                  <p className="relative text-sm text-white/85 mt-1.5 line-clamp-2">
+                    {course.highlights[0] || course.description}
+                  </p>
+                  {course.badge && (
+                    <span className="absolute bottom-3 left-5 inline-flex items-center px-2.5 py-1 rounded-md bg-white text-[10px] font-bold text-[#2a1450] shadow-sm">
+                      {course.badge}
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[11px] text-gray-500 mb-4">
-                  <Clock className="w-3 h-3 shrink-0" />
-                  <span>{course.duration}</span>
+                {/* Feature list */}
+                <div className="px-5 py-4 flex-grow bg-white">
+                  <ul className="divide-y divide-border/80">
+                    {features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2.5 py-2.5 text-sm text-foreground">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                        <span className="line-clamp-1">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-800/60 mt-auto">
-                  <Link
-                    href={`/courses/${course.slug}`}
-                    className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:gap-2.5 transition-all duration-200 group/link"
-                  >
-                    Course Details
-                    <ChevronRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                  </Link>
-                  {FEATURE_SHOW_COURSE_FEES && course.price && (
-                    <div className="text-right">
+                {/* Snapshot / pricing band */}
+                <div className="px-5 py-4 bg-[#fff4eb] border-t border-primary/10">
+                  <p className="text-sm font-bold text-[#2a1450] mb-2">
+                    {FEATURE_SHOW_COURSE_FEES && course.price ? 'Best Price' : 'Program Snapshot'}
+                  </p>
+                  {FEATURE_SHOW_COURSE_FEES && course.price ? (
+                    <div className="space-y-1.5 text-sm">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground">Training</span>
+                        <span className="font-bold text-primary">{course.price}</span>
+                      </div>
                       {course.originalPrice && (
-                        <span className="block text-[11px] text-gray-500 line-through font-semibold">
-                          {course.originalPrice}
-                        </span>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-muted">List price</span>
+                          <span className="text-muted line-through">{course.originalPrice}</span>
+                        </div>
                       )}
-                      <span className="font-extrabold text-foreground text-base">{course.price}</span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground">Mode</span>
+                        <span className="font-semibold text-secondary">{course.mode}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-1.5 text-sm">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground">Duration</span>
+                        <span className="font-bold text-primary">{course.duration}</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground">Mode</span>
+                        <span className="font-semibold text-secondary">{course.mode}</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-foreground">Level</span>
+                        <span className="font-semibold text-[#2a1450]">{course.level}</span>
+                      </div>
                     </div>
                   )}
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* CTA */}
+                <div className="p-4 pt-3 bg-white">
+                  <Link
+                    href={`/courses/${course.slug}`}
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-[#c2410c] px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:brightness-110 hover:gap-3"
+                  >
+                    View Course Details
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {limit && courses.length > limit && (
@@ -202,7 +154,7 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
           >
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-primary text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
             >
               View All {courses.length} Courses
               <ArrowRight className="w-4 h-4" />
