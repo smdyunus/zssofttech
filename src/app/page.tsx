@@ -23,7 +23,7 @@ export default function Home() {
         id="gallery"
         variant="dark"
         className="bg-dark-bg py-24"
-        title="Life at ZS Global Tech Solutions"
+        title="Life at ZS Soft Tech"
         description="Training sessions, workshops, celebrations, and the collaborative learning environment at our Nandyal center."
         items={companyGalleryItems}
       />

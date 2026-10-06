@@ -8,7 +8,7 @@ export interface GalleryItem {
   orientation: GalleryOrientation;
 }
 
-/** Life at ZS Global Tech Solutions — internship photo gallery (14 items). */
+/** Life at ZS Soft Tech — internship photo gallery (14 items). */
 export const companyGalleryItems: GalleryItem[] = [
   {
     src: "/images/realex-gallery/alumni-group.jpeg",
