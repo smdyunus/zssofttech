@@ -63,10 +63,10 @@ export function WhyChooseUs() {
           <span className="section-label">
             Why students choose ZS Soft Tech
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
+          <h2 className="mt-3 section-heading">
             Clarity, structure, and honest guidance
           </h2>
-          <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
+          <p className="mt-4 section-lead section-lead-center text-muted">
             Whether you need a <strong className="text-foreground">college-ready internship file</strong> or a{" "}
             <strong className="text-foreground">deeper paid program</strong>, we focus on skills you can demonstrate in
             interviews — not hype.

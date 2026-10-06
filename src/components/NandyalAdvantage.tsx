@@ -45,9 +45,9 @@ const advantages = [
   },
   {
     icon: ShieldCheck,
-    title: 'Placement Guarantee',
+    title: 'Placement Support',
     description:
-      '100% Placement Assistance with interview prep, resume support, mock interviews, and referrals to hiring partners.',
+      'Interview prep, resume reviews, mock interviews, and introductions to hiring partners — practical career guidance at every step.',
   },
 ];
 
@@ -70,15 +70,15 @@ export default function NandyalAdvantage() {
             <span className="section-label mb-4">
               Why Nandyal?
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="section-heading text-foreground mb-6">
               The{' '}
               <span className="gradient-text-blue">Nandyal Advantage</span>
             </h2>
-            <p className="text-muted text-lg mb-8 leading-relaxed">
-              World-class AI, DevOps, and Full Stack training is no longer
-              limited to metro cities. ZS Soft Tech brings cutting-edge
-              technology education to Nandyal — with the same curriculum,
-              tools, and placement support that top-tier institutes offer.
+            <p className="section-lead mb-8 max-w-none text-muted">
+              Strong AI, DevOps, and Full Stack training no longer means moving
+              to a metro. ZS Soft Tech brings industry-ready curriculum, modern
+              tools, and placement guidance to Nandyal — so talent can grow where
+              they live.
             </p>
             <Link
               href="/about"

@@ -18,6 +18,7 @@ import {
   TestTube,
   Stethoscope,
   Bot,
+  Building2,
 } from 'lucide-react';
 import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
@@ -29,6 +30,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'DevOps & Cloud': <Cloud className="w-4 h-4" />,
   'Data Science & AI': <Brain className="w-4 h-4" />,
   Testing: <TestTube className="w-4 h-4" />,
+  'Enterprise & ERP': <Building2 className="w-4 h-4" />,
   Healthcare: <Stethoscope className="w-4 h-4" />,
   Architecture: <Network className="w-4 h-4" />,
 };
@@ -127,9 +129,9 @@ export default function Navigation() {
                     >
                       {/* pt-2 bridges trigger → panel so pointer stays inside hover target (no dead gap from mt-2) */}
                       <div className="max-h-[calc(80vh-0.5rem)] overflow-y-auto rounded-2xl border border-border bg-white p-6 shadow-2xl shadow-secondary/10">
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="columns-1 sm:columns-2 gap-x-8">
                           {courseCategories.map((cat) => (
-                            <div key={cat.title}>
+                            <div key={cat.title} className="mb-6 break-inside-avoid">
                               <div className="mb-3 flex items-center gap-2">
                                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
                                   {categoryIcons[cat.title] || (

@@ -31,13 +31,13 @@ export function InternshipCTA() {
             Counselling · Nandyal
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white">
+          <h2 className="section-heading hero-copy">
             Not sure which track fits you?
           </h2>
-          <p className="mt-4 text-lg text-white/60 max-w-xl mx-auto">
+          <p className="mt-4 section-lead section-lead-center hero-copy-muted">
             Message us with your course, semester, and goal. We&apos;ll help you pick the{" "}
-            <strong className="text-white/90">free internship model</strong> or the{" "}
-            <strong className="text-white/90">premium program</strong> — only what you need.
+            <strong className="text-white">free internship model</strong> or the{" "}
+            <strong className="text-white">premium program</strong> — only what you need.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className={buttonClassName({ size: "xl", className: "group" })}>

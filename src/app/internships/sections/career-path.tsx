@@ -45,12 +45,11 @@ export function CareerPath() {
           <span className="section-label">
             Your journey
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
+          <h2 className="mt-3 section-heading">
             From learning to credible proof
           </h2>
-          <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
-            A simple path: learn with structure, build evidence, demonstrate competence, then pursue roles with honest
-            support — no false guarantees.
+          <p className="mt-4 section-lead section-lead-center text-muted">
+            Learn with structure, build evidence, demonstrate competence, then pursue roles with honest support — no false guarantees.
           </p>
         </motion.div>
 

@@ -82,17 +82,11 @@ export default function Testimonials() {
           className="text-center mb-12 lg:mb-14"
         >
           <span className="section-label-purple mb-4">Recognition</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-foreground tracking-tight mb-3">
-            <span className="relative inline-block px-2">
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 sm:h-3.5 bg-secondary/15 rounded-sm -z-10"
-              />
-              What Our Students Say On Google
-            </span>
+          <h2 className="section-heading text-foreground mb-3">
+            What Students Say on Google
           </h2>
-          <p className="text-muted text-base sm:text-lg max-w-xl mx-auto mb-3">
-            Direct Google Reviews From Our Happy Learners
+          <p className="section-lead section-lead-center text-muted mb-3">
+            Honest reviews from learners who trained with us in Nandyal.
           </p>
           <div className="inline-flex items-center gap-2 text-sm text-foreground/80">
             <span className="font-bold text-foreground">{googleReviewStats.rating.toFixed(1)}</span>

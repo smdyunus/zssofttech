@@ -24,9 +24,9 @@ export default function GallerySection() {
           <span className="section-label mb-4">
             Galleries
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">Campus & Classroom Gallery</h2>
-          <p className="text-muted text-base max-w-2xl mx-auto">
-            A quick preview of training sessions, student activities, and project work.
+          <h2 className="section-heading text-foreground mb-3">Campus & Classroom Moments</h2>
+          <p className="section-lead section-lead-center text-muted">
+            A look at training sessions, student activities, and project work at our Nandyal center.
           </p>
         </div>
 

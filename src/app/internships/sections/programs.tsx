@@ -149,10 +149,10 @@ export function Programs() {
           <span className="text-sm font-medium text-sky-600 dark:text-sky-400 uppercase tracking-wider">
             Model 2 · Premium training program
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
+          <h2 className="mt-3 section-heading">
             Paid tracks — deeper mentoring & placement support
           </h2>
-          <p className="mt-4 text-lg text-foreground-muted max-w-2xl mx-auto">
+          <p className="mt-4 section-lead section-lead-center text-muted">
             Optional intensive programs for learners who want structured training, extended mentorship, and interview
             readiness. <strong className="text-foreground">Separate from the free AICTE-format internship model</strong>{" "}
             above — fees apply only if you choose one of these tracks.

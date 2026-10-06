@@ -30,12 +30,13 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
             className="text-center mb-14"
           >
             <span className="section-label mb-3">Our Programs</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-              Master Software Development
+            <h2 className="section-heading text-foreground mb-4">
+              Learn Skills That Get You Hired
             </h2>
-            <p className="text-muted text-lg max-w-2xl mx-auto">
-              Structured courses designed to make you{' '}
-              <span className="text-primary font-semibold">job-ready</span>.
+            <p className="section-lead section-lead-center text-muted">
+              From beginner-friendly tracks to advanced programs — pick a course,
+              learn with hands-on projects, and build the confidence to start your
+              IT career in Nandyal.
             </p>
           </motion.div>
         )}
@@ -60,19 +61,19 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                 className="group flex flex-col rounded-2xl overflow-hidden border border-border/80 bg-white shadow-[0_8px_30px_rgba(42,20,80,0.06)] hover:shadow-[0_20px_50px_rgba(42,20,80,0.12)] hover:border-secondary/25 transition-all duration-300"
               >
                 {/* Gradient header */}
-                <div className="relative bg-gradient-to-br from-primary via-[#c2410c] to-[#2a1450] px-5 pt-7 pb-9 min-h-[158px] flex flex-col justify-end">
+                <div className="relative bg-gradient-to-br from-primary via-primary-dark to-brand-deep px-5 pt-7 pb-9 min-h-[158px] flex flex-col justify-end">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_45%)]" />
-                  <p className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80 mb-1.5">
+                  <p className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-white/85 mb-1.5">
                     {course.categoryLabel}
                   </p>
                   <h3 className="relative text-xl font-extrabold text-white leading-tight line-clamp-2 tracking-tight">
                     {course.shortTitle}
                   </h3>
-                  <p className="relative text-sm text-white/85 mt-1.5 line-clamp-2">
+                  <p className="relative text-sm text-white/90 mt-1.5 line-clamp-2">
                     {course.highlights[0] || course.description}
                   </p>
                   {course.badge && (
-                    <span className="absolute bottom-3 left-5 inline-flex items-center px-2.5 py-1 rounded-md bg-white text-[10px] font-bold text-[#2a1450] shadow-sm">
+                    <span className="absolute bottom-3 left-5 inline-flex items-center px-2.5 py-1 rounded-md bg-white text-[10px] font-bold text-brand-deep shadow-sm">
                       {course.badge}
                     </span>
                   )}
@@ -91,8 +92,8 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                 </div>
 
                 {/* Snapshot / pricing band */}
-                <div className="px-5 py-4 bg-[#fff4eb] border-t border-primary/10">
-                  <p className="text-sm font-bold text-[#2a1450] mb-2">
+                <div className="px-5 py-4 bg-primary/[0.06] border-t border-primary/10">
+                  <p className="text-sm font-bold text-brand-deep mb-2">
                     {FEATURE_SHOW_COURSE_FEES && course.price ? 'Best Price' : 'Program Snapshot'}
                   </p>
                   {FEATURE_SHOW_COURSE_FEES && course.price ? (
@@ -124,7 +125,7 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                       </div>
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-foreground">Level</span>
-                        <span className="font-semibold text-[#2a1450]">{course.level}</span>
+                        <span className="font-semibold text-brand-deep">{course.level}</span>
                       </div>
                     </div>
                   )}
@@ -134,7 +135,7 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
                 <div className="p-4 pt-3 bg-white">
                   <Link
                     href={`/courses/${course.slug}`}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-[#c2410c] px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:brightness-110 hover:gap-3"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary-dark px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:brightness-110 hover:gap-3"
                   >
                     View Course Details
                     <ArrowRight className="w-4 h-4" />

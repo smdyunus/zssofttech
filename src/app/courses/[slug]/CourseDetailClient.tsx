@@ -78,11 +78,11 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
 
         <div className="relative z-10 container mx-auto px-4 pt-10 pb-14 lg:pb-20">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-[#5c5668] mb-7">
+          <nav className="flex items-center gap-2 text-xs text-muted mb-7">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <ChevronRight className="w-3 h-3 text-[#8a8496]" />
+            <ChevronRight className="w-3 h-3 text-muted/70" />
             <Link href="/courses" className="hover:text-primary transition-colors">Courses</Link>
-            <ChevronRight className="w-3 h-3 text-[#8a8496]" />
+            <ChevronRight className="w-3 h-3 text-muted/70" />
             <span className="text-secondary font-semibold">{course.shortTitle}</span>
           </nav>
 
@@ -98,14 +98,14 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
                 <span className={`px-2.5 py-1 text-[11px] font-semibold rounded-md border ${levelColors[course.level]}`}>{course.level}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-[#1c1528] leading-tight tracking-tight">{course.title}</h1>
+              <h1 className="page-heading text-foreground">{course.title}</h1>
 
-              <p className="text-[#2f2a3a] text-sm sm:text-base leading-relaxed max-w-2xl">{course.overview}</p>
+              <p className="section-lead max-w-2xl text-muted">{course.overview}</p>
 
               {/* Meta Row */}
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-border text-[#1c1528] shadow-sm"><Clock className="w-4 h-4 text-primary" />{course.duration}</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-border text-[#1c1528] shadow-sm">{modeInfo.icon}<span>{modeInfo.text}</span></span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-border text-foreground shadow-sm"><Clock className="w-4 h-4 text-primary" />{course.duration}</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-border text-foreground shadow-sm">{modeInfo.icon}<span>{modeInfo.text}</span></span>
               </div>
 
               {/* CTA Buttons */}
@@ -127,7 +127,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
               <div className="relative h-40 rounded-xl overflow-hidden mb-5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={course.image} alt={course.shortTitle} className="w-full h-full object-cover" loading="eager" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2a1450]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/70 via-transparent to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-4xl font-black text-white/30 tracking-tighter">{course.heroText}</span>
                 </div>
@@ -183,11 +183,11 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4 relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Skills</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">
-              Skills &amp; Value You&apos;ll Acquire
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-2">
+              What You&apos;ll Learn
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted text-sm">
-              Key competencies you will develop in this course
+            <motion.p variants={fadeUp} custom={2} className="section-lead max-w-2xl text-muted">
+              Practical competencies you&apos;ll build through projects and guided practice
             </motion.p>
           </motion.div>
 
@@ -218,8 +218,8 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
             <motion.span variants={fadeUp} custom={0} className="section-label-purple mb-4">Tools</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Tech Stack You&apos;ll Learn
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading">
+              Tools &amp; Tech Stack
             </motion.h2>
           </motion.div>
 
@@ -247,9 +247,9 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Syllabus</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">Course Curriculum</motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted text-sm">
-              {course.curriculum.length} modules &middot; {course.durationHours || course.duration} of structured content
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-2">Course Curriculum</motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="section-lead max-w-2xl text-muted">
+              {course.curriculum.length} modules · {course.durationHours || course.duration} of structured learning
             </motion.p>
           </motion.div>
 
@@ -312,7 +312,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
             <motion.span variants={fadeUp} custom={0} className="section-label-purple mb-4">Before you begin</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold tracking-tight">
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading">
               Prerequisites
             </motion.h2>
           </motion.div>
@@ -334,9 +334,9 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Careers</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">Career Opportunities</motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted text-sm">
-              Completing this course opens doors to high-demand career paths
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-2">Career Paths</motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="section-lead max-w-2xl text-muted">
+              Roles this program prepares you to pursue with confidence
             </motion.p>
           </motion.div>
 
@@ -367,8 +367,8 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
             <motion.span variants={fadeUp} custom={0} className="section-label-purple mb-4">Why us</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Why Choose This Training?
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading">
+              Why This Program Works
             </motion.h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
@@ -403,7 +403,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
               <motion.div variants={fadeUp} custom={0} className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/15 to-secondary/10 flex items-center justify-center mx-auto mb-6">
                 <Award className="w-8 h-8 text-primary" />
               </motion.div>
-              <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold mb-3 tracking-tight">{course.certification}</motion.h2>
+              <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-3 tracking-tight">{course.certification}</motion.h2>
               <motion.p variants={fadeUp} custom={2} className="text-muted text-sm leading-relaxed mb-6">
                 Upon successful completion, you&apos;ll receive a verified certificate of completion. Include it on your CV, LinkedIn profile, or portfolio to demonstrate your skills to employers.
               </motion.p>
@@ -427,8 +427,8 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Highlights</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Course Highlights
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading">
+              Program Highlights
             </motion.h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
@@ -444,15 +444,16 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
 
       {/* ──── CTA BANNER ──── */}
       <section className="py-16 lg:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2a1450]/08 via-primary/5 to-secondary/8" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-deep/08 via-primary/5 to-secondary/8" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Get started</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">
-              Ready to Start Your Journey?
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-4">
+              Ready to Begin?
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted text-sm max-w-lg mx-auto mb-6">
-              Send us your enquiry and take the first step towards mastering {course.shortTitle}. Our expert instructors and structured curriculum will get you job-ready.
+            <motion.p variants={fadeUp} custom={2} className="section-lead section-lead-center text-muted mb-6">
+              Share your enquiry and take the first step with {course.shortTitle}.
+              Our mentors and structured path help you move from learning to interview readiness.
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="flex flex-wrap justify-center gap-3">
               <ContactUsLink href={enquiryUrl} className="btn-premium">
@@ -473,8 +474,8 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
         <div className="container mx-auto px-4">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-8">
             <motion.span variants={fadeUp} custom={0} className="section-label-purple mb-4">Explore more</motion.span>
-            <motion.h2 variants={fadeUp} custom={1} className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Related Courses
+            <motion.h2 variants={fadeUp} custom={1} className="section-subheading">
+              Related Programs
             </motion.h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -492,7 +493,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
                   <div className="relative h-28 rounded-xl overflow-hidden mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={c.image} alt={c.shortTitle} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2a1450]/50 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/50 via-transparent to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-2xl font-black text-white/25">{c.heroText}</span>
                     </div>

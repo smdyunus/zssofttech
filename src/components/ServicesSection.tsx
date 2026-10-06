@@ -85,9 +85,9 @@ export default function ServicesSection() {
           <span className="section-label mb-3">
             What We Do
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">Core Capabilities</h2>
-          <p className="text-base text-muted mt-4 max-w-3xl mx-auto">
-            End-to-end technology solutions for startups, institutions, and growing teams.
+          <h2 className="section-heading text-foreground">Services Built to Scale</h2>
+          <p className="section-lead section-lead-center text-muted mt-4">
+            Training, development, and career support for students, startups, and growing teams — delivered with clarity and craft.
           </p>
         </motion.div>
 

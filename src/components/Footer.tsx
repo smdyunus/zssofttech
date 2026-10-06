@@ -33,6 +33,7 @@ const courseLinks = [
   { name: 'Agentic AI Using UiPath + Automation', href: '/courses/automation-agentic-ai-uipath' },
   { name: 'Python & Data Analysis — 45-Day Fast Track', href: '/courses/python-data-analysis-45-day-fast-track' },
   { name: 'MERN Stack Development', href: '/courses/mern-stack' },
+  { name: 'Python Full Stack Course', href: '/courses/python-full-stack' },
   { name: 'Java Spring Boot', href: '/courses/java-spring-boot' },
   { name: 'Agentic AI & Gen AI', href: '/courses/agentic-ai' },
   { name: 'Data Science + AI', href: '/courses/ds-ai' },
@@ -51,7 +52,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#2a1450] text-white border-t border-secondary/40">
+    <footer className="bg-brand-deep text-white border-t border-secondary/40">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -68,8 +69,8 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm text-purple-100/75 leading-relaxed mb-6">
-              Premium IT Training & Software Development Hub in Nandyal.
-              Empowering the next generation of tech professionals.
+              Premium IT training and software development in Nandyal —
+              helping the next generation of tech professionals build real skills and careers.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -207,14 +208,14 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-[#22103f]">
-        <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-purple-200/70">
+      <div className="border-t border-white/10 bg-dark-bg">
+        <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/65">
           <p>&copy; {new Date().getFullYear()} ZS Soft Tech. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/apps/sunshine-developers/privacy-policy" className="hover:text-purple-200 transition-colors">
+            <Link href="/apps/sunshine-developers/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-purple-200 transition-colors">
+            <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
           </div>

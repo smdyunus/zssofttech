@@ -2,7 +2,7 @@ import { FEATURE_INTERNSHIPS } from "@/lib/feature-flags";
 
 export const instituteInfo = {
   name: "ZS Soft Tech",
-  tagline: "Premium IT Training & Software Development Hub",
+  tagline: "Premium IT Training & Software Development",
   founded: 2024,
   location: "Nandyal, Andhra Pradesh, India",
   address:
@@ -71,26 +71,20 @@ export const navLinks: NavLinkItem[] = FEATURE_INTERNSHIPS
 
 export const courseCategories = [
   {
+    title: "Full Stack Development",
+    items: [
+      { name: "MERN Stack (MongoDB, Express, React, Node)", href: "/courses/mern-stack" },
+      { name: "Python Full Stack Course", href: "/courses/python-full-stack" },
+      { name: "Java Full Stack (Spring Boot)", href: "/courses/java-spring-boot" },
+    ],
+  },
+  {
     title: "Automation & Agentic AI",
     items: [
       {
         name: "Agentic AI Using UiPath + Automation",
         href: "/courses/automation-agentic-ai-uipath",
       },
-    ],
-  },
-  {
-    title: "Full Stack Development",
-    items: [
-      { name: "MERN Stack (MongoDB, Express, React, Node)", href: "/courses/mern-stack" },
-      { name: "Java Full Stack (Spring Boot)", href: "/courses/java-spring-boot" },
-    ],
-  },
-  {
-    title: "DevOps & Cloud",
-    items: [
-      { name: "AWS Cloud & DevOps", href: "/courses/aws-devops" },
-      { name: "Microsoft Azure", href: "/courses/azure-cloud" },
     ],
   },
   {
@@ -105,11 +99,18 @@ export const courseCategories = [
     ],
   },
   {
+    title: "DevOps & Cloud",
+    items: [
+      { name: "AWS Cloud & DevOps", href: "/courses/aws-devops" },
+      { name: "Microsoft Azure", href: "/courses/azure-cloud" },
+    ],
+  },
+  {
     title: "Testing",
     items: [
       { name: "Manual Testing", href: "/courses/manual-testing" },
       { name: "Automation Testing (Selenium)", href: "/courses/automation-testing" },
-      { name: "Automation Testing with Playwright, TypeScript and AI", href: "/courses/playwright-ai-typescript" },
+      { name: "Playwright, TypeScript & AI", href: "/courses/playwright-ai-typescript" },
     ],
   },
   {

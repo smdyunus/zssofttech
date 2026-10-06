@@ -21,16 +21,16 @@ export default function BlogPage() {
           alt="ZS Soft Tech Blog"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/92 via-dark-bg/72 to-brand-deep/45" />
         <div className="relative z-10 h-full flex flex-col items-start justify-center container mx-auto px-6">
-          <p className="text-orange-300 text-xs uppercase tracking-widest font-semibold mb-2">
+          <p className="banner-eyebrow mb-2">
             Knowledge Hub
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white max-w-xl">
-            Our <span className="text-orange-400">Blog</span>
+          <h1 className="page-heading hero-copy max-w-xl">
+            Insights for Your <span className="text-primary">Tech Career</span>
           </h1>
-          <p className="text-white/80 text-sm mt-2">
-            Insights, tutorials &amp; career guidance for IT professionals
+          <p className="hero-copy-muted text-sm sm:text-base mt-2 max-w-lg">
+            Tutorials, career guidance, and industry notes from ZS Soft Tech
           </p>
         </div>
       </section>

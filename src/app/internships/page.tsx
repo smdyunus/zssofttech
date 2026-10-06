@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AicteInternshipSection } from "./sections/aicte-internship-section";
 import { CareerPath } from "./sections/career-path";
 import { InternshipCTA } from "./sections/internship-cta";
+import { InternshipGallery } from "./sections/internship-gallery";
 import { InternshipHero } from "./sections/internship-hero";
 import { InternshipTwoModels } from "./sections/internship-two-models";
 import { Programs } from "./sections/programs";
@@ -22,6 +23,7 @@ export default function InternshipsPage() {
       <Programs />
       <WhyChooseUs />
       <CareerPath />
+      <InternshipGallery />
       <InternshipCTA />
     </>
   );

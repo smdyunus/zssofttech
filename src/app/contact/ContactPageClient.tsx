@@ -267,12 +267,12 @@ export default function ContactPageClient() {
           className="text-center mb-16"
         >
           <span className="section-label mb-4">Contact</span>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-            Get In <span className="gradient-text">Touch</span>
+          <h1 className="page-heading text-foreground mb-4">
+            Let&apos;s <span className="gradient-text">Talk</span>
           </h1>
-          <p className="text-muted text-lg max-w-xl mx-auto leading-relaxed">
-            Have questions? We&apos;d love to hear from you. Send us a message
-            and we&apos;ll respond as soon as possible.
+          <p className="section-lead section-lead-center text-muted">
+            Questions about courses, internships, or services? Send a message —
+            we&apos;ll respond with clear next steps.
           </p>
         </motion.div>
 
@@ -307,12 +307,16 @@ export default function ContactPageClient() {
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/80 transition-colors"
             >
-              <MessageCircle className="w-5 h-5 text-emerald-600" />
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor" className="h-5 w-5" aria-hidden>
+                  <path d="M24 4C13 4 4 13 4 24c0 3.6 1 6.9 2.7 9.8L4 44l10.5-2.7C17.2 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6-.8-8.5-2.2l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.7 30 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.8-11.9c-.5-.2-2.8-1.4-3.2-1.6-.4-.1-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.3-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.7-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.2.3-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.4-1.4-3.3-.4-.8-.7-.7-1-.7h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.6 4.4 1.9 4.7c.2.3 3.1 4.8 7.6 6.7 1.1.5 1.9.7 2.5.9 1.1.3 2 .3 2.8.2.9-.1 2.8-1.1 3.1-2.2.4-1.1.4-2 .3-2.2-.1-.2-.5-.3-.9-.5z" />
+                </svg>
+              </span>
               <div>
                 <div className="text-sm font-semibold text-emerald-700">
                   Chat on WhatsApp
                 </div>
-                <div className="text-xs text-muted">Quick response guaranteed</div>
+                <div className="text-xs text-muted">Usually replies within a few hours</div>
               </div>
             </a>
           </motion.div>

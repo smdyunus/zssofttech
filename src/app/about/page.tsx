@@ -23,49 +23,49 @@ export default function AboutPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
-              <h1 className="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
+              <h1 className="page-heading hero-copy">
                 About ZS Soft Tech
               </h1>
-              <p className="text-white/85 text-sm mt-1">Nandyal&apos;s Premier IT Training Hub</p>
+              <p className="hero-copy-muted text-sm sm:text-base mt-2 max-w-xl">
+                Nandyal&apos;s premium IT training and software development hub
+              </p>
             </div>
           </div>
 
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+            <h2 className="section-heading text-foreground mb-6">
               Our <span className="gradient-text">Story</span>
             </h2>
-            <p className="text-muted text-lg leading-relaxed">
-              Founded in 2024 with a vision to bring world-class technology education to
-              Nandyal, ZS Soft Tech is a premium IT Training & Software
-              Development Hub. In just 2 years, we have placed 150+ students and
-              established ourselves as the go-to institute for Full Stack, AI, DevOps,
-              and Testing training. Our mission is to empower the next
-              generation of tech professionals with industry-ready skills,
-              hands-on experience, and the confidence to thrive in the global
-              tech ecosystem.
+            <p className="section-lead section-lead-center max-w-3xl text-muted">
+              Founded in 2024 to bring serious technology education to Nandyal,
+              ZS Soft Tech is a premium IT training and software development hub.
+              In two years we have placed 150+ students and become a trusted
+              destination for Full Stack, AI, DevOps, and Testing. We focus on
+              industry-ready skills, hands-on projects, and the confidence to
+              grow in a global tech career.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold text-foreground mb-3">Our Vision</h3>
-              <p className="text-sm text-muted">
-                To be the leading technology education hub in Andhra Pradesh,
-                producing industry-ready professionals who compete globally.
+              <p className="text-sm text-muted leading-relaxed">
+                To be Andhra Pradesh&apos;s leading technology education hub —
+                developing professionals who compete with confidence anywhere.
               </p>
             </div>
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold text-foreground mb-3">Our Mission</h3>
-              <p className="text-sm text-muted">
-                Deliver cutting-edge, hands-on technology training with
-                personalized mentorship and guaranteed career support.
+              <p className="text-sm text-muted leading-relaxed">
+                Deliver hands-on technology training with personal mentorship
+                and practical career support at every stage.
               </p>
             </div>
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold text-foreground mb-3">Our Roots</h3>
-              <p className="text-sm text-muted">
-                Born in Nandyal, built for the world. We take pride in our
-                local roots while maintaining global standards of excellence.
+              <p className="text-sm text-muted leading-relaxed">
+                Born in Nandyal, built for the world. Local roots with global
+                standards of craft, clarity, and excellence.
               </p>
             </div>
           </div>

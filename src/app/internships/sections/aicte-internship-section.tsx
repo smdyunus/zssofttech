@@ -282,11 +282,11 @@ export function AicteInternshipSection() {
           <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
             Model 1 · For institutional records
           </span>
-          <h2 className="mt-3 text-2xl sm:text-3xl font-semibold text-foreground flex flex-wrap items-center gap-2">
+          <h2 className="mt-3 section-subheading flex flex-wrap items-center gap-2">
             <span aria-hidden>🎓</span>
             <span>AICTE-aligned internship structure</span>
           </h2>
-          <p className="mt-4 text-foreground-muted leading-relaxed">
+          <p className="mt-4 section-lead max-w-3xl text-muted">
             The numbered blocks below are a <strong className="text-foreground">checklist-style layout</strong> many
             colleges map to internship files and accreditation-style documentation. Your{" "}
             <strong className="text-foreground">college</strong> remains responsible for{" "}

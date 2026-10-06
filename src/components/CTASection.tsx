@@ -25,17 +25,17 @@ export default function CTASection() {
           <div className="relative px-6 sm:px-12 py-14 sm:py-16 text-center">
             <div className="section-label mb-6">
               <Sparkles className="w-3.5 h-3.5" />
-              Start Your Journey Today
+              Start Your Journey
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 leading-tight tracking-tight">
-              Ready to{' '}
-              <span className="gradient-text">Transform Your Career?</span>
+            <h2 className="section-heading-lg text-foreground mb-5">
+              Ready for Your{' '}
+              <span className="gradient-text">Next Step?</span>
             </h2>
 
-            <p className="text-muted text-base sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-              Join hundreds of students who have launched successful tech careers
-              from Nandyal. Your first step starts with a free counseling session.
+            <p className="section-lead section-lead-center text-muted mb-10">
+              Hundreds of students have launched tech careers from Nandyal.
+              Begin with a free counselling session and a clear path forward.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">

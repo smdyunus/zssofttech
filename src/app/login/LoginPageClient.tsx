@@ -93,10 +93,10 @@ export default function LoginPageClient() {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-primary mb-4 shadow-lg shadow-primary/25">
               <ShieldCheck className="w-7 h-7 text-white" />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 tracking-tight">
-              Student User Login
+            <h1 className="section-subheading mb-2">
+              Student Login
             </h1>
-            <p className="text-muted text-sm">
+            <p className="section-lead section-lead-center text-sm max-w-sm text-muted">
               Sign in with your institute-issued credentials
             </p>
           </div>

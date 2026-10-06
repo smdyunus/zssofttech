@@ -28,13 +28,13 @@ const allSlides: HeroSlide[] = [
     id: 5,
     title: 'Break the “No Experience — No Job” Cycle',
     subtitle:
-      'Class to Career Internship at ZS Soft Tech — real projects, mentorship, and a clear path into tech. Any degree eligible.',
+      'Class-to-career internships with real projects, mentorship, and a clear path into tech — open to every degree background.',
     cta: 'Explore Internships',
     ctaSecondary: 'Contact Us',
     gradient: 'from-secondary/40 via-primary/25 to-accent/30',
     highlight: 'Internships',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=70',
-    overlayClass: 'bg-black/50',
+    overlayClass: 'bg-black/65',
     primaryTo: 'internships',
     secondaryTo: 'contact',
   },
@@ -48,46 +48,49 @@ const allSlides: HeroSlide[] = [
     gradient: 'from-primary/35 via-secondary/25 to-accent/30',
     highlight: '45-Day Fast Track',
     image: '/images/hero/hero-python-45day-fasttrack.png',
-    overlayClass: 'bg-black/50',
+    overlayClass: 'bg-black/70',
     primaryTo: 'contact',
     secondaryTo: 'courses',
   },
   {
     id: 2,
-    title: 'Master the Future of Technology in Nandyal',
-    subtitle: 'From Agentic AI & Gen AI to Full Stack Development, DevOps, and System Design — get industry-ready with hands-on training.',
+    title: 'Learn Tomorrow’s Tech — Starting in Nandyal',
+    subtitle:
+      'Agentic AI, Gen AI, Full Stack, DevOps, and System Design — hands-on programs designed for real industry work.',
     cta: 'Explore Courses',
     ctaSecondary: 'Book Free Demo',
     gradient: 'from-primary/35 via-secondary/25 to-accent/30',
     highlight: 'AI-First',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=70',
-    overlayClass: 'bg-black/50',
+    overlayClass: 'bg-black/65',
     primaryTo: 'courses',
     secondaryTo: 'contact',
   },
   {
     id: 3,
-    title: 'Build Engineering Skills that AI Can\'t Replace',
-    subtitle: 'Real fundamentals while learning how to leverage AI to code better, faster and smarter. 100% Job-ready training.',
+    title: 'Build Skills That Stay Relevant',
+    subtitle:
+      'Strong engineering fundamentals, practical AI workflows, and projects you can show in interviews — training built for real roles.',
     cta: 'Explore Courses',
     ctaSecondary: 'Contact Us',
     gradient: 'from-secondary/35 via-primary/20 to-accent/30',
-    highlight: '90% Placement',
+    highlight: 'Career Ready',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=70',
-    overlayClass: 'bg-black/50',
+    overlayClass: 'bg-black/65',
     primaryTo: 'courses',
     secondaryTo: 'contact',
   },
   {
     id: 4,
-    title: 'Real-Time Software Training Institute',
-    subtitle: 'Join the Best Software Training Institute & Upgrade Your Skills! Expert trainers, hands-on projects, placement assistance.',
+    title: 'Premium Software Training in Nandyal',
+    subtitle:
+      'Expert mentors, live projects, and placement guidance — so you can grow from classroom learning to interview-ready confidence.',
     cta: 'View All Courses',
     ctaSecondary: 'WhatsApp Us',
     gradient: 'from-primary/30 via-accent/20 to-secondary/30',
     highlight: '150+ Placed',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=70',
-    overlayClass: 'bg-black/50',
+    overlayClass: 'bg-black/65',
     primaryTo: 'courses',
     secondaryTo: 'contact',
   },
@@ -125,7 +128,7 @@ export default function Hero() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#2a1450]">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-brand-deep">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -146,9 +149,10 @@ export default function Hero() {
       </AnimatePresence>
 
       <div
-        className={`absolute inset-0 transition-colors duration-500 ${slides[currentSlide].overlayClass ?? 'bg-black/55'}`}
+        className={`absolute inset-0 transition-colors duration-500 ${slides[currentSlide].overlayClass ?? 'bg-black/65'}`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#2a1450]/80 via-transparent to-[#2a1450]/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/85 via-dark-bg/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-transparent to-brand-deep/40" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="min-h-[90vh] flex flex-col justify-center py-24">
@@ -161,16 +165,16 @@ export default function Hero() {
               transition={{ duration: 0.55 }}
               className="max-w-4xl"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/12 text-orange-200 border border-white/25 text-[11px] font-semibold tracking-[0.14em] uppercase mb-6 backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/35 text-orange-100 border border-white/30 text-[11px] font-semibold tracking-[0.14em] uppercase mb-6 backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {slides[currentSlide].highlight}
               </span>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold leading-[1.12] tracking-tight mb-5 text-white drop-shadow-lg">
+              <h1 className="page-heading hero-copy mb-5">
                 {slides[currentSlide].title}
               </h1>
 
-              <p className="text-base sm:text-lg text-white/85 max-w-2xl leading-relaxed mb-9">
+              <p className="section-lead hero-copy-muted max-w-2xl mb-9">
                 {slides[currentSlide].subtitle}
               </p>
 

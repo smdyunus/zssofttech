@@ -19,18 +19,18 @@ export function InternshipTwoModels() {
           <span className="section-label">
             Two clear paths
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-foreground">
-            Choose what fits your goal
+          <h2 className="mt-3 section-heading">
+            Choose the path that fits you
           </h2>
-          <p className="mt-5 text-lg text-foreground-muted leading-relaxed">
+          <p className="mt-5 section-lead section-lead-center max-w-3xl text-muted">
             <strong className="text-foreground">ZS Soft Tech offers free internship opportunities.</strong>{" "}
-            Candidates who require structured training & mentorship can opt for our{" "}
-            <strong className="text-foreground">premium training program</strong>.
+            Candidates who need structured training and mentorship can choose our{" "}
+            <strong className="text-foreground">optional premium program</strong>.
           </p>
-          <p className="mt-4 text-sm text-foreground-muted">
-            Both tracks are described transparently below. There is no mandatory fee to participate in the{" "}
-            <span className="text-foreground font-medium">AICTE-norms–aligned internship learning model</span>.
-            Premium training is optional and clearly priced separately.
+          <p className="mt-4 text-sm text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+            Both tracks are described clearly below. There is no mandatory fee for the{" "}
+            <span className="text-foreground font-medium">AICTE-norms–aligned internship model</span>.
+            Premium training is optional and priced separately.
           </p>
         </motion.div>
 

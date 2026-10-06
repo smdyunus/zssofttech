@@ -63,7 +63,7 @@ export default function BlogArticleClient({ post, relatedPosts }: Props) {
 
       <section className="py-16 bg-card/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
+          <h2 className="section-subheading mb-8">Related Articles</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {relatedPosts.map((p) => (
               <Link key={p.id} href={`/blog/${p.slug}`} className="group p-6 rounded-2xl border border-border hover:border-primary bg-card/50 transition-all">

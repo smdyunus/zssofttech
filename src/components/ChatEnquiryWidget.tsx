@@ -66,18 +66,18 @@ function OnlineBadgeOverlay({ size = 'sm' }: { size?: 'sm' | 'md' }) {
 function BotAvatar() {
   return (
     <motion.div
-      className="relative h-9 w-9 shrink-0 shadow-md"
+      className="relative h-9 w-9 shrink-0 bg-transparent"
       aria-hidden
       animate={{ y: [0, -2, 0] }}
       transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
     >
-      <div className="h-full w-full overflow-hidden rounded-full bg-gray-200 ring-2 ring-white">
+      <div className="h-full w-full overflow-hidden rounded-full bg-transparent ring-2 ring-white shadow-md">
         <Image
           src={SUPPORT_AVATAR_SRC}
           alt=""
           width={36}
           height={36}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-top"
         />
       </div>
       <OnlineBadgeOverlay size="sm" />
@@ -323,7 +323,7 @@ export default function ChatEnquiryWidget() {
               role="dialog"
               aria-label="Chat with us"
             >
-              <div className="h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-400 shrink-0" />
+              <div className="h-1 bg-gradient-to-r from-primary via-primary to-primary shrink-0" />
               <div className="flex items-center justify-end gap-1 px-2 py-2 border-b border-gray-100">
                 <button
                   type="button"
@@ -362,7 +362,7 @@ export default function ChatEnquiryWidget() {
                         className={
                           m.role === 'bot'
                             ? 'inline-block rounded-2xl rounded-tl-md bg-white border border-gray-100 px-3 py-2 text-sm text-gray-800 shadow-sm'
-                            : 'inline-block rounded-2xl rounded-tr-md bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-2 text-sm shadow-md'
+                            : 'inline-block rounded-2xl rounded-tr-md bg-gradient-to-r from-primary to-primary-dark text-white px-3 py-2 text-sm shadow-md'
                         }
                       >
                         {m.text}
@@ -419,13 +419,13 @@ export default function ChatEnquiryWidget() {
                         e.key === 'Enter' && (e.preventDefault(), handleSendName())
                       }
                       placeholder="Your full name"
-                      className="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400/50"
+                      className="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                       autoComplete="name"
                     />
                     <button
                       type="button"
                       onClick={handleSendName}
-                      className="shrink-0 w-11 h-11 rounded-xl bg-orange-500 text-white flex items-center justify-center hover:bg-orange-600 transition-colors"
+                      className="shrink-0 w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors"
                       aria-label="Send"
                     >
                       <Send className="w-4 h-4" />
@@ -440,9 +440,9 @@ export default function ChatEnquiryWidget() {
                         key={c.slug}
                         type="button"
                         onClick={() => handlePickCourse(c.slug)}
-                        className="w-full flex items-center gap-2 text-left px-3 py-2 rounded-full border border-orange-400/70 bg-white text-sm text-orange-600 font-medium hover:bg-orange-50 transition-colors"
+                        className="w-full flex items-center gap-2 text-left px-3 py-2 rounded-full border border-primary/70 bg-white text-sm text-primary font-medium hover:bg-primary/5 transition-colors"
                       >
-                        <span className="w-4 h-4 rounded-full border-2 border-orange-300 shrink-0" />
+                        <span className="w-4 h-4 rounded-full border-2 border-primary/40 shrink-0" />
                         <span className="line-clamp-2">{c.title}</span>
                       </button>
                     ))}
@@ -465,14 +465,14 @@ export default function ChatEnquiryWidget() {
                         (e.preventDefault(), handleSendPhone())
                       }
                       placeholder="10-digit mobile (starts with 6–9)"
-                      className="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400/50"
+                      className="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                       autoComplete="tel"
                     />
                     <button
                       type="button"
                       onClick={() => void handleSendPhone()}
                       disabled={mailDelivery === 'loading'}
-                      className="shrink-0 w-11 h-11 rounded-xl bg-orange-500 text-white flex items-center justify-center hover:bg-orange-600 transition-colors disabled:opacity-50"
+                      className="shrink-0 w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors disabled:opacity-50"
                       aria-label="Send"
                     >
                       <Send className="w-4 h-4" />
@@ -482,7 +482,7 @@ export default function ChatEnquiryWidget() {
 
                 {step === 'submitting' && (
                   <div className="flex items-center justify-center gap-2 py-3 text-sm text-gray-600">
-                    <Loader2 className="w-5 h-5 animate-spin text-orange-500" />
+                    <Loader2 className="w-5 h-5 animate-spin text-primary" />
                     Sending…
                   </div>
                 )}
@@ -537,7 +537,7 @@ export default function ChatEnquiryWidget() {
                   type="button"
                   onClick={openPanel}
                   aria-label="Open chat"
-                  className="relative h-14 w-14 shrink-0 overflow-visible shadow-lg shadow-black/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="relative h-14 w-14 shrink-0 bg-transparent p-0 overflow-visible focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.96 }}
                   animate={{ y: [0, -3, 0] }}
@@ -545,7 +545,7 @@ export default function ChatEnquiryWidget() {
                     y: { duration: 3.2, repeat: Infinity, ease: 'easeInOut' },
                   }}
                 >
-                  <div className="h-full w-full overflow-hidden rounded-full ring-4 ring-white/95">
+                  <div className="h-full w-full overflow-hidden rounded-full ring-4 ring-white shadow-lg shadow-black/25">
                     <Image
                       src={SUPPORT_AVATAR_SRC}
                       alt=""
@@ -566,26 +566,39 @@ export default function ChatEnquiryWidget() {
           <motion.button
             type="button"
             onClick={() => (panelOpen ? closePanel() : openPanel())}
-            className="relative h-14 w-14 shrink-0 overflow-visible shadow-lg shadow-black/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
-            aria-label={panelOpen ? 'Close chat' : 'Open chat'}
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
-            animate={{ y: [0, -3, 0] }}
-            transition={{
-              y: { duration: 3.2, repeat: Infinity, ease: 'easeInOut' },
-            }}
+            className="relative flex items-center gap-2.5 bg-transparent p-0 overflow-visible focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-full"
+            aria-label={panelOpen ? 'Close chat' : 'Chat now'}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <div className="h-full w-full overflow-hidden rounded-full ring-4 ring-white/90">
-              <Image
-                src={SUPPORT_AVATAR_SRC}
-                alt=""
-                width={56}
-                height={56}
-                className="h-full w-full object-cover object-top"
-                priority
-              />
-            </div>
-            <OnlineBadgeOverlay size="md" />
+            {!panelOpen && (
+              <span className="relative hidden sm:inline-flex items-center rounded-full bg-white px-4 py-2.5 text-sm font-medium text-foreground shadow-lg shadow-black/15">
+                Chat now
+                <span
+                  aria-hidden
+                  className="absolute right-0 top-1/2 h-2.5 w-2.5 translate-x-1/2 -translate-y-1/2 rotate-45 bg-white shadow-[1px_-1px_1px_rgba(0,0,0,0.04)]"
+                />
+              </span>
+            )}
+            <motion.span
+              className="relative block h-14 w-14 shrink-0"
+              animate={{ y: [0, -3, 0] }}
+              transition={{
+                y: { duration: 3.2, repeat: Infinity, ease: 'easeInOut' },
+              }}
+            >
+              <span className="block h-full w-full overflow-hidden rounded-full ring-4 ring-white shadow-lg shadow-black/25">
+                <Image
+                  src={SUPPORT_AVATAR_SRC}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="h-full w-full object-cover object-top"
+                  priority
+                />
+              </span>
+              <OnlineBadgeOverlay size="md" />
+            </motion.span>
           </motion.button>
         )}
       </div>
