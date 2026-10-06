@@ -28,9 +28,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://zssofttech.com"),
   icons: {
-    icon: "/zs-logo-header-cropped.png",
-    shortcut: "/zs-logo-header-cropped.png",
-    apple: "/zs-logo-header-cropped.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/zs-favicon.png", sizes: "500x500", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
   title: {
     default:
@@ -111,9 +115,9 @@ function LocalBusinessJsonLd() {
     },
     openingHours: "Mo-Sa 09:00-20:00",
     sameAs: [
-      "https://instagram.com/zssofttech",
-      "https://linkedin.com/company/zssofttech",
-      "https://youtube.com/@zssofttech",
+      "https://www.instagram.com/zssofttech_ndl/",
+      "https://www.linkedin.com/company/zsglobaltech/",
+      "https://www.youtube.com/@ZsSoftTech/",
     ],
     aggregateRating: {
       "@type": "AggregateRating",

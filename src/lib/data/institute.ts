@@ -14,9 +14,9 @@ export const instituteInfo = {
     landline: "08514-000000",
   },
   social: {
-    instagram: "#",
-    linkedin: "#",
-    youtube: "#",
+    instagram: "https://www.instagram.com/zssofttech_ndl/",
+    linkedin: "https://www.linkedin.com/company/zsglobaltech/",
+    youtube: "https://www.youtube.com/@ZsSoftTech/",
     twitter: "#",
     facebook: "#",
   },

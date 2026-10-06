@@ -48,7 +48,7 @@ const socialLinks = [
   { name: 'YouTube', href: instituteInfo.social.youtube, icon: Youtube },
   { name: 'Twitter', href: instituteInfo.social.twitter, icon: Twitter },
   { name: 'Facebook', href: instituteInfo.social.facebook, icon: Facebook },
-];
+].filter((s) => s.href && s.href !== '#');
 
 export default function Footer() {
   return (
