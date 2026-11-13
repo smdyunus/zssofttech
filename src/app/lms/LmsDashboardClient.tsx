@@ -10,9 +10,6 @@ import {
   Clock,
   LogOut,
   PlayCircle,
-  FileText,
-  Link2,
-  Video,
   Bell,
   GraduationCap,
   ArrowRight,
@@ -27,7 +24,6 @@ import {
 import {
   lmsAnnouncements,
   lmsEnrollments,
-  lmsResources,
 } from '@/lib/data/lms';
 import {
   getLiveContinueLearning,
@@ -54,12 +50,6 @@ const statusStyles: Record<
     label: 'Completed',
     className: 'lms-badge lms-badge-done',
   },
-};
-
-const resourceIcon = {
-  PDF: FileText,
-  Link: Link2,
-  Video: Video,
 };
 
 export default function LmsDashboardClient() {
@@ -350,40 +340,6 @@ export default function LmsDashboardClient() {
                     </p>
                   </li>
                 ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.12 }}
-              className="lms-card-raised p-5"
-            >
-              <div className="mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
-                <FileText className="h-4 w-4 text-slate-500" />
-                <h2 className="font-semibold text-slate-900">Resources</h2>
-              </div>
-              <ul className="space-y-1">
-                {lmsResources.map((resource) => {
-                  const Icon = resourceIcon[resource.type];
-                  return (
-                    <li key={resource.id}>
-                      <div className="flex items-start gap-3 rounded-md p-2.5 transition-colors hover:bg-slate-50">
-                        <div className="lms-icon-tile mt-0.5 h-8 w-8 shrink-0">
-                          <Icon className="h-3.5 w-3.5" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-sm font-medium leading-snug text-slate-900">
-                            {resource.title}
-                          </p>
-                          <p className="mt-0.5 text-xs uppercase tracking-wide text-slate-400">
-                            {resource.type}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
               </ul>
             </motion.div>
           </div>

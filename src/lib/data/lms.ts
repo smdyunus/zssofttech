@@ -17,13 +17,6 @@ export type LmsAnnouncement = {
   tag: string;
 };
 
-export type LmsResource = {
-  id: string;
-  title: string;
-  type: 'PDF' | 'Link' | 'Video';
-  courseSlug: string;
-};
-
 export type LmsLessonVideo = {
   id: string;
   title: string;
@@ -509,51 +502,24 @@ export const lmsEnrollments: LmsEnrollment[] = [
 export const lmsAnnouncements: LmsAnnouncement[] = [
   {
     id: '1',
-    title: 'Manual & Automation Testing videos now live',
-    body: 'Complete self-paced video playlists for Manual Testing and Selenium Automation Testing are available in your LMS.',
-    dateLabel: 'Today',
-    tag: 'New',
+    title: 'Manual Testing & Selenium Automation LMS is live',
+    body: 'Your enrolled courses — Manual Testing (2 months) and Automation Testing with Selenium (3 months) — include self-paced lesson videos, topic checklists, and live progress (70% videos / 30% topics).',
+    dateLabel: 'Nov 2026',
+    tag: 'LMS',
   },
   {
     id: '2',
-    title: 'Manual Testing — test case assignment due Friday',
-    body: 'Submit Week 3–4 test cases for the sample e-commerce app in your batch WhatsApp group by Friday 6:00 PM.',
-    dateLabel: 'Due Fri',
-    tag: 'Assignment',
+    title: 'Classroom & online support — Nandyal campus',
+    body: 'ZS Soft Tech training runs Mon–Fri, 9:00 AM – 6:00 PM at Padmavathi Nagar, Nandyala. For doubts on Jira, Postman, Selenium, or TestNG, WhatsApp or call +91 79894 03539 / email yunus@zssofttech.com.',
+    dateLabel: 'Ongoing',
+    tag: 'Support',
   },
   {
     id: '3',
-    title: 'Automation Testing — Java lab this Saturday',
-    body: 'Bring your Maven project set up. We will write the first Selenium locator scripts in class.',
-    dateLabel: 'Sat 11 AM',
-    tag: 'Live class',
-  },
-];
-
-export const lmsResources: LmsResource[] = [
-  {
-    id: 'r1',
-    title: 'Manual Testing — test case template',
-    type: 'PDF',
-    courseSlug: 'manual-testing',
-  },
-  {
-    id: 'r2',
-    title: 'Manual Testing — defect report checklist',
-    type: 'PDF',
-    courseSlug: 'manual-testing',
-  },
-  {
-    id: 'r3',
-    title: 'Selenium Automation — framework starter notes',
-    type: 'PDF',
-    courseSlug: 'automation-testing',
-  },
-  {
-    id: 'r4',
-    title: 'TestNG + Cucumber setup guide',
-    type: 'Link',
-    courseSlug: 'automation-testing',
+    title: 'Class-to-career internship pathway',
+    body: 'After Manual / Automation Testing, apply for ZS Soft Tech internships with real project work and placement support. Details: zssofttech-internships.netlify.app.',
+    dateLabel: 'Open',
+    tag: 'Career',
   },
 ];
 
