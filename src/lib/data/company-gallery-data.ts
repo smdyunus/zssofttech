@@ -8,7 +8,7 @@ export interface GalleryItem {
   orientation: GalleryOrientation;
 }
 
-/** Life at ZS Soft Tech — internship photo gallery (14 items). */
+/** Life at ZS Soft Tech — internship photo gallery. */
 export const companyGalleryItems: GalleryItem[] = [
   {
     src: "/images/realex-gallery/alumni-group.jpeg",
@@ -71,13 +71,6 @@ export const companyGalleryItems: GalleryItem[] = [
     alt: "Live seminar session with instructor presenting to internship batch",
     caption: "Live Seminar & Training Sessions",
     subtitle: "Industry-Level Training | Your Journey to Success | Nandyal",
-    orientation: "landscape",
-  },
-  {
-    src: "/images/internships-gallery/classroom-training-session.jpeg",
-    alt: "Large internship batch in a classroom training session",
-    caption: "Classroom Training Programs",
-    subtitle: "Real-Time Training for a Real-World Future | Nandyal",
     orientation: "landscape",
   },
   {

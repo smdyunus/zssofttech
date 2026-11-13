@@ -26,7 +26,7 @@ type HeroSlide = {
 const allSlides: HeroSlide[] = [
   {
     id: 5,
-    title: 'Break the “No Experience — No Job” Cycle',
+    title: 'Start Your Tech Career with Real Experience',
     subtitle:
       'Class-to-career internships with real projects, mentorship, and a clear path into tech — open to every degree background.',
     cta: 'Explore Internships',
@@ -37,20 +37,6 @@ const allSlides: HeroSlide[] = [
     overlayClass: 'bg-black/65',
     primaryTo: 'internships',
     secondaryTo: 'contact',
-  },
-  {
-    id: 1,
-    title: 'Python & Data Analysis — 45-Day Fast Track',
-    subtitle:
-      'Summer AI course in Nandyal for Inter, Degree & B.Tech. Starts 6 Apr 2026 — Mon–Fri, expert trainer, limited batches.',
-    cta: 'Enquire Now',
-    ctaSecondary: 'View All Courses',
-    gradient: 'from-primary/35 via-secondary/25 to-accent/30',
-    highlight: '45-Day Fast Track',
-    image: '/images/hero/hero-python-45day-fasttrack.png',
-    overlayClass: 'bg-black/70',
-    primaryTo: 'contact',
-    secondaryTo: 'courses',
   },
   {
     id: 2,

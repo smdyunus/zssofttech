@@ -14,7 +14,6 @@ Copy these files into this folder (already present if synced from the seminar so
 - `mixed-batch-orientation.png`
 - `internship-training-session.png`
 - `live-seminar-session.png`
-- `classroom-training-session.jpeg`
 - `coding-workshop.png`
 - `chart-analysis-session.png`
 - `group-orientation.png`

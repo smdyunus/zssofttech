@@ -64,7 +64,7 @@ export default function PhotoGallery({
           </p>
         </motion.header>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-5">
           {items.map((item, index) => (
             <motion.figure
               key={item.src}
@@ -72,27 +72,25 @@ export default function PhotoGallery({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ delay: Math.min(index * 0.04, 0.28), duration: 0.4 }}
-              className={`group relative overflow-hidden rounded-2xl ${
-                item.orientation === "portrait" ? "aspect-[3/4]" : "aspect-[16/10]"
-              }`}
+              className="group relative aspect-[4/3] overflow-hidden rounded-2xl"
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 [image-orientation:from-image]"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
               />
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"
               />
-              <figcaption className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
-                <p className="text-base font-bold text-white sm:text-lg">
+              <figcaption className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5">
+                <p className="text-sm font-bold text-white sm:text-base leading-snug">
                   {item.caption}
                 </p>
                 {item.subtitle ? (
-                  <p className="mt-1 text-sm text-white/75 sm:text-[0.95rem]">
+                  <p className="mt-1 text-xs text-white/75 sm:text-sm leading-snug line-clamp-2">
                     {item.subtitle}
                   </p>
                 ) : null}

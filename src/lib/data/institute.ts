@@ -90,7 +90,6 @@ export const courseCategories = [
   {
     title: "Data Science & AI",
     items: [
-      { name: "Python & Data Analysis — 45-Day Fast Track", href: "/courses/python-data-analysis-45-day-fast-track" },
       { name: "Data Science (DS)", href: "/courses/data-science" },
       { name: "Data Science + AI", href: "/courses/ds-ai" },
       { name: "Agentic AI & Gen AI", href: "/courses/agentic-ai" },
