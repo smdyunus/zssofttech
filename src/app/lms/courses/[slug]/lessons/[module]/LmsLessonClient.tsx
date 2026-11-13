@@ -51,14 +51,14 @@ export default function LmsLessonClient({
     null
   );
 
-  const module = course.curriculum[moduleIndex];
+  const lessonModule = course.curriculum[moduleIndex];
   const videos = useMemo<LmsLessonVideo[]>(() => {
-    if (!module) return [];
+    if (!lessonModule) return [];
     const mapped = getLessonVideos(course.slug, moduleIndex);
     return mapped.length > 0
       ? mapped
-      : getFallbackLessonVideos(module.title);
-  }, [course.slug, module, moduleIndex]);
+      : getFallbackLessonVideos(lessonModule.title);
+  }, [course.slug, lessonModule, moduleIndex]);
 
   const activeVideo =
     videos.find((v) => v.id === activeVideoId) ?? videos[0] ?? null;
@@ -87,10 +87,10 @@ export default function LmsLessonClient({
     const firstUnwatched =
       videos.find((v) => !saved.watchedVideoIds.includes(v.id)) ?? videos[0];
     setActiveVideoId(firstUnwatched?.id ?? null);
-    refreshCourseProgress();
+    setCourseProgress(computeCourseProgress(course.slug));
   }, [course.slug, moduleIndex, videos]);
 
-  if (!ready || !module) {
+  if (!ready || !lessonModule) {
     return (
       <section className="lms-shell flex min-h-[60vh] items-center justify-center">
         <div className="text-sm text-slate-500">Loading lesson…</div>
@@ -122,7 +122,7 @@ export default function LmsLessonClient({
   };
 
   const topicProgress = Math.round(
-    (completedTopics.size / Math.max(module.topics.length, 1)) * 100
+    (completedTopics.size / Math.max(lessonModule.topics.length, 1)) * 100
   );
   const videoProgress = Math.round(
     (watchedVideos.size / Math.max(videos.length, 1)) * 100
@@ -163,11 +163,11 @@ export default function LmsLessonClient({
         >
           <div className="lms-card-raised mb-6 p-5 sm:p-7">
             <p className="lms-label mb-2">
-              {module.week} · Lesson {moduleIndex + 1} of{' '}
+              {lessonModule.week} · Lesson {moduleIndex + 1} of{' '}
               {course.curriculum.length}
             </p>
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-              {module.title}
+              {lessonModule.title}
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-base">
               Watch each video to earn progress, then check off topics as you
@@ -193,7 +193,7 @@ export default function LmsLessonClient({
                 <div className="mb-1.5 flex items-center justify-between text-xs text-slate-500">
                   <span>Topics checked</span>
                   <span className="font-semibold tabular-nums text-slate-700">
-                    {completedTopics.size}/{module.topics.length} ·{' '}
+                    {completedTopics.size}/{lessonModule.topics.length} ·{' '}
                     {topicProgress}%
                   </span>
                 </div>
@@ -332,11 +332,11 @@ export default function LmsLessonClient({
               <BookOpen className="h-4 w-4 text-slate-500" />
               <h2 className="font-semibold text-slate-900">Topics checklist</h2>
               <span className="ml-auto text-xs text-slate-400">
-                {completedTopics.size}/{module.topics.length}
+                {completedTopics.size}/{lessonModule.topics.length}
               </span>
             </div>
             <ul className="space-y-2">
-              {module.topics.map((topic, index) => {
+              {lessonModule.topics.map((topic, index) => {
                 const done = completedTopics.has(index);
                 return (
                   <li key={topic}>

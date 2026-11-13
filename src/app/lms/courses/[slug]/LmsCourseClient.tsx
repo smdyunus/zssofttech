@@ -151,7 +151,7 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                 </h2>
               </div>
               <div className="space-y-3">
-                {course.curriculum.map((module, index) => {
+                {course.curriculum.map((curriculumItem, index) => {
                   const isCurrent = index === activeModule;
                   const lessonHref = `/lms/courses/${course.slug}/lessons/${index}`;
                   const videos = getLessonVideos(course.slug, index);
@@ -159,20 +159,20 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                   const watched = new Set(moduleState.watchedVideoIds);
                   const checked = new Set(moduleState.completedTopicIndexes);
                   const videoDone = videos.filter((v) => watched.has(v.id)).length;
-                  const topicDone = module.topics.filter((_, i) =>
+                  const topicDone = curriculumItem.topics.filter((_, i) =>
                     checked.has(i)
                   ).length;
                   const isDone =
                     (videos.length === 0 || videoDone >= videos.length) &&
-                    (module.topics.length === 0 ||
-                      topicDone >= module.topics.length) &&
+                    (curriculumItem.topics.length === 0 ||
+                      topicDone >= curriculumItem.topics.length) &&
                     (videoDone + topicDone > 0 ||
-                      (videos.length === 0 && module.topics.length === 0));
+                      (videos.length === 0 && curriculumItem.topics.length === 0));
                   const moduleStarted = videoDone > 0 || topicDone > 0;
 
                   return (
                     <div
-                      key={`${module.week}-${module.title}`}
+                      key={`${curriculumItem.week}-${curriculumItem.title}`}
                       id={`module-${index}`}
                       className={`lms-card p-4 sm:p-5 ${
                         isCurrent ? 'border-blue-200 ring-1 ring-blue-100' : ''
@@ -195,7 +195,9 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="mb-1 flex flex-wrap items-center gap-2">
-                              <span className="lms-label mb-0">{module.week}</span>
+                              <span className="lms-label mb-0">
+                                {curriculumItem.week}
+                              </span>
                               {index === live.currentModuleIndex && (
                                 <span className="lms-badge lms-badge-current">
                                   Current
@@ -206,15 +208,15 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                               )}
                             </div>
                             <h3 className="mb-2 font-semibold text-slate-900">
-                              {module.title}
+                              {curriculumItem.title}
                             </h3>
                             <p className="mb-2 text-xs text-slate-500">
                               {videoDone}/{videos.length || 0} videos · {topicDone}/
-                              {module.topics.length} topics
+                              {curriculumItem.topics.length} topics
                             </p>
                             {isCurrent && (
                               <ul className="mb-3 space-y-1.5">
-                                {module.topics.map((topic) => (
+                                {curriculumItem.topics.map((topic) => (
                                   <li
                                     key={topic}
                                     className="flex items-start gap-2 text-sm text-slate-500"
