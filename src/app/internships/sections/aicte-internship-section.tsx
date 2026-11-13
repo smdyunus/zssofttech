@@ -76,7 +76,7 @@ export function AicteInternshipSection() {
           </ul>
           <p className="text-xs border-l-2 border-emerald-500/40 pl-3 text-foreground-muted">
             Presented as an <strong className="text-foreground">academic-style training & practice</strong> opportunity
-            - not a commercial "pay and join" product.
+            - not a commercial &quot;pay and join&quot; product.
           </p>
         </>
       ),
