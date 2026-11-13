@@ -19,10 +19,14 @@ import {
   Stethoscope,
   Bot,
   Building2,
+  LayoutDashboard,
+  LogOut,
 } from 'lucide-react';
 import { FEATURE_INTERNSHIPS } from '@/lib/feature-flags';
 import { instituteInfo, courseCategories } from '@/lib/data/institute';
 import ContactUsLink from '@/components/ContactUsLink';
+import { clearSession, getSession, type StudentSession } from '@/lib/auth';
+import SignOutConfirmDialog from '@/components/SignOutConfirmDialog';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Automation & Agentic AI': <Bot className="w-4 h-4" />,
@@ -40,6 +44,19 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
+  const [session, setSession] = useState<StudentSession | null>(null);
+  const [signOutOpen, setSignOutOpen] = useState(false);
+
+  useEffect(() => {
+    const syncSession = () => setSession(getSession());
+    syncSession();
+    window.addEventListener('storage', syncSession);
+    window.addEventListener('zs-auth-change', syncSession);
+    return () => {
+      window.removeEventListener('storage', syncSession);
+      window.removeEventListener('zs-auth-change', syncSession);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -56,6 +73,18 @@ export default function Navigation() {
     }
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
+
+  const requestLogout = () => {
+    setSignOutOpen(true);
+  };
+
+  const confirmLogout = () => {
+    clearSession();
+    setSession(null);
+    setIsOpen(false);
+    setSignOutOpen(false);
+    window.location.assign('/login');
+  };
 
   return (
     <>
@@ -207,12 +236,32 @@ export default function Navigation() {
                 Contact Us
               </ContactUsLink>
 
-              <Link
-                href="/login"
-                className="ml-2 px-5 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-primary/25 tracking-wide"
-              >
-                Login
-              </Link>
+              {session ? (
+                <div className="ml-2 flex items-center gap-2">
+                  <Link
+                    href="/lms"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-primary/25 tracking-wide"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    LMS
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={requestLogout}
+                    className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl border border-border text-sm font-medium text-muted hover:text-red-600 hover:border-red-200 transition-colors"
+                    aria-label="Sign out"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="ml-2 px-5 py-2.5 bg-gradient-primary text-white rounded-xl font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg shadow-primary/25 tracking-wide"
+                >
+                  Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -351,13 +400,34 @@ export default function Navigation() {
                 </ContactUsLink>
 
                 <div className="pt-4 space-y-3">
-                  <Link
-                    href="/login"
-                    className="block w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg shadow-primary/25"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Login
-                  </Link>
+                  {session ? (
+                    <>
+                      <Link
+                        href="/lms"
+                        className="flex w-full items-center justify-center gap-2 py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg shadow-primary/25"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <LayoutDashboard className="w-4 h-4" />
+                        Open LMS
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={requestLogout}
+                        className="flex w-full items-center justify-center gap-2 py-3 rounded-xl border border-border font-medium text-muted hover:text-red-600 hover:border-red-200 transition-colors"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign out
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className="block w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold text-center shadow-lg shadow-primary/25"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Login
+                    </Link>
+                  )}
                 </div>
 
                 <div className="pt-4 border-t border-border flex flex-col gap-2 text-sm text-muted">
@@ -373,6 +443,12 @@ export default function Navigation() {
           )}
         </AnimatePresence>
       </motion.nav>
+
+      <SignOutConfirmDialog
+        open={signOutOpen}
+        onCancel={() => setSignOutOpen(false)}
+        onConfirm={confirmLogout}
+      />
     </>
   );
 }

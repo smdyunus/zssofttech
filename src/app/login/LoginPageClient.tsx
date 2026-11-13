@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -11,8 +11,15 @@ import {
   ArrowLeft,
   ShieldCheck,
   AlertCircle,
+  Loader2,
 } from 'lucide-react';
 import { instituteInfo } from '@/lib/data/institute';
+import {
+  authenticateStudent,
+  DEMO_STUDENT,
+  getSession,
+  saveSession,
+} from '@/lib/auth';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,14 +58,38 @@ export default function LoginPageClient() {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ userId: '', password: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [authError, setAuthError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
+
+  useEffect(() => {
+    if (getSession()) {
+      window.location.assign('/lms');
+      return;
+    }
+    setCheckingSession(false);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setAuthError(false);
     const nextErrors = validateLogin(form);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
-    setSubmitted(true);
+
+    setSubmitting(true);
+    const session = authenticateStudent(form.userId, form.password);
+
+    // Brief delay so the button state is noticeable
+    window.setTimeout(() => {
+      if (!session) {
+        setAuthError(true);
+        setSubmitting(false);
+        return;
+      }
+      saveSession(session);
+      window.location.assign('/lms');
+    }, 350);
   };
 
   const handleFieldChange = (field: 'userId' | 'password', value: string) => {
@@ -66,7 +97,16 @@ export default function LoginPageClient() {
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: '' }));
     }
+    if (authError) setAuthError(false);
   };
+
+  if (checkingSession) {
+    return (
+      <section className="min-h-[calc(100vh-100px)] flex items-center justify-center bg-background">
+        <div className="text-sm text-muted">Checking session…</div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-[calc(100vh-100px)] py-16 lg:py-24 bg-background relative overflow-hidden">
@@ -93,17 +133,15 @@ export default function LoginPageClient() {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-primary mb-4 shadow-lg shadow-primary/25">
               <ShieldCheck className="w-7 h-7 text-white" />
             </div>
-            <h1 className="section-subheading mb-2">
-              Student Login
-            </h1>
+            <h1 className="section-subheading mb-2">Student Login</h1>
             <p className="section-lead section-lead-center text-sm max-w-sm text-muted">
-              Sign in with your institute-issued credentials
+              Sign in to open your LMS dashboard
             </p>
           </div>
 
           <div className="premium-panel p-6 sm:p-8 relative overflow-hidden">
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-primary" />
-            {submitted ? (
+            {authError ? (
               <div
                 role="alert"
                 aria-live="polite"
@@ -125,24 +163,30 @@ export default function LoginPageClient() {
                     </div>
                     <ul className="list-disc space-y-1.5 pl-4 text-sm text-muted">
                       <li>
-                        Confirm your User ID or email matches what the institute
-                        issued.
+                        Use demo credentials:{' '}
+                        <span className="font-medium text-foreground">
+                          {DEMO_STUDENT.userId}
+                        </span>{' '}
+                        /{' '}
+                        <span className="font-medium text-foreground">
+                          {DEMO_STUDENT.password}
+                        </span>
                       </li>
                       <li>
-                        Passwords are case-sensitive — check Caps Lock and try again.
+                        Or email{' '}
+                        <span className="font-medium text-foreground">
+                          {DEMO_STUDENT.email}
+                        </span>{' '}
+                        with the same password.
                       </li>
                       <li>
-                        If you forgot your password or need access, contact the
-                        institute.
+                        If you need institute-issued access, contact the office.
                       </li>
                     </ul>
                     <div className="flex flex-col gap-2 pt-1 sm:flex-row sm:items-center sm:gap-3">
                       <button
                         type="button"
-                        onClick={() => {
-                          setSubmitted(false);
-                          setErrors({});
-                        }}
+                        onClick={() => setAuthError(false)}
                         className="btn-premium px-4 py-2.5 text-sm"
                       >
                         Try again
@@ -182,9 +226,7 @@ export default function LoginPageClient() {
                         errors.userId ? 'userId-error' : undefined
                       }
                       className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white border text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
-                        errors.userId
-                          ? 'border-red-500'
-                          : 'border-border'
+                        errors.userId ? 'border-red-500' : 'border-border'
                       }`}
                       placeholder="Enter your student user ID or email"
                     />
@@ -219,9 +261,7 @@ export default function LoginPageClient() {
                         errors.password ? 'password-error' : undefined
                       }
                       className={`w-full pl-11 pr-12 py-3.5 rounded-xl bg-white border text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
-                        errors.password
-                          ? 'border-red-500'
-                          : 'border-border'
+                        errors.password ? 'border-red-500' : 'border-border'
                       }`}
                       placeholder="Enter your password"
                     />
@@ -229,7 +269,9 @@ export default function LoginPageClient() {
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-foreground p-1"
-                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      aria-label={
+                        showPassword ? 'Hide password' : 'Show password'
+                      }
                     >
                       {showPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -239,10 +281,7 @@ export default function LoginPageClient() {
                     </button>
                   </div>
                   {errors.password && (
-                    <p
-                      id="password-error"
-                      className="text-xs text-red-400 mt-1"
-                    >
+                    <p id="password-error" className="text-xs text-red-400 mt-1">
                       {errors.password}
                     </p>
                   )}
@@ -250,9 +289,17 @@ export default function LoginPageClient() {
 
                 <button
                   type="submit"
-                  className="btn-premium w-full"
+                  disabled={submitting}
+                  className="btn-premium w-full disabled:opacity-70"
                 >
-                  Sign in
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Signing in…
+                    </>
+                  ) : (
+                    'Sign in to LMS'
+                  )}
                 </button>
               </form>
             )}
@@ -260,21 +307,25 @@ export default function LoginPageClient() {
 
           <div className="mt-6 premium-card p-4">
             <p className="text-xs text-muted leading-relaxed">
-              <span className="font-semibold text-foreground">Credentials: </span>
-              Your User ID and password are issued by ZS Soft Tech when you enroll.
-              If you forgot your password or need a new account, reach out at{' '}
+              <span className="font-semibold text-foreground">Demo access: </span>
+              User ID{' '}
+              <span className="font-medium text-foreground">
+                {DEMO_STUDENT.userId}
+              </span>{' '}
+              or email{' '}
+              <span className="font-medium text-foreground">
+                {DEMO_STUDENT.email}
+              </span>
+              , password{' '}
+              <span className="font-medium text-foreground">
+                {DEMO_STUDENT.password}
+              </span>
+              . For institute-issued accounts, contact{' '}
               <a
                 href={`mailto:${instituteInfo.contact.email}`}
                 className="text-primary hover:underline"
               >
                 {instituteInfo.contact.email}
-              </a>{' '}
-              or call{' '}
-              <a
-                href={`tel:${instituteInfo.contact.phone.replace(/\D/g, '')}`}
-                className="text-primary hover:underline"
-              >
-                {instituteInfo.contact.phone}
               </a>
               .
             </p>
