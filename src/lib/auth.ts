@@ -14,7 +14,7 @@ export const DEMO_STUDENT = {
   email: 'student@zssofttech.com',
   password: 'student123',
   displayName: 'ZS Student',
-  batch: 'QA Testing · 2026',
+  batch: 'QA Testing | 2026',
 } as const;
 
 export function authenticateStudent(

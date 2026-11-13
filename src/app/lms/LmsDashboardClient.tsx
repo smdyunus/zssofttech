@@ -103,12 +103,12 @@ export default function LmsDashboardClient() {
   if (!ready || !session) {
     return (
       <section className="lms-shell flex min-h-[60vh] items-center justify-center">
-        <div className="text-sm text-slate-500">Loading your LMS…</div>
+        <div className="text-sm text-slate-500">Loading your LMS...</div>
       </section>
     );
   }
 
-  const firstName = session.displayName.split(' ')[0] || 'Student';
+  const studentName = session.displayName.trim() || 'Student';
 
   return (
     <section className="lms-shell pb-20">
@@ -119,16 +119,16 @@ export default function LmsDashboardClient() {
               <LayoutDashboard className="h-4 w-4" />
             </div>
             <div>
-              <p className="lms-label mb-0.5">ZS Soft Tech · Learning portal</p>
+              <p className="lms-label mb-0.5">ZS Soft Tech | Learning portal</p>
               <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
-                Welcome back, {firstName}
+                Welcome back, {studentName}
               </h1>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="hidden text-sm text-slate-500 sm:inline">
               {session.email}
-              <span className="mx-2 text-slate-300">·</span>
+              <span className="mx-2 text-slate-300">|</span>
               {session.batch}
             </span>
             <Link href="/courses" className="lms-btn-ghost">
@@ -214,8 +214,8 @@ export default function LmsDashboardClient() {
                     <div className="mb-4">
                       <div className="mb-1.5 flex items-center justify-between text-xs text-slate-300">
                         <span>
-                          {continueCourse.progress}% · {continueCourse.videoDone}/
-                          {continueCourse.videoTotal} videos ·{' '}
+                          {continueCourse.progress}% | {continueCourse.videoDone}/
+                          {continueCourse.videoTotal} videos |{' '}
                           {continueCourse.topicDone}/{continueCourse.topicTotal}{' '}
                           topics
                         </span>
@@ -285,8 +285,8 @@ export default function LmsDashboardClient() {
                           <span className={status.className}>{status.label}</span>
                         </div>
                         <p className="mb-3 line-clamp-1 text-sm text-slate-500">
-                          {item.videoDone}/{item.videoTotal} videos ·{' '}
-                          {item.topicDone}/{item.topicTotal} topics · Next:{' '}
+                          {item.videoDone}/{item.videoTotal} videos |{' '}
+                          {item.topicDone}/{item.topicTotal} topics | Next:{' '}
                           {item.nextLesson}
                         </p>
                         <div className="flex items-center gap-3">

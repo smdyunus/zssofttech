@@ -118,7 +118,7 @@ export default function LoginPageClient() {
   if (checkingSession) {
     return (
       <section className="flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-slate-50">
-        <div className="text-sm text-slate-500">Checking session…</div>
+        <div className="text-sm text-slate-500">Checking session...</div>
       </section>
     );
   }
@@ -134,7 +134,7 @@ export default function LoginPageClient() {
           transition={{ duration: 0.35 }}
           className="w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)] lg:grid lg:grid-cols-[1.05fr_0.95fr]"
         >
-          {/* Brand panel — second on mobile so the form stays above the fold */}
+          {/* Brand panel - second on mobile so the form stays above the fold */}
           <div className="relative order-2 overflow-hidden bg-[linear-gradient(145deg,#0f172a_0%,#1e3a5f_55%,#1e293b_100%)] px-6 py-8 text-white sm:px-8 sm:py-10 lg:order-1 lg:px-10 lg:py-12">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-orange-500/15 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-20 left-10 h-48 w-48 rounded-full bg-sky-400/10 blur-3xl" />
@@ -146,8 +146,8 @@ export default function LoginPageClient() {
               {instituteInfo.name}
             </h1>
             <p className="max-w-md text-sm leading-relaxed text-slate-300 sm:text-base">
-              Sign in to open your student LMS — courses, lessons, and progress
-              for your enrolled batch.
+              Sign in to open your student LMS with courses, lessons, and
+              progress for your enrolled batch.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -168,9 +168,9 @@ export default function LoginPageClient() {
             </ul>
 
             <p className="mt-10 text-xs text-slate-400">
-              Campus support · {instituteInfo.workingHours}
+              Campus support | {instituteInfo.workingHours}
               <br />
-              {instituteInfo.contact.phone} · {instituteInfo.contact.email}
+              {instituteInfo.contact.phone} | {instituteInfo.contact.email}
             </p>
           </div>
 
@@ -324,7 +324,7 @@ export default function LoginPageClient() {
                   {submitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Signing in…
+                      Signing in...
                     </>
                   ) : (
                     <>

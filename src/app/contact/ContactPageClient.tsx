@@ -243,14 +243,14 @@ export default function ContactPageClient() {
       const fee = FEATURE_SHOW_COURSE_FEES ? formatCourseFeeLabel(c) : '';
       return {
         slug: c.slug,
-        label: `${c.title} — ${c.duration}${fee ? ` · ${fee}` : ''}`,
+        label: `${c.title} - ${c.duration}${fee ? ` | ${fee}` : ''}`,
       };
     }),
     ...(FEATURE_INTERNSHIPS
       ? [
           {
             slug: INTERNSHIP_ENQUIRY_SLUG,
-            label: 'Internship Program — Classroom to career',
+            label: 'Internship Program - Classroom to career',
           },
         ]
       : []),
@@ -271,7 +271,7 @@ export default function ContactPageClient() {
             Let&apos;s <span className="gradient-text">Talk</span>
           </h1>
           <p className="section-lead section-lead-center text-muted">
-            Questions about courses, internships, or services? Send a message —
+            Questions about courses, internships, or services? Send a message -
             we&apos;ll respond with clear next steps.
           </p>
         </motion.div>
@@ -395,7 +395,7 @@ export default function ContactPageClient() {
                       className={`w-full px-4 py-3.5 bg-white border rounded-xl text-foreground text-sm placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 transition-all ${
                         errors.phone ? 'border-red-500' : 'border-border'
                       }`}
-                      placeholder="10 digits, starts with 6–9"
+                      placeholder="10 digits, starts with 6-9"
                     />
                     {errors.phone && (
                       <p id="phone-error" className="text-xs text-red-500 mt-1">
@@ -539,9 +539,9 @@ export default function ContactPageClient() {
                 >
                   <Send className="w-4 h-4" />
                   {mailDelivery === 'loading'
-                    ? 'Preparing…'
+                    ? 'Preparing...'
                     : submitting
-                      ? 'Sending…'
+                      ? 'Sending...'
                       : 'Submit Enquiry'}
                 </button>
 

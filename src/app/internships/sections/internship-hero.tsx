@@ -31,19 +31,19 @@ export function InternshipHero() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-medium mb-6">
             <GraduationCap className="h-4 w-4" />
-            Internships & career readiness · ZS Soft Tech
+            Internships & career readiness | ZS Soft Tech
           </div>
 
           <h1 className="page-heading hero-copy">
             Build skills the{" "}
             <span className="gradient-text">right way</span>
-            <span className="text-white/95"> — transparently</span>
+            <span className="text-white/95"> - transparently</span>
           </h1>
 
           <p className="mt-6 section-lead hero-copy-muted max-w-2xl">
-            Start with our <strong className="text-white">free, AICTE-norms–aligned internship</strong> (learning &amp;
+            Start with our <strong className="text-white">free, AICTE-norms-aligned internship</strong> (learning &amp;
             documentation). If you want deeper mentoring and placement-focused training, explore our{" "}
-            <strong className="text-white">optional premium program</strong> — clearly separated, with fees listed
+            <strong className="text-white">optional premium program</strong> - clearly separated, with fees listed
             upfront.
           </p>
 
@@ -51,7 +51,7 @@ export function InternshipHero() {
             <ShieldCheck className="h-5 w-5 shrink-0 text-emerald-400 mt-0.5" />
             <span>
               No misleading claims: institutional credit and your college&apos;s formal internship approval stay with
-              your institution where applicable — not something we substitute for. We provide structured learning,
+              your institution where applicable - not something we substitute for. We provide structured learning,
               mentor review, and completion / experience certificates from ZS Soft Tech.
             </span>
           </div>

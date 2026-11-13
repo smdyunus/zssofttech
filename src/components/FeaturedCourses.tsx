@@ -34,7 +34,7 @@ export default function FeaturedCourses({ showHeader = true, limit }: FeaturedCo
               Learn Skills That Get You Hired
             </h2>
             <p className="section-lead section-lead-center text-muted">
-              From beginner-friendly tracks to advanced programs — pick a course,
+              From beginner-friendly tracks to advanced programs - pick a course,
               learn with hands-on projects, and build the confidence to start your
               IT career in Nandyal.
             </p>

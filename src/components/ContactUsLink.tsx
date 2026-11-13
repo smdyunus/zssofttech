@@ -11,7 +11,7 @@ type Props = {
   onClick?: () => void;
 };
 
-/** Use for any “Contact” nav link so revisiting /contact resets the enquiry thank-you state. */
+/** Use for any "Contact" nav link so revisiting /contact resets the enquiry thank-you state. */
 export default function ContactUsLink({
   href = '/contact',
   className,

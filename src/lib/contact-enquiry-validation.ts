@@ -27,7 +27,7 @@ export function validateEnquiryName(name: string): string | null {
   return null;
 }
 
-/** Exactly 10 digits, Indian mobile (starts with 6–9). No country code in the field. */
+/** Exactly 10 digits, Indian mobile (starts with 6-9). No country code in the field. */
 export function validateEnquiryPhone(phone: string): string | null {
   const digits = enquiryPhoneDigits(phone);
   if (!digits) return 'Phone number is required';
@@ -35,7 +35,7 @@ export function validateEnquiryPhone(phone: string): string | null {
     return 'Enter exactly 10 digits';
   }
   if (!/^[6-9]\d{9}$/.test(digits)) {
-    return 'Enter a valid mobile number (10 digits, starting with 6–9)';
+    return 'Enter a valid mobile number (10 digits, starting with 6-9)';
   }
   return null;
 }

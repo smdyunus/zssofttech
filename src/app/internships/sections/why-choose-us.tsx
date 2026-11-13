@@ -15,19 +15,19 @@ const reasons = [
     icon: Shield,
     title: "Transparent two-track model",
     description:
-      "Free AICTE-norms–aligned internship learning on one side; optional premium training with clear fees on the other. You always know what you are signing up for.",
+      "Free AICTE-norms-aligned internship learning on one side; optional premium training with clear fees on the other. You always know what you are signing up for.",
   },
   {
     icon: Code2,
     title: "Hands-on engineering practice",
     description:
-      "Guided tasks, code reviews, and small deliverables suitable for portfolios and college internship files — not theory-only sessions.",
+      "Guided tasks, code reviews, and small deliverables suitable for portfolios and college internship files - not theory-only sessions.",
   },
   {
     icon: Users,
     title: "Mentor-led reviews",
     description:
-      "Regular checkpoints with mentors for feedback, professionalism, and quality — aligned with how good internship programs are run.",
+      "Regular checkpoints with mentors for feedback, professionalism, and quality - aligned with how good internship programs are run.",
   },
   {
     icon: BookOpen,
@@ -45,7 +45,7 @@ const reasons = [
     icon: LineChart,
     title: "Career support (premium)",
     description:
-      "For premium learners: extended interview prep, resume clinics, and placement assistance — without over-promising fixed salaries.",
+      "For premium learners: extended interview prep, resume clinics, and placement assistance - without over-promising fixed salaries.",
   },
 ];
 
@@ -69,7 +69,7 @@ export function WhyChooseUs() {
           <p className="mt-4 section-lead section-lead-center text-muted">
             Whether you need a <strong className="text-foreground">college-ready internship file</strong> or a{" "}
             <strong className="text-foreground">deeper paid program</strong>, we focus on skills you can demonstrate in
-            interviews — not hype.
+            interviews - not hype.
           </p>
         </motion.div>
 

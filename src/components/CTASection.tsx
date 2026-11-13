@@ -40,7 +40,7 @@ export default function CTASection() {
 
             <div className="flex flex-wrap justify-center gap-4">
               <ContactUsLink className="btn-premium">
-                Get Free Counseling
+                Get Free Counselling
                 <ArrowRight className="w-4 h-4" />
               </ContactUsLink>
               <a

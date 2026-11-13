@@ -129,7 +129,7 @@ export default function Navigation() {
                 Home
               </Link>
 
-              {/* Courses Mega Menu Trigger — z-index when open so panel isn’t covered by sibling nav links */}
+              {/* Courses Mega Menu Trigger - z-index when open so panel isn't covered by sibling nav links */}
               <div
                 className={`relative ${showMegaMenu ? 'z-[100]' : ''}`}
                 onMouseEnter={() => setShowMegaMenu(true)}

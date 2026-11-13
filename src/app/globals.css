@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /**
- * Light theme — white surfaces + orange / purple accents
+ * Light theme - white surfaces + orange / purple accents
  * Labels: orange (primary) for section chips; purple (secondary) for secondary labels/chips
  * Body: dark ink on white for contrast
  */
@@ -147,7 +147,7 @@
     border: 1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
   }
 
-  /* Fluid type scale — no hardcoded color so text-* utilities can set contrast per surface */
+  /* Fluid type scale - no hardcoded color so text-* utilities can set contrast per surface */
   .section-heading {
     font-size: clamp(1.75rem, 1.35rem + 1.6vw, 3rem);
     font-weight: 700;

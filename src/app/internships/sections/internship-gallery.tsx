@@ -3,7 +3,7 @@
 import PhotoGallery from "@/components/sections/photo-gallery";
 import { companyGalleryItems } from "@/lib/data/company-gallery-data";
 
-/** Internships page gallery — Life at ZS Soft Tech. */
+/** Internships page gallery - Life at ZS Soft Tech. */
 export function InternshipGallery() {
   return (
     <PhotoGallery

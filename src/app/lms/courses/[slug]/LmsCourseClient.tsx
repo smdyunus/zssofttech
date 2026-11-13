@@ -62,7 +62,7 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
   if (!ready) {
     return (
       <section className="lms-shell flex min-h-[60vh] items-center justify-center">
-        <div className="text-sm text-slate-500">Loading course…</div>
+        <div className="text-sm text-slate-500">Loading course...</div>
       </section>
     );
   }
@@ -104,9 +104,9 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                     <Clock className="h-4 w-4" />
                     {course.duration}
                   </span>
-                  <span className="text-slate-500">·</span>
+                  <span className="text-slate-500">|</span>
                   <span>{course.mode}</span>
-                  <span className="text-slate-500">·</span>
+                  <span className="text-slate-500">|</span>
                   <span>{course.level}</span>
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                     {live.progress}%
                   </p>
                   <p className="mb-3 text-xs text-slate-300">
-                    {live.videoDone}/{live.videoTotal} videos · {live.topicDone}/
+                    {live.videoDone}/{live.videoTotal} videos | {live.topicDone}/
                     {live.topicTotal} topics
                   </p>
                   <div className="lms-progress-track lms-progress-track-on-dark mb-3">
@@ -211,7 +211,7 @@ export default function LmsCourseClient({ course, enrollment }: Props) {
                               {curriculumItem.title}
                             </h3>
                             <p className="mb-2 text-xs text-slate-500">
-                              {videoDone}/{videos.length || 0} videos · {topicDone}/
+                              {videoDone}/{videos.length || 0} videos | {topicDone}/
                               {curriculumItem.topics.length} topics
                             </p>
                             {isCurrent && (

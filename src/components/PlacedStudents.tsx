@@ -48,7 +48,7 @@ export default function PlacedStudents() {
           </h2>
           <p className="section-lead section-lead-center text-muted">
             Our learners are working as QA engineers and full stack developers at
-            companies across India — proof that structured training turns into real roles.
+            companies across India - proof that structured training turns into real roles.
           </p>
         </motion.div>
 

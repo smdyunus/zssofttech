@@ -68,7 +68,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm text-slate-300/80 leading-relaxed mb-6">
-              Premium IT training and software development in Nandyal —
+              Premium IT training and software development in Nandyal -
               helping the next generation of tech professionals build real skills and careers.
             </p>
             <div className="flex gap-3">

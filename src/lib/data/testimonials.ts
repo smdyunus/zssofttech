@@ -76,7 +76,7 @@ export const testimonials: Testimonial[] = [  {
   {
     id: 10,
     name: "ajay2ANAS",
-    content: "Its like a family training institute and a spoon feeding training centre. The trainers worked in software companies and even they were working till now in software companies — more than 10yrs experienced employees giving training for us. In coaching centres they give only basic knowledge and they cannot teach real time work what the software companies needs. But in this ZS Soft Tech training centre they explain what the work would be in a software company, how to execute the project, how to stay updated, and many more techniques practically. Even in cities also such type of training centres I haven't seen till now. So try once to join in this ZS Soft Tech training centre so that you can save money and time also and you can surely get a job.",
+    content: "Its like a family training institute and a spoon feeding training centre. The trainers worked in software companies and even they were working till now in software companies - more than 10yrs experienced employees giving training for us. In coaching centres they give only basic knowledge and they cannot teach real time work what the software companies needs. But in this ZS Soft Tech training centre they explain what the work would be in a software company, how to execute the project, how to stay updated, and many more techniques practically. Even in cities also such type of training centres I haven't seen till now. So try once to join in this ZS Soft Tech training centre so that you can save money and time also and you can surely get a job.",
     rating: 5,
     timeAgo: "a year ago",
   },
@@ -153,7 +153,7 @@ export const testimonials: Testimonial[] = [  {
   {
     id: 21,
     name: "Hallu",
-    content: "Best Place to get software training and Placement. In Nandyal this is the one and only institute, they have real time trainers with hands-on projects. Also it is an IT company — they have projects and I got the training on the live projects and I worked on it.",
+    content: "Best Place to get software training and Placement. In Nandyal this is the one and only institute, they have real time trainers with hands-on projects. Also it is an IT company - they have projects and I got the training on the live projects and I worked on it.",
     rating: 5,
     timeAgo: "a week ago",
   },
@@ -209,7 +209,7 @@ export const testimonials: Testimonial[] = [  {
   {
     id: 29,
     name: "Jammu Jammu",
-    content: "To be honest ZS Soft Tech institute is really very good. There are very good trainers and any topics explain very clearly and teaching skills also awesome. I really enjoyed courses. Anyone looking for taking training and coaching once visit here — if you are comfortable join in ZS Soft Tech institute.",
+    content: "To be honest ZS Soft Tech institute is really very good. There are very good trainers and any topics explain very clearly and teaching skills also awesome. I really enjoyed courses. Anyone looking for taking training and coaching once visit here - if you are comfortable join in ZS Soft Tech institute.",
     rating: 5,
     timeAgo: "2 months ago",
   },

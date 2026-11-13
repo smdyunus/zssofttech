@@ -7,7 +7,7 @@ export interface PlacedStudent {
   course: string;
 }
 
-/** Students who got placed — shown on the home page success section. */
+/** Students who got placed - shown on the home page success section. */
 export const placedStudents: PlacedStudent[] = [
   {
     id: 1,

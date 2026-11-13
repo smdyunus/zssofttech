@@ -49,7 +49,7 @@ function stripSurroundingQuotes(raw: string | undefined): string {
   return t;
 }
 
-/** Gmail app passwords are 16 chars; Google often shows them with spaces — spaces are stripped for SMTP. */
+/** Gmail app passwords are 16 chars; Google often shows them with spaces - spaces are stripped for SMTP. */
 function normalizeSmtpPassword(raw: string | undefined): string {
   const t = stripSurroundingQuotes(raw);
   if (!t) return '';
@@ -107,24 +107,24 @@ export async function sendContactEnquiryEmail(payload: ContactPayload): Promise<
 
   const courseTitle = courseLabelFromSlug(payload.courseSlug);
   const subjectPrefix = getContactEnquirySubjectPrefix();
-  const subject = `${subjectPrefix} — ${courseTitle}`;
+  const subject = `${subjectPrefix} - ${courseTitle}`;
 
   const safeName = escapeHtml(payload.name);
   const safePhone = escapeHtml(payload.phone);
-  const safeEmail = escapeHtml(payload.email || '—');
+  const safeEmail = escapeHtml(payload.email || '-');
   const safeCourse = escapeHtml(courseTitle);
-  const safeMessage = escapeHtml(payload.message || '—').replace(/\n/g, '<br/>');
+  const safeMessage = escapeHtml(payload.message || '-').replace(/\n/g, '<br/>');
 
   const text = [
     subjectPrefix,
     '',
     `Name: ${payload.name}`,
     `Phone: ${payload.phone}`,
-    `Email: ${payload.email || '—'}`,
+    `Email: ${payload.email || '-'}`,
     `Course: ${courseTitle}`,
     '',
     'Message:',
-    payload.message || '—',
+    payload.message || '-',
   ].join('\n');
 
   const html = `
@@ -183,10 +183,10 @@ export async function sendContactViaFormSubmit(
   const body: Record<string, string> = {
     name: payload.name,
     phone: payload.phone,
-    email: payload.email || '—',
+    email: payload.email || '-',
     course: courseTitle,
-    message: payload.message || '—',
-    _subject: `${subjectPrefix} — ${courseTitle}`,
+    message: payload.message || '-',
+    _subject: `${subjectPrefix} - ${courseTitle}`,
     _captcha: 'false',
   };
   const em = payload.email.trim();

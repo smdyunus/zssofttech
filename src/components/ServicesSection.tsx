@@ -38,7 +38,7 @@ const services = [
   {
     title: 'Internship Programs',
     icon: GraduationCap,
-    description: 'Structured internship tracks with practical learning, mentorship, and outcomes clarity.',
+    description: 'Structured internship tracks with practical learning, mentorship, and clear outcomes.',
     image:
       'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=75',
   },
@@ -87,7 +87,7 @@ export default function ServicesSection() {
           </span>
           <h2 className="section-heading text-foreground">Services Built to Scale</h2>
           <p className="section-lead section-lead-center text-muted mt-4">
-            Training, development, and career support for students, startups, and growing teams — delivered with clarity and craft.
+            Training, development, and career support for students, startups, and growing teams - delivered with clarity and craft.
           </p>
         </motion.div>
 

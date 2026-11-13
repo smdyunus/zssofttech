@@ -27,10 +27,10 @@ export async function submitEnquiryViaBrowserFormSubmit(
   const body: Record<string, string | boolean> = {
     name: payload.name,
     phone: payload.phone,
-    email: email || '—',
+    email: email || '-',
     course: courseTitle,
     message: payload.message,
-    _subject: `${subjectPrefix} — ${courseTitle}`,
+    _subject: `${subjectPrefix} - ${courseTitle}`,
     _captcha: false,
   };
   if (email) {
@@ -117,7 +117,7 @@ export async function submitContactEnquiry(
         return {
           ok: false,
           error:
-            'We can’t deliver this enquiry by email yet. Please use WhatsApp or call us—we’ll respond right away.',
+            "We can't deliver this enquiry by email yet. Please use WhatsApp or call us. We'll respond right away.",
           smtpUnavailable: true,
           hint: data.hint,
         };

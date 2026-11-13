@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   title: {
     default:
-      "ZS Soft Tech – Premium IT Training & Software Development Hub | Nandyal",
+      "ZS Soft Tech - Premium IT Training & Software Development Hub | Nandyal",
     template: "%s | ZS Soft Tech",
   },
   description:
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
     url: "https://zssofttech.com",
     siteName: "ZS Soft Tech",
     title:
-      "ZS Soft Tech – Premium IT Training & Software Development Hub | Nandyal",
+      "ZS Soft Tech - Premium IT Training & Software Development Hub | Nandyal",
     description:
       "Master the future of technology in Nandyal. Full Stack, AI, DevOps, Data Science & System Design training with 95% placement rate.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZS Soft Tech – Premium IT Training & Software Development Hub",
+    title: "ZS Soft Tech - Premium IT Training & Software Development Hub",
     description:
       "Master the future of technology in Nandyal. World-class IT training with 95% placement rate.",
   },
@@ -144,7 +144,7 @@ function CourseJsonLd() {
       provider: "ZS Soft Tech",
     },
     {
-      name: "Java Full Stack – Spring Boot",
+      name: "Java Full Stack - Spring Boot",
       description:
         "Master enterprise Java with Spring Boot, Microservices, and cloud deployment",
       provider: "ZS Soft Tech",
@@ -168,7 +168,7 @@ function CourseJsonLd() {
       provider: "ZS Soft Tech",
     },
     {
-      name: "System Design – HLD & LLD",
+      name: "System Design - HLD & LLD",
       description:
         "Learn high-level and low-level system design for scalable architectures",
       provider: "ZS Soft Tech",

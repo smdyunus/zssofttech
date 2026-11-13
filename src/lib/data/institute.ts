@@ -27,14 +27,14 @@ export const instituteInfo = {
     yearsExperience: "2",
     batchesCompleted: "30+",
   },
-  workingHours: "Mon–Fri: 9:00 AM – 6:00 PM",
+  workingHours: "Mon-Fri: 9:00 AM - 6:00 PM",
   internshipsUrl: "https://zssofttech-internships.netlify.app/",
   /** Official Google Maps place (open in app / browser). */
   mapPlaceUrl:
     "https://www.google.com/maps/place/ZS+Soft+Tech/@15.481528,78.483792,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb5ad8927fff419:0x2c4975e6337d847a!8m2!3d15.481528!4d78.483792!16s%2Fg%2F11x7hsw59g",
   /**
-   * Google “Embed a map” iframe URL (place id + coords). Renders full Google Maps UI (Open in Maps,
-   * satellite toggle, etc.) — unlike legacy `?q=lat,lng&output=embed`.
+   * Google "Embed a map" iframe URL (place id + coords). Renders full Google Maps UI (Open in Maps,
+   * satellite toggle, etc.) - unlike legacy `?q=lat,lng&output=embed`.
    * Optional: set `NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY` to use Maps Embed API instead (same look, more stable).
    */
   mapEmbedUrl:

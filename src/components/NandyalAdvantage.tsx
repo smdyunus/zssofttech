@@ -35,7 +35,7 @@ const advantages = [
     icon: Users,
     title: 'Small Batch Size',
     description:
-      'Personalized attention with batches of 15–20 students. Every doubt gets addressed, every student matters.',
+      'Personalized attention with batches of 15-20 students. Every doubt gets addressed, every student matters.',
   },
   {
     icon: Wifi,
@@ -47,7 +47,7 @@ const advantages = [
     icon: ShieldCheck,
     title: 'Placement Support',
     description:
-      'Interview prep, resume reviews, mock interviews, and introductions to hiring partners — practical career guidance at every step.',
+      'Interview prep, resume reviews, mock interviews, and introductions to hiring partners - practical career guidance at every step.',
   },
 ];
 
@@ -77,7 +77,7 @@ export default function NandyalAdvantage() {
             <p className="section-lead mb-8 max-w-none text-muted">
               Strong AI, DevOps, and Full Stack training no longer means moving
               to a metro. ZS Soft Tech brings industry-ready curriculum, modern
-              tools, and placement guidance to Nandyal — so talent can grow where
+              tools, and placement guidance to Nandyal - so talent can grow where
               they live.
             </p>
             <Link

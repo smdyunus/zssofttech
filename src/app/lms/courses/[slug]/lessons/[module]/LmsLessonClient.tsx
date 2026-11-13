@@ -93,7 +93,7 @@ export default function LmsLessonClient({
   if (!ready || !lessonModule) {
     return (
       <section className="lms-shell flex min-h-[60vh] items-center justify-center">
-        <div className="text-sm text-slate-500">Loading lesson…</div>
+        <div className="text-sm text-slate-500">Loading lesson...</div>
       </section>
     );
   }
@@ -163,7 +163,7 @@ export default function LmsLessonClient({
         >
           <div className="lms-card-raised mb-6 p-5 sm:p-7">
             <p className="lms-label mb-2">
-              {lessonModule.week} · Lesson {moduleIndex + 1} of{' '}
+              {lessonModule.week} | Lesson {moduleIndex + 1} of{' '}
               {course.curriculum.length}
             </p>
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
@@ -179,7 +179,7 @@ export default function LmsLessonClient({
                 <div className="mb-1.5 flex items-center justify-between text-xs text-slate-500">
                   <span>Videos watched</span>
                   <span className="font-semibold tabular-nums text-slate-700">
-                    {watchedVideos.size}/{videos.length} · {videoProgress}%
+                    {watchedVideos.size}/{videos.length} | {videoProgress}%
                   </span>
                 </div>
                 <div className="lms-progress-track">
@@ -193,7 +193,7 @@ export default function LmsLessonClient({
                 <div className="mb-1.5 flex items-center justify-between text-xs text-slate-500">
                   <span>Topics checked</span>
                   <span className="font-semibold tabular-nums text-slate-700">
-                    {completedTopics.size}/{lessonModule.topics.length} ·{' '}
+                    {completedTopics.size}/{lessonModule.topics.length} |{' '}
                     {topicProgress}%
                   </span>
                 </div>
@@ -402,7 +402,7 @@ export default function LmsLessonClient({
           {courseProgress &&
             moduleIndex === courseProgress.currentModuleIndex && (
               <p className="mt-4 text-center text-xs text-slate-500 sm:text-left">
-                Current module · Next focus:{' '}
+                Current module | Next focus:{' '}
                 <span className="font-medium text-slate-800">
                   {courseProgress.nextLesson}
                 </span>

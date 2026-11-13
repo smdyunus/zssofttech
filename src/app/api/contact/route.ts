@@ -16,7 +16,7 @@ import {
 export const runtime = 'nodejs';
 
 /**
- * GET /api/contact — tells the client whether server SMTP is configured (no secrets).
+ * GET /api/contact - tells the client whether server SMTP is configured (no secrets).
  *
  * POST /api/contact
  * 1) If CONTACT_SMTP_USER + CONTACT_SMTP_PASS → Nodemailer.

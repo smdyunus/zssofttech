@@ -8,7 +8,7 @@ import { instituteInfo } from "@/lib/data/institute";
 
 const waDigits = instituteInfo.contact.whatsapp.replace(/\D/g, "");
 const waHref = `https://wa.me/${waDigits}?text=${encodeURIComponent(
-  "Hi ZS Soft Tech — I'd like to know more about (1) the free AICTE-format internship or (2) the premium training program."
+  "Hi ZS Soft Tech - I'd like to know more about (1) the free AICTE-format internship or (2) the premium training program."
 )}`;
 
 export function InternshipCTA() {
@@ -28,7 +28,7 @@ export function InternshipCTA() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
             <MessageCircle className="h-4 w-4" />
-            Counselling · Nandyal
+            Counselling | Nandyal
           </div>
 
           <h2 className="section-heading hero-copy">
@@ -37,7 +37,7 @@ export function InternshipCTA() {
           <p className="mt-4 section-lead section-lead-center hero-copy-muted">
             Message us with your course, semester, and goal. We&apos;ll help you pick the{" "}
             <strong className="text-white">free internship model</strong> or the{" "}
-            <strong className="text-white">premium program</strong> — only what you need.
+            <strong className="text-white">premium program</strong> - only what you need.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className={buttonClassName({ size: "xl", className: "group" })}>

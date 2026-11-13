@@ -95,7 +95,7 @@ export default function Testimonials() {
                 <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               ))}
             </span>
-            <span className="text-muted">· {googleReviewStats.count} Google reviews</span>
+            <span className="text-muted">| {googleReviewStats.count} Google reviews</span>
           </div>
         </motion.div>
 

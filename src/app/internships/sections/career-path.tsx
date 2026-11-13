@@ -7,7 +7,7 @@ const stages = [
   {
     icon: BookOpen,
     title: "Learn",
-    description: "Clear objectives, curated modules, and mentor checkpoints — especially in the AICTE-format track.",
+    description: "Clear objectives, curated modules, and mentor checkpoints - especially in the AICTE-format track.",
     color: "bg-blue-500",
   },
   {
@@ -19,7 +19,7 @@ const stages = [
   {
     icon: Rocket,
     title: "Demonstrate",
-    description: "Present your work, gather feedback, and refine quality — the same loop employers value.",
+    description: "Present your work, gather feedback, and refine quality - the same loop employers value.",
     color: "bg-amber-500",
   },
   {
@@ -49,7 +49,7 @@ export function CareerPath() {
             From learning to credible proof
           </h2>
           <p className="mt-4 section-lead section-lead-center text-muted">
-            Learn with structure, build evidence, demonstrate competence, then pursue roles with honest support — no false guarantees.
+            Learn with structure, build evidence, demonstrate competence, then pursue roles with honest support - no false guarantees.
           </p>
         </motion.div>
 

@@ -92,7 +92,7 @@
       body._subject =
         (extra && extra.subject) ||
         form.getAttribute("data-email-subject") ||
-        "ZS Soft Tech — Form submission";
+        "ZS Soft Tech - Form submission";
       body._replyto = email;
       body._cc = email;
       body._captcha = "false";
@@ -111,7 +111,7 @@
       }
 
       if (submitBtn) submitBtn.disabled = true;
-      setStatus("Sending…", false);
+      setStatus("Sending...", false);
 
       var body = this.buildJsonBody(form, {
         subject: options.subject,

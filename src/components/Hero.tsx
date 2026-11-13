@@ -28,7 +28,7 @@ const allSlides: HeroSlide[] = [
     id: 5,
     title: 'Start Your Tech Career with Real Experience',
     subtitle:
-      'Class-to-career internships with real projects, mentorship, and a clear path into tech — open to every degree background.',
+      'Class-to-career internships with real projects, mentorship, and a clear path into tech - open to every degree background.',
     cta: 'Explore Internships',
     ctaSecondary: 'Contact Us',
     gradient: 'from-secondary/40 via-primary/25 to-accent/30',
@@ -40,9 +40,9 @@ const allSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    title: 'Learn Tomorrow’s Tech — Starting in Nandyal',
+    title: "Learn Tomorrow's Tech - Starting in Nandyal",
     subtitle:
-      'Agentic AI, Gen AI, Full Stack, DevOps, and System Design — hands-on programs designed for real industry work.',
+      'Agentic AI, Gen AI, Full Stack, DevOps, and System Design - hands-on programs designed for real industry work.',
     cta: 'Explore Courses',
     ctaSecondary: 'Book Free Demo',
     gradient: 'from-primary/35 via-secondary/25 to-accent/30',
@@ -56,7 +56,7 @@ const allSlides: HeroSlide[] = [
     id: 3,
     title: 'Build Skills That Stay Relevant',
     subtitle:
-      'Strong engineering fundamentals, practical AI workflows, and projects you can show in interviews — training built for real roles.',
+      'Strong engineering fundamentals, practical AI workflows, and projects you can show in interviews - training built for real roles.',
     cta: 'Explore Courses',
     ctaSecondary: 'Contact Us',
     gradient: 'from-secondary/35 via-primary/20 to-accent/30',
@@ -70,7 +70,7 @@ const allSlides: HeroSlide[] = [
     id: 4,
     title: 'Premium Software Training in Nandyal',
     subtitle:
-      'Expert mentors, live projects, and placement guidance — so you can grow from classroom learning to interview-ready confidence.',
+      'Expert mentors, live projects, and placement guidance - so you can grow from classroom learning to interview-ready confidence.',
     cta: 'View All Courses',
     ctaSecondary: 'WhatsApp Us',
     gradient: 'from-primary/30 via-accent/20 to-secondary/30',

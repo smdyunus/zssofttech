@@ -24,7 +24,7 @@
       '<button type="button" class="modal-close" data-close-registration aria-label="Close">&times;</button>' +
       "</div>" +
       '<div class="modal-body">' +
-      '<form id="zs-registration-form" class="registration-form" novalidate data-email-subject="ZS Soft Tech — Course registration" data-thank-you="thank-you.html">' +
+      '<form id="zs-registration-form" class="registration-form" novalidate data-email-subject="ZS Soft Tech - Course registration" data-thank-you="thank-you.html">' +
       '<div class="form-group" data-field="name">' +
       "<label for=\"zs-reg-name\">Full name *</label>" +
       '<input id="zs-reg-name" name="name" type="text" autocomplete="name" />' +
@@ -153,7 +153,7 @@
         ];
         if (!core.validateForm(form, rules)) return;
         core.submitAjax(form, {
-          subject: "ZS Soft Tech — Course registration",
+          subject: "ZS Soft Tech - Course registration",
           thankYouUrl: form.getAttribute("data-thank-you") || "thank-you.html",
         });
       });

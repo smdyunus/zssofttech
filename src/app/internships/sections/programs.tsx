@@ -147,15 +147,15 @@ export function Programs() {
           className="text-center mb-16"
         >
           <span className="text-sm font-medium text-sky-600 dark:text-sky-400 uppercase tracking-wider">
-            Model 2 · Premium training program
+            Model 2 | Premium training program
           </span>
           <h2 className="mt-3 section-heading">
-            Paid tracks — deeper mentoring & placement support
+            Paid tracks - deeper mentoring & placement support
           </h2>
           <p className="mt-4 section-lead section-lead-center text-muted">
             Optional intensive programs for learners who want structured training, extended mentorship, and interview
             readiness. <strong className="text-foreground">Separate from the free AICTE-format internship model</strong>{" "}
-            above — fees apply only if you choose one of these tracks.
+            above - fees apply only if you choose one of these tracks.
           </p>
         </motion.div>
 
@@ -230,7 +230,7 @@ export function Programs() {
                       {program.expectedLPA}
                     </div>
                     <div className="text-[10px] text-foreground-muted mt-0.5">
-                      Not a salary guarantee · support bundle: {program.effectiveCost}
+                      Not a salary guarantee | support bundle: {program.effectiveCost}
                     </div>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export function Programs() {
                     program.popular && "bg-primary hover:bg-primary-dark"
                   )}
                 >
-                  Enquire — premium {program.code}
+                  Enquire - premium {program.code}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               </div>
@@ -301,7 +301,7 @@ export function Programs() {
             Eligibility and stipend (where mentioned) are track-specific and confirmed in writing before enrolment.
             GST and statutory components as applicable.{" "}
             <strong className="text-foreground">Placement outcomes depend on market conditions and your readiness</strong>
-            — we provide training and assistance, not a guaranteed job or package.
+            - we provide training and assistance, not a guaranteed job or package.
           </p>
           <p className="text-xs text-foreground-muted/60 max-w-2xl mx-auto">
             * This section describes only the <strong className="text-foreground/80">premium training model</strong>. The

@@ -29,13 +29,13 @@ export function InternshipTwoModels() {
           </p>
           <p className="mt-4 text-sm text-foreground-muted max-w-2xl mx-auto leading-relaxed">
             Both tracks are described clearly below. There is no mandatory fee for the{" "}
-            <span className="text-foreground font-medium">AICTE-norms–aligned internship model</span>.
+            <span className="text-foreground font-medium">AICTE-norms-aligned internship model</span>.
             Premium training is optional and priced separately.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-          {/* Model 1 — AICTE internship */}
+          {/* Model 1 - AICTE internship */}
           <motion.article
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export function InternshipTwoModels() {
               >
                 🟢
               </span>
-              Model 1 — AICTE internship (learning-based)
+              Model 1 - AICTE internship (learning-based)
             </div>
             <h3 className="text-2xl font-semibold text-foreground mb-3">
               Free / learning-based
@@ -73,7 +73,7 @@ export function InternshipTwoModels() {
               <li className="flex gap-2">
                 <BadgeCheck className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
                 <span>
-                  Ideal for <strong className="text-foreground">college / university records</strong>, NBA–NAAC
+                  Ideal for <strong className="text-foreground">college / university records</strong>, NBA-NAAC
                   documentation support, and building an evidence-backed portfolio.
                 </span>
               </li>
@@ -96,7 +96,7 @@ export function InternshipTwoModels() {
             </Link>
           </motion.article>
 
-          {/* Model 2 — Premium */}
+          {/* Model 2 - Premium */}
           <motion.article
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,24 +111,24 @@ export function InternshipTwoModels() {
               >
                 🔵
               </span>
-              Model 2 — Premium training program
+              Model 2 - Premium training program
             </div>
             <h3 className="text-2xl font-semibold text-foreground mb-3">
-              Paid · advanced mentoring
+              Paid | advanced mentoring
             </h3>
             <ul className="space-y-3 text-foreground-muted text-sm leading-relaxed mb-6">
               <li className="flex gap-2">
                 <Sparkles className="h-5 w-5 shrink-0 text-sky-600 dark:text-sky-400" />
                 <span>
                   <strong className="text-foreground">Deeper curriculum</strong>, extended mentorship, placement
-                  assistance, and interview readiness — for learners who want an intensive, fee-based program.
+                  assistance, and interview readiness - for learners who want an intensive, fee-based program.
                 </span>
               </li>
               <li className="flex gap-2">
                 <GraduationCap className="h-5 w-5 shrink-0 text-sky-600 dark:text-sky-400" />
                 <span>
                   Fees, instalments, and inclusions are listed openly in the{" "}
-                  <strong className="text-foreground">premium section</strong> below — no hidden charges beyond what
+                  <strong className="text-foreground">premium section</strong> below - no hidden charges beyond what
                   is stated.
                 </span>
               </li>

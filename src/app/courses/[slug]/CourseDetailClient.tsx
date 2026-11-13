@@ -249,7 +249,7 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
             <motion.span variants={fadeUp} custom={0} className="section-label mb-4">Syllabus</motion.span>
             <motion.h2 variants={fadeUp} custom={1} className="section-subheading mb-2">Course Curriculum</motion.h2>
             <motion.p variants={fadeUp} custom={2} className="section-lead max-w-2xl text-muted">
-              {course.curriculum.length} modules · {course.durationHours || course.duration} of structured learning
+              {course.curriculum.length} modules | {course.durationHours || course.duration} of structured learning
             </motion.p>
           </motion.div>
 
@@ -373,14 +373,14 @@ export default function CourseDetailClient({ course, relatedCourses, instituteIn
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
             {course.whyChoose.map((reason, i) => {
-              const [title, ...rest] = reason.split(' – ');
-              const desc = rest.join(' – ');
+              const [title, ...rest] = reason.split(' - ');
+              const desc = rest.join(' - ');
               return (
                 <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-30px' }} variants={fadeUp} custom={i} className="premium-card flex items-start gap-3 p-5">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="font-semibold text-foreground text-sm">{title}</span>
-                    {desc && <span className="text-muted text-sm"> – {desc}</span>}
+                    {desc && <span className="text-muted text-sm"> - {desc}</span>}
                   </div>
                 </motion.div>
               );

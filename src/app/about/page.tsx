@@ -6,7 +6,7 @@ import CTASection from '@/components/CTASection';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about ZS Soft Tech — Nandyal\'s premier IT training & software development hub. Our vision, experience, and commitment to transforming careers in technology.',
+    'Learn about ZS Soft Tech - Nandyal\'s premier IT training & software development hub. Our vision, experience, and commitment to transforming careers in technology.',
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold text-foreground mb-3">Our Vision</h3>
               <p className="text-sm text-muted leading-relaxed">
-                To be Andhra Pradesh&apos;s leading technology education hub —
+                To be Andhra Pradesh&apos;s leading technology education hub,
                 developing professionals who compete with confidence anywhere.
               </p>
             </div>

@@ -221,7 +221,7 @@ export default function ChatEnquiryWidget() {
       { role: 'user', text: 'No' },
       {
         role: 'bot',
-        text: 'No problem. Whenever you’re ready, tap the chat icon and we’ll be here.',
+        text: "No problem. Whenever you're ready, tap the chat icon and we'll be here.",
       }
     );
     setStep('done');
@@ -255,7 +255,7 @@ export default function ChatEnquiryWidget() {
       { role: 'user', text: label },
       {
         role: 'bot',
-        text: 'Can you share your 10-digit mobile number? Our counselor will call you soon with the details.',
+        text: 'Can you share your 10-digit mobile number? Our counsellor will call you soon with the details.',
       }
     );
     setStep('phone');
@@ -297,7 +297,7 @@ export default function ChatEnquiryWidget() {
 
     appendMessages({
       role: 'bot',
-      text: 'Thank you! Our counselor will contact you soon. Have a wonderful day!',
+      text: 'Thank you! Our counsellor will contact you soon. Have a wonderful day!',
     });
     setStep('done');
     setSubmitError(null);
@@ -464,7 +464,7 @@ export default function ChatEnquiryWidget() {
                         e.key === 'Enter' &&
                         (e.preventDefault(), handleSendPhone())
                       }
-                      placeholder="10-digit mobile (starts with 6–9)"
+                      placeholder="10-digit mobile (starts with 6-9)"
                       className="flex-1 min-w-0 px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                       autoComplete="tel"
                     />
@@ -483,7 +483,7 @@ export default function ChatEnquiryWidget() {
                 {step === 'submitting' && (
                   <div className="flex items-center justify-center gap-2 py-3 text-sm text-gray-600">
                     <Loader2 className="w-5 h-5 animate-spin text-primary" />
-                    Sending…
+                    Sending...
                   </div>
                 )}
 
